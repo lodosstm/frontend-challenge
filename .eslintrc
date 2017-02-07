@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb/base",
+  "rules": {
+    "comma-dangle": 0,
+    "max-len": [
+      "error",
+      110,
+      4
+    ],
+    "no-plusplus": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "no-continue": 0,
+    "object-shorthand": 1
+  },
+  "parser": "babel-eslint",
+  "no-use-before-define": ["error", { "functions": true, "classes": true }]
+}
