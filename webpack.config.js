@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'dev';
 
@@ -26,18 +27,24 @@ module.exports = {
         path.resolve(__dirname, './src')
       ],
       loader: 'babel-loader',
+      exclude: /node_modules/,
       query: {
         presets: ['es2015', 'stage-0']
       }
     }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: 'css-loader'
+        fallbackLoader: 'style-loader',
+        loader: [
+          { loader: 'css-loader' }
+        ]
       })
-    },{
+    }, {
       test: /\.(png|jpg|ico|svg)$/,
       loader: 'file?name=[path][name].[ext]'
+    }, {
+      test: /\.html$/,
+      loader: 'raw-loader'
     }]
   },
 
@@ -46,7 +53,23 @@ module.exports = {
       NODE_ENV: JSON.stringify(NODE_ENV)
     }),
     new webpack.NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Webpack Starter Angular - kitconcept',
+      template: 'index.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true
+      }
+    })
   ],
 
   watch: NODE_ENV === 'dev',

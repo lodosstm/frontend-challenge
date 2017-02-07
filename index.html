@@ -6,8 +6,7 @@
 <!--[if IE 8]>
 <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
-<!--<![endif]-->
+<html class="no-js" lang=""> <!--<![endif]-->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -19,21 +18,25 @@
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="assets/images/favicon.ico">
 
+  <!-- BEGIN VENDOR STYLES -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <!-- END VENDOR STYLES -->
+  <base href="/">
 </head>
-<body>
+<body ng-app="staffApp" ng-cloak>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
   your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<header>
+<header class="">
+
 </header>
 <div class="container">
+  <app>
+    Loading...
+  </app>
 </div>
-<!-- Load scripts -->
-<script type="text/javascript" src="build/app.js"></script>
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 </body>
 </html>
