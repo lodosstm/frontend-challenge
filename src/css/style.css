@@ -1,19 +1,106 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic);
 
-html {
-  overflow: hidden;
-}
-
+/* app css stylesheet */
 body {
-  font-family: 'Open Sans', sans-serif;
+  padding-top: 50px;
+  background: linear-gradient(45deg,rgba(0, 0, 0, 0) 48%,rgba(0, 0, 0, 0.07) 50%,rgba(0, 0, 0, 0) 52%),linear-gradient(-45deg,rgba(0, 0, 0, 0) 48%,rgba(0, 0, 0, 0.07) 50%,rgba(0, 0, 0, 0) 52%);
+  background-size: 3px 3px;
+  background-color: #fff;
 }
 
-a:hover, a:focus {
-  text-decoration: none;
+.navbar {
+  margin-bottom: 0;
+  background-color: #e7e7e7;
+  box-shadow: 0 1px 3px rgba(15, 15, 15, 0.24);
 }
 
-a:focus,
-input:focus {
-  outline: none;
+.navbar-default .navbar-nav > li > a {
+  color: rgba(37, 37, 37, 0.91);
+}
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid rgba(82, 82, 82, 0.77);
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.img-round {
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  border: 1px solid #555555;
+  box-shadow: 0 0 7px #666;
+}
+.avatar{
+  width: 10%;
+}
+
+/*clickable elements*/
+.clickable{
+  cursor: pointer;
+}
+
+.panel {
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(15, 15, 15, 0.24);
+  margin-bottom: 3px;
+}
+
+.b-employee {
+  white-space: pre-line;
+}
+
+/* Sidebar Styles */
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 350px;
+  width: 0;
+  height: 100%;
+  margin-left: -350px;
+  overflow-y: auto;
+  background-color: #fbfbfb;
+}
+
+#page-content-wrapper {
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  padding: 15px;
+  background-color: #fbfbfb;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 350px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 350px;
+  }
+
+  #sidebar-wrapper {
+    background-color: #fbfbfb;
+    width: 350px;
+    box-shadow: 0 1px 3px rgba(15, 15, 15, 0.24);
+  }
+
+  #page-content-wrapper {
+    padding-right: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    position: relative;
+  }
 }
