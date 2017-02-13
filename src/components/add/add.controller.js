@@ -1,7 +1,6 @@
 class AddController {
   constructor() {
     this.name = 'add';
-    console.log('Hello');
   }
 }
 
