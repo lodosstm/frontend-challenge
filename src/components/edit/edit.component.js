@@ -5,5 +5,6 @@ export default {
   restrict: 'E',
   bindings: {},
   template,
-  controller
+  controller,
+  controllerAs: 'editCtrl'
 };
