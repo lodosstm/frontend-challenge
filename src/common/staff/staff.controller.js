@@ -1,11 +1,12 @@
 class StaffController {
-  constructor($state, $stateParams, srvUser) {
+  constructor($state, $stateParams, srvUser, APP_SETTINGS) {
     let vm = this;
     let nId = $stateParams.id;
     vm.name = 'staff';
     vm.bIsLoading = true;
     vm.aUsers = [];
     vm.sError = '';
+    vm.sDefaultAvatar = APP_SETTINGS.AVATAR;
     /* Fetch users list */
     srvUser.getUsers()
       .then(function (oData) {
@@ -27,6 +28,6 @@ class StaffController {
   }
 }
 
-StaffController.$inject = ['$state', '$stateParams', 'srvUser'];
+StaffController.$inject = ['$state', '$stateParams', 'srvUser', 'APP_SETTINGS'];
 
 export default StaffController;

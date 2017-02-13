@@ -6,7 +6,9 @@
       <li class="staff-add">
         <div class="row">
           <div class="col-xs-offset-5 col-xs-2">
-            <a ui-sref="add"><span class="glyphicon glyphicon-plus-sign font-color-grey-1" style="font-size: 30px"></span></a>
+            <a ui-sref="add">
+              <span class="glyphicon glyphicon-plus-sign font-color-grey-1" style="font-size: 30px"></span>
+            </a>
           </div>
         </div>
       </li>
@@ -14,19 +16,23 @@
           class="staff-list-item clickable"
           ng-class="{active: staffCtrl.fnIsActive(user.id)}"
           ng-click="staffCtrl.fnGoToDetail(user.id)">
-        <div class="profile-conten-sh">
+        <div class="profile-content-sm">
           <div class="row">
             <div class="col-xs-2">
-
               <div class="avatar-sm">
-                <img class="img-round" ng-if="user.photo" ng-src="{{user.photo}}">
+                <img class="img-round" ng-if="user.photo" ng-src="{{user.photo}}"/>
+                <img class="img-round" ng-if="!user.photo" ng-src="{{staffCtrl.sDefaultAvatar}}"/>
               </div>
-
             </div>
             <div class="col-xs-10">
-              <a ui-sref="edit({ id: user.id })"><span ng-bind="user.last_name + ' ' + user.first_name"></span></a>
+              <a ui-sref="edit({ id: user.id })">
+                <span ng-bind="user.last_name + ' ' + user.first_name"></span>
+              </a>
               <div class="font-color-grey-1">
                 <span ng-bind="user.position"></span>
+              </div>
+              <div ng-repeat="skill in user.skill track by $index" class="disabled-e tag-label-sm">
+                <span ng-bind="skill.name"></span>
               </div>
             </div>
           </div>

@@ -3,7 +3,8 @@ import angular from 'angular';
 const settings = angular.module('modAppSettings', [])
 
   .constant('APP_SETTINGS', {
-    ENDPOINT: 'http://localhost:3000'
+    ENDPOINT: 'http://localhost:3000',
+    AVATAR: 'http://dummyimage.com/150x150/c0c0c0'
   });
 
 export default settings;

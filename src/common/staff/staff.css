@@ -44,3 +44,26 @@
 .avatar-sm {
   padding: 15px 10px 10px 10px;
 }
+
+.tag-label-sm {
+  padding: 3px 15px 3px 15px;
+  border: none;
+  display: inline-block;
+  color: rgb(14, 169, 159);
+  vertical-align: middle;
+  border-radius: 3px;
+  line-height: 22px;
+  cursor: default;
+  margin: 2px 5px 2px 0;
+}
+
+.disabled-e {
+  background-color: rgba(147, 147, 147, 0.76);
+  box-shadow: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+.profile-content-sm {
+  width: 95%;
+}
