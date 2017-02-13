@@ -12,7 +12,8 @@
     "no-continue": 0,
     "object-shorthand": 1,
     "arrow-body-style": ["error", "always"],
-    "prefer-const": 0
+    "prefer-const": 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
   },
   "parser": "babel-eslint",
   "no-use-before-define": ["error", { "functions": true, "classes": true }]

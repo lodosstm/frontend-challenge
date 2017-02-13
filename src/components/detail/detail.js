@@ -2,19 +2,17 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import detailComponent from './detail.component';
 
-let detailModule = angular.module('detail', [
+const detailModule = angular.module('detail', [
   uiRouter
 ])
 
-  .config(($stateProvider, $urlRouterProvider) => {
+  .config(($stateProvider) => {
     'ngInject';
-
-    $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('detail', {
-        url: '/',
         component: 'detail',
+        url: '/',
         template: '<detail></detail>'
       });
   })

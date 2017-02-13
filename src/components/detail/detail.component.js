@@ -3,9 +3,7 @@ import controller from './detail.controller';
 
 export default {
   restrict: 'E',
-  scope: {},
+  bindings: {},
   template,
-  controller,
-  controllerAs: 'dt',
-  bindToController: true
+  controller
 };

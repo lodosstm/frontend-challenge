@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV || 'dev';
 
 module.exports = {
-
+  devtool: NODE_ENV === 'development' ? 'cheap-inline-module-source-map' : 'source-map',
   entry: {
     app: './src/app.js'
   },
@@ -69,6 +69,12 @@ module.exports = {
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true
       }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module, count) {
+        return module.resource && module.resource.indexOf(path.resolve(__dirname, 'app')) === -1;
+      }
     })
   ],
 
@@ -78,12 +84,10 @@ module.exports = {
     aggregateTimeout: 100
   },
 
-  devtool: NODE_ENV === 'development' ? 'cheap-inline-module-source-map' : 'source-map',
   devServer: {
     host: 'localhost',
     port: 8080
   }
-
 };
 
 if (NODE_ENV === 'prod') {
