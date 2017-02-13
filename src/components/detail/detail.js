@@ -13,7 +13,13 @@ const detailModule = angular.module('detail', [
       .state('detail', {
         component: 'detail',
         url: '/',
-        template: '<detail></detail>'
+        template: '<detail></detail>',
+        params: {
+          id: {
+            value: null,
+            squash: true
+          }
+        }
       });
   })
 

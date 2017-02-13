@@ -7,7 +7,7 @@ import AppComponent from './app.component';
 import Service from './service/service';
 import AppSetting from './config';
 
-import './css/style.css';
+import '../assets/css/style.css';
 
 angular.module('staffApp', [
   uiRouter,

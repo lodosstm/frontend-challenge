@@ -1,65 +1,37 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
-    <li>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-offset-5 col-md-2">
-              <a ui-sref="add"><span class="glyphicon glyphicon-plus-sign clickable" style="font-size: 30px"></span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-3">
-              <img class="img-round"
-                   src="/assets/images/images.png">
-            </div>
-            <div class="col-md-19">
-              <label class="clickable text-left"><a ui-sref="add">{{staffCtrl.name}}</a></label>
-              <div>Some text</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-3">
-              <img class="img-round"
-                   src="/assets/images/images.png">
-            </div>
-            <div class="col-md-19">
-              <label class="clickable text-left"><a ui-sref="add">Last Name</a></label>
-              <div>Some text</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-3">
-              <img class="img-round"
-                   src="/assets/images/images.png">
-            </div>
-            <div class="col-md-19">
-              <label class="clickable text-left"><a ui-sref="add">Last Name</a></label>
-              <div>Some text</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-  </ul>
 
+    <ul class="staff-list">
+      <li class="staff-add">
+        <div class="row">
+          <div class="col-xs-offset-5 col-xs-2">
+            <a ui-sref="add"><span class="glyphicon glyphicon-plus-sign font-color-grey-1" style="font-size: 30px"></span></a>
+          </div>
+        </div>
+      </li>
+      <li ng-repeat="user in staffCtrl.aUsers"
+          class="staff-list-item clickable"
+          ng-class="{active: staffCtrl.fnIsActive(user.id)}"
+          ng-click="staffCtrl.fnGoToDetail(user.id)">
+        <div class="profile-conten-sh">
+          <div class="row">
+            <div class="col-xs-2">
+
+              <div class="avatar-sm">
+                <img class="img-round" ng-if="user.photo" ng-src="{{user.photo}}">
+              </div>
+
+            </div>
+            <div class="col-xs-10">
+              <a ui-sref="edit({ id: user.id })"><span ng-bind="user.last_name + ' ' + user.first_name"></span></a>
+              <div class="font-color-grey-1">
+                <span ng-bind="user.position"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ul>
 </div>

@@ -1,5 +1,6 @@
 import template from './staff.html';
 import controller from './staff.controller';
+import './staff.css';
 
 const staffComponent = {
   restrict: 'E',

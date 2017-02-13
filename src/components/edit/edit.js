@@ -13,7 +13,13 @@ const editModule = angular.module('edit', [
       .state('edit', {
         component: 'edit',
         url: '/',
-        template: '<edit></edit>'
+        template: '<edit></edit>',
+        params: {
+          id: {
+            value: null,
+            squash: true
+          }
+        }
       });
   })
 
