@@ -3,7 +3,6 @@ class InfoController {
     let vm = this;
     let nId = $stateParams.id;
     vm.sDefaultAvatar = APP_SETTINGS.AVATAR;
-    vm.aTags = [];
     vm.bIsLoading = true;
     vm.sError = '';
 

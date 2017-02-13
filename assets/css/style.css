@@ -146,7 +146,6 @@ body {
 }
 
 .field-block {
-  padding-top: 10px;
   margin-bottom: 30px;
   margin-left: 40px;
 }
@@ -205,4 +204,12 @@ body {
   box-shadow: none;
   cursor: default;
   pointer-events: none;
+}
+
+.split-content {
+  display: table;
+  width: 100%;
+}
+.split-content > * {
+  display: table-cell;
 }
