@@ -1,11 +1,100 @@
 <!-- Page Content -->
-<div id="page-content-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h2 style="background-color: red">Employee {{emplCtrl.name}}</h2>
+<div class="page-content-wrapper">
+  <div class="pull-right">
+          <span class="glyphicon glyphicon-remove-circle font-color-grey-1 clickable" ui-sref="list"
+                style="font-size: 30px"></span>
+  </div>
+  <div class="container-fluid">
+    <form class="block-form" name="emplCtrl.form.userForm" autocomplete="off">
+      <div class="split-content">
+        <!--AVATAR IMAGE-->
+        <div>
+          <img class="media-object avatar" ng-if="emplCtrl.user.photo" ng-src="{{emplCtrl.user.photo}}">
+          <img class="media-object avatar" ng-if="!emplCtrl.user.photo" ng-src="{{emplCtrl.defaultAvatar}}">
+        </div>
+        <div class="main-content">
+          <!--BEGIN FIRST/LAST NAME INPUTS -->
+          <div class="field-block">
+            <div class="box"
+                 ng-class="{'has-error': emplCtrl.form.userForm.first_name.$dirty && emplCtrl.form.userForm.first_name.$invalid}">
+              <input type="input"
+                     name="first_name"
+                     placeholder="First name"
+                     ng-disabled="emplCtrl.isLoading"
+                     ng-model="emplCtrl.user.first_name"
+                     ng-maxlength="100"
+                     required>
+              <div ng-show="emplCtrl.form.userForm.first_name.$dirty && emplCtrl.form.userForm.first_name.$invalid">
+                <span class="help-block" ng-show="emplCtrl.form.userForm.first_name.$error.required">The First Name is required</span>
+                <span class="help-block" ng-show="emplCtrl.form.userForm.first_name.$error.maxlength">The First Name should have 100 characters or less</span>
+              </div>
+            </div>
+            <div class="box"
+                 ng-class="{'has-error': emplCtrl.form.userForm.last_name.$dirty && emplCtrl.form.userForm.last_name.$invalid}">
+              <input type="input"
+                     name="last_name"
+                     placeholder="Last name"
+                     ng-disabled="emplCtrl.isLoading"
+                     ng-model="emplCtrl.user.last_name"
+                     ng-maxlength="100" required>
+              <div ng-show="emplCtrl.form.userForm.last_name.$dirty && emplCtrl.form.userForm.last_name.$invalid">
+                <span class="help-block" ng-show="emplCtrl.form.userForm.last_name.$error.required">The Last Name is required</span>
+                <span class="help-block" ng-show="emplCtrl.form.userForm.last_name.$error.maxlength">The Last Name should have 100 characters or less</span>
+              </div>
+            </div>
+          </div>
+          <!--BEGIN POSITION INPUT-->
+          <div class="field-block"
+               ng-class="{'has-error': emplCtrl.form.userForm.position.$dirty && emplCtrl.form.userForm.position.$invalid}">
+            <input type="input"
+                   name="position"
+                   placeholder="Position"
+                   ng-disabled="emplCtrl.isLoading"
+                   ng-model="emplCtrl.user.position">
+            <div ng-show="emplCtrl.form.userForm.position.$dirty && emplCtrl.form.userForm.position.$invalid">
+              <span class="help-block" ng-show="emplCtrl.form.userForm.position.$error.required">The Position is required</span>
+              <span class="help-block" ng-show="emplCtrl.form.userForm.position.$error.maxlength">The Position should have 100 characters or less</span>
+            </div>
+          </div>
+          <!--BEGIN TAGS INPUT-->
+          <div class="field-block">
+          </div>
+
+          <!--BEGIN GENDER/BIRTHDAY BLOCK-->
+          <div class="field-block">
+
+          </div>
+          <!--BEGIN INPUT CHARACTERIZATION-->
+          <div class="field-block"
+               ng-class="{'has-error': emplCtrl.form.userForm.characteristic.$dirty && emplCtrl.form.userForm.characteristic.$invalid}">
+            <textarea placeholder="Set characteristic..."
+                      ng-disabled="emplCtrl.isLoading"
+                      ng-model="emplCtrl.user.characteristic"
+                      ng-maxlength="512">
+            </textarea>
+            <div
+              ng-show="emplCtrl.form.userForm.characteristic.$dirty && emplCtrl.form.userForm.characteristic.$invalid">
+              <span class="help-block" ng-show="emplCtrl.form.userForm.characteristic.$error.maxlength">The Characteristic should have 512 characters or less</span>
+            </div>
+          </div>
+          <!--BEGIN HANDLING BUTTONS-->
+          <div class="field-block">
+            <a class="handling-button green left"
+               ng-if="emplCtrl.state.includes('add')"
+               ng-class="{'disabled': emplCtrl.form.userForm.$invalid || emplCtrl.isLoading}"
+               ng-click="emplCtrl.fnAddUser()">
+              Add
+            </a>
+
+            <a class="handling-button green left"
+               ng-if="emplCtrl.state.includes('edit')"
+               ng-class="{'disabled': emplCtrl.form.userForm.$invalid || emplCtrl.isLoading}"
+               ng-click="emplCtrl.fnEditUser()">
+              Save
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
-<!-- /#page-content-wrapper -->

@@ -6,6 +6,7 @@ import Components from './components/components';
 import AppComponent from './app.component';
 import Service from './service/service';
 import AppSetting from './config';
+import AppConst from './const';
 
 angular.module('staffApp', [
   uiRouter,
@@ -13,7 +14,8 @@ angular.module('staffApp', [
   Common.name,
   Components.name,
   AppSetting.name,
-  Service.name
+  Service.name,
+  AppConst.name
 ])
   .config(($locationProvider) => {
     'ngInject';

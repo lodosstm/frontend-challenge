@@ -1,33 +1,33 @@
 class StaffController {
-  constructor($state, $stateParams, srvUser, APP_SETTINGS) {
+  constructor($state, $stateParams, userService, APP_SETTINGS) {
     let vm = this;
-    let nId = $stateParams.id;
-    vm.name = 'staff';
-    vm.bIsLoading = true;
-    vm.aUsers = [];
-    vm.sError = '';
-    vm.sDefaultAvatar = APP_SETTINGS.AVATAR;
+    let id = $stateParams.id;
+    vm.isLoading = true;
+    vm.users = [];
+    vm.error = '';
+    vm.defaultAvatar = APP_SETTINGS.AVATAR;
     /* Fetch users list */
-    srvUser.getUsers()
-      .then(function (oData) {
-        vm.bIsLoading = false;
-        vm.aUsers = oData;
+    userService.getUsers()
+      .$promise
+      .then((data) => {
+        vm.isLoading = false;
+        vm.users = data;
       })
-      .catch(function (oError) {
-        vm.bIsLoading = false;
-        vm.sError = oError;
+      .catch((error) => {
+        vm.isLoading = false;
+        vm.error = error;
       });
 
-    vm.fnGoToDetail = function (nUserId) {
-      $state.go('detail', { id: nUserId });
+    vm.fnGoToDetail = (userId) => {
+      $state.go('detail', { id: userId });
     };
 
-    vm.fnIsActive = function (nUserId) {
-      return nId === nUserId;
+    vm.fnIsActive = (userId) => {
+      return id === userId;
     };
   }
 }
 
-StaffController.$inject = ['$state', '$stateParams', 'srvUser', 'APP_SETTINGS'];
+StaffController.$inject = ['$state', '$stateParams', 'userService', 'APP_SETTINGS'];
 
 export default StaffController;

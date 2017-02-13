@@ -5,7 +5,7 @@ import UserService from './user.factory';
 
 const userServiceModule = angular.module('user.service', [])
 
-  .factory('User', User)
-  .service('srvUser', UserService);
+  .service('User', User)
+  .service('userService', UserService);
 
 export default userServiceModule;

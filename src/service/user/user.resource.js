@@ -4,12 +4,8 @@ class User {
     this.endpoint = APP_SETTINGS.ENDPOINT;
   }
 
-  static userFactory($resource, APP_SETTINGS) {
-    return new User($resource, APP_SETTINGS);
-  }
-
   /* Resource of user*/
-  rscUser() {
+  userResource() {
     return this.$resource(this.endpoint + '/user/:id', {}, {
       getSingle: {
         method: 'GET',
@@ -52,4 +48,4 @@ class User {
 }
 User.$inject = ['$resource', 'APP_SETTINGS'];
 
-export default User.userFactory;
+export default User;

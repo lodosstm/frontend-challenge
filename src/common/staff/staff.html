@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<div id="sidebar-wrapper">
+<div class="sidebar-wrapper">
   <ul class="sidebar-nav">
 
     <ul class="staff-list">
@@ -12,7 +12,7 @@
           </div>
         </div>
       </li>
-      <li ng-repeat="user in staffCtrl.aUsers"
+      <li ng-repeat="user in staffCtrl.users"
           class="staff-list-item clickable"
           ng-class="{active: staffCtrl.fnIsActive(user.id)}"
           ng-click="staffCtrl.fnGoToDetail(user.id)">
@@ -21,7 +21,7 @@
             <div class="col-xs-2">
               <div class="avatar-sm">
                 <img class="img-round" ng-if="user.photo" ng-src="{{user.photo}}"/>
-                <img class="img-round" ng-if="!user.photo" ng-src="{{staffCtrl.sDefaultAvatar}}"/>
+                <img class="img-round" ng-if="!user.photo" ng-src="{{staffCtrl.defaultAvatar}}"/>
               </div>
             </div>
             <div class="col-xs-10">

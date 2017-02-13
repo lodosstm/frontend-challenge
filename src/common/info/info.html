@@ -1,5 +1,5 @@
 <!-- Page Content -->
-<div id="page-content-wrapper">
+<div class="page-content-wrapper">
   <div class="pull-right">
           <span class="glyphicon glyphicon-remove-circle font-color-grey-1 clickable" ui-sref="list"
                 style="font-size: 30px"></span>
@@ -10,45 +10,45 @@
       <div class="split-content">
         <!--AVATAR IMAGE-->
         <div>
-          <img class="media-object avatar" ng-if="infoCtrl.oUser.photo" ng-src="{{infoCtrl.oUser.photo}}">
-          <img class="media-object avatar" ng-if="!infoCtrl.oUser.photo" ng-src="{{infoCtrl.sDefaultAvatar}}">
+          <img class="media-object avatar" ng-if="infoCtrl.user.photo" ng-src="{{infoCtrl.user.photo}}">
+          <img class="media-object avatar" ng-if="!infoCtrl.user.photo" ng-src="{{infoCtrl.defaultAvatar}}">
         </div>
 
         <div class="main-content">
           <!--BEGIN FIRST/LAST NAME -->
           <div class="field-block margin-bottom-40">
-            <span ng-bind="infoCtrl.oUser.last_name + ' ' + infoCtrl.oUser.first_name"></span>
+            <span ng-bind="infoCtrl.user.last_name + ' ' + infoCtrl.user.first_name"></span>
             <span
-              ng-bind="'(' + infoCtrl.oUser.gender + ', ' + (infoCtrl.oUser.birthday | date:'MM.dd.yyyy') + ')'"></span>
+              ng-bind="'(' + infoCtrl.user.gender + ', ' + (infoCtrl.user.birthday | date:'MM.dd.yyyy') + ')'"></span>
           </div>
 
           <!--BEGIN POSITION-->
           <div class="field-block margin-bottom-40">
-            <span ng-bind="infoCtrl.oUser.position"></span>
+            <span ng-bind="infoCtrl.user.position"></span>
           </div>
           <!--BEGIN SKILLS-->
           <div class="field-block margin-bottom-20">
-            <div ng-repeat="skill in infoCtrl.oUser.skill track by $index"
+            <div ng-repeat="skill in infoCtrl.user.skill track by $index"
                  class="disabled-e tag-label margin-bottom-20">
               <span ng-bind="skill.name"></span>
             </div>
           </div>
           <!--BEGIN CHARACTERIZATION TEXT-->
           <div class="field-block margin-bottom-40">
-            <div class="text" ng-bind="infoCtrl.oUser.characteristic"></div>
+            <div class="text" ng-bind="infoCtrl.user.characteristic"></div>
           </div>
 
           <!--BEGIN HANDLING BUTTONS-->
           <div class="down">
             <div class="field-block">
               <a class="handling-button red left"
-                 ng-class="{'disabled': emplCtrl.bisLoading}"
-                 ng-click="infoCtrl.fnRemoveUser(infoCtrl.oUser.id)">
+                 ng-class="{'disabled': emplCtrl.isLoading}"
+                 ng-click="infoCtrl.fnRemoveUser(infoCtrl.user.id)">
                 Delete user
               </a>
               <a class="handling-button orange left"
-                 ng-class="{'disabled': emplCtrl.bisLoading}"
-                 ui-sref="edit({ id: infoCtrl.oUser.id })">
+                 ng-class="{'disabled': emplCtrl.isLoading}"
+                 ui-sref="edit({ id: infoCtrl.user.id })">
                 Edit user
               </a>
             </div>

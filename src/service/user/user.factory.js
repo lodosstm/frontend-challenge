@@ -1,83 +1,29 @@
 class UserService {
-  constructor($q, User) {
-    this.$q = $q;
-    this.rscUser = User.rscUser();
-  }
-
-  static userFactory($q, User) {
-    return new UserService($q, User);
+  constructor(User) {
+    this.userResource = User.userResource();
   }
 
   /* Fetch users*/
   getUsers() {
-    let deferred = this.$q.defer();
-    this.rscUser.getList({})
-      .$promise
-      .then(function (oResponse) {
-        deferred.resolve(oResponse);
-      })
-      .catch(function () {
-        deferred.reject('Error on users get');
-      });
-
-    return deferred.promise;
+    return this.userResource.getList({});
   }
   /* Fetch user by id*/
-  getUser(nId) {
-    let deferred = this.$q.defer();
-    this.rscUser.getSingle({ id: nId })
-      .$promise
-      .then(function (oResponse) {
-        deferred.resolve(oResponse);
-      })
-      .catch(function () {
-        deferred.reject('Error on user get');
-      });
-    return deferred.promise;
+  getUser(id) {
+    return this.userResource.getSingle({ id: id });
   }
   /* Add user to store*/
-  addUser(oUser) {
-    let deferred = this.$q.defer();
-    this.rscUser.add(JSON.stringify(oUser))
-      .$promise
-      .then(function (oResponse) {
-        deferred.resolve(oResponse);
-      })
-      .catch(function () {
-        deferred.reject('Error on user adding');
-      });
-
-    return deferred.promise;
+  addUser(user) {
+    return this.userResource.add(JSON.stringify(user));
   }
   /* Edit user*/
-  editUser(oUser) {
-    let deferred = this.$q.defer();
-    this.rscUser.edit({ id: oUser.id }, JSON.stringify(oUser))
-      .$promise
-      .then(function (oResponse) {
-        deferred.resolve(oResponse);
-      })
-      .catch(function () {
-        deferred.reject('Error on users editing');
-      });
-
-    return deferred.promise;
+  editUser(user) {
+    return this.userResource.edit({ id: user.id }, JSON.stringify(user));
   }
   /* Remove user by id*/
-  removeUser(nId) {
-    let deferred = this.$q.defer();
-    this.rscUser.remove({ id: nId })
-      .$promise
-      .then(function (response) {
-        deferred.resolve(response);
-      })
-      .catch(function () {
-        deferred.reject('Error on users removing');
-      });
-
-    return deferred.promise;
+  removeUser(id) {
+    return this.userResource.remove({ id: id });
   }
 }
-UserService.$inject = ['$q', 'User'];
+UserService.$inject = ['User'];
 
-export default UserService.userFactory;
+export default UserService;

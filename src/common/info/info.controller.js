@@ -1,35 +1,37 @@
 class InfoController {
-  constructor($state, $stateParams, srvUser, APP_SETTINGS) {
+  constructor($state, $stateParams, userService, APP_SETTINGS) {
     let vm = this;
-    let nId = $stateParams.id;
-    vm.sDefaultAvatar = APP_SETTINGS.AVATAR;
-    vm.bIsLoading = true;
-    vm.sError = '';
+    let id = $stateParams.id;
+    vm.defaultAvatar = APP_SETTINGS.AVATAR;
+    vm.isLoading = true;
+    vm.error = '';
 
     /* Fetch users list */
-    srvUser.getUser(nId)
-      .then(function (data) {
-        vm.oUser = data;
-        vm.bIsLoading = false;
+    userService.getUser(id)
+      .$promise
+      .then((data) => {
+        vm.user = data;
+        vm.isLoading = false;
       })
-      .catch(function (oError) {
-        vm.bIsLoading = false;
-        vm.oUser = {};
-        vm.sError = oError;
+      .catch((error) => {
+        vm.isLoading = false;
+        vm.user = {};
+        vm.error = error;
       });
 
     /* Remove user from the store by id */
-    vm.fnRemoveUser = function (nUserId) {
-      vm.bIsLoading = true;
-      srvUser.removeUser(nUserId)
-        .then(function () {
+    vm.fnRemoveUser = (userId) => {
+      vm.isLoading = true;
+      userService.removeUser(userId)
+        .$promise
+        .then(() => {
           $state.go('list');
         })
-        .catch(function (oError) {
-          vm.sError = oError;
+        .catch((error) => {
+          vm.error = error;
         });
     };
   }
 }
-InfoController.$inject = ['$state', '$stateParams', 'srvUser', 'APP_SETTINGS'];
+InfoController.$inject = ['$state', '$stateParams', 'userService', 'APP_SETTINGS'];
 export default InfoController;
