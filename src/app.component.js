@@ -3,5 +3,4 @@ import './assets/css/style.css';
 
 export default {
   template,
-  restrict: 'E'
 };

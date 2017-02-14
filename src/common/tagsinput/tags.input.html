@@ -1,22 +1,21 @@
-<div class="gbootstrap-tagsinput tag-field">
-      <span class="tag label label-default" ng-repeat="skill in tagsInputCtrl.tagsArray track by $index">
-        <span ng-bind="skill.name"></span>
+<div class="bootstrap-tagsinput tag-field">
+      <span class="tag label label-default" ng-repeat="currentTag in tagsInputCtrl.tags track by $index">
+        <span ng-bind="currentTag.name"></span>
         <span class="glyphicon glyphicon-remove clickable" ng-click="tagsInputCtrl.removeTag($index)"></span>
     </span>
       <input type="tags"
-             ng-disabled="tagsInputCtrl.isDdisabled"
-             ng-if="tagsInputCtrl.tagsArray.length < tagsInputCtrl.tagsLimit"
+             ng-disabled="tagsInputCtrl.isdisabled"
+             ng-if="tagsInputCtrl.tags.length < tagsInputCtrl.tagsLimit"
              placeholder="Add tag"
              ng-model="tagsInputCtrl.newTag"
              ng-model-options="{debounce: 500}"
              ng-change="tagsInputCtrl.fetchTags()"
-             ng-focus="tagsInputCtrl.focus()"
-             ng-blur="tagsInputCtrl.blur()"/>
+             ng-focus="tagsInputCtrl.setFocus()"
+             ng-blur="tagsInputCtrl.setBlur()"/>
 </div>
 <div class="custom-popup-wrapper"
      ng-style="{top: position().top+'px', left: position().left+'px'}"
-     style="display: block;"
-     ng-show="tagsInputCtrl.isLoading && tagsInputCtrl.skill.length < tagsInputCtrl.tagsLimit"
+     ng-show="tagsInputCtrl.isLoading && tagsInputCtrl.tags.length < tagsInputCtrl.tagsLimit"
      aria-hidden="{{!isOpen()}}">
   <ul class="dropdown-menu">
     <li ng-repeat="tag in tagsInputCtrl.availableTags"

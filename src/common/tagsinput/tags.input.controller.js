@@ -20,7 +20,6 @@ class TagsIinputController {
 
     /* Get tag from server with name filter*/
     vm.fetchTags = () => {
-      vm.isLoading = true;
       if (vm.newTag) {
         tagService.getTags({
           q: vm.newTag
@@ -28,7 +27,8 @@ class TagsIinputController {
           .$promise
           .then((data) => {
             vm.availableTags = _.differenceBy(data, vm.tagsArray, 'name');
-            vm.isLoading = false;
+            console.log(vm.availableTags);
+            vm.isLoading = vm.availableTags.length > 0;
           })
           .catch((error) => {
             console.log(error);
@@ -42,14 +42,14 @@ class TagsIinputController {
     };
 
     /* Focus tag list if availableTags not empty*/
-    vm.focus = () => {
+    vm.setFocus = () => {
       if (vm.availableTags.length > 0) {
         vm.isLoading = true;
       }
     };
 
     /* Blur tag list*/
-    vm.blur = () => {
+    vm.setBlur = () => {
       $timeout(() => {
         vm.isLoading = false;
       }, 200);
@@ -60,7 +60,7 @@ class TagsIinputController {
       vm.timeout(() => {
         if ((vm.newTag)
           && (event.keyCode === 32 || event.keyCode === 13)) {
-          tagService.addTag({ name: vm.sNewTag })
+          tagService.addTag({ name: vm.newTag })
             .$promise
             .then(() => {
               vm.tagsArray = _.concat(vm.tagsArray, { name: vm.newTag });
