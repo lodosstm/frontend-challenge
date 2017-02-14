@@ -1,4 +1,3 @@
-import 'lodash';
 import angular from 'angular';
 import User from './user.resource';
 import UserService from './user.factory';

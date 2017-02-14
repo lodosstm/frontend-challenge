@@ -201,6 +201,42 @@ body {
   color: #fbfbfb;
 }
 
+.field-block input:not([type="tags"]) {
+  display: block;
+  width: 98%;
+  padding: 10px 18px 10px;
+  color: #797676;
+  border: 1px solid #d9dcdc;
+  outline: none;
+  font-size: 20px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 7px;
+  -moz-transition: ease 0.1s 0.1s;
+  -o-transition: ease 0.1s 0.1s;
+  -webkit-transition: ease 0.1s;
+  -webkit-transition-delay: 0.1s;
+  transition: ease 0.1s 0.1s;
+}
+
+.field-block textarea {
+  min-height: 150px;
+  resize:vertical;
+  width: 98%;
+  border-radius: 7px;
+  border: solid 2px #ccc;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.field-block textarea:focus {
+  border: solid 2px #939393;
+  outline-style: none;
+}
+
 .disabled-e {
   background-color: rgba(147, 147, 147, 0.76);
   box-shadow: none;
