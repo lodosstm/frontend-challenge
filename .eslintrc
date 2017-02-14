@@ -16,8 +16,13 @@
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
     "prefer-arrow-callback": 0,
     "prefer-template":0,
-    "wrap-iife": 0
+    "wrap-iife": 0,
+    "no-use-before-define": ["error", { "functions": true, "classes": true }]
   },
   "parser": "babel-eslint",
-  "no-use-before-define": ["error", { "functions": true, "classes": true }]
+  "globals": {
+    "document": true,
+    "window": true,
+    "angular": true
+  }
 }

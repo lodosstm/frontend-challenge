@@ -1,0 +1,28 @@
+<div class="gbootstrap-tagsinput tag-field">
+      <span class="tag label label-default" ng-repeat="skill in tagsInputCtrl.tagsArray track by $index">
+        <span ng-bind="skill.name"></span>
+        <span class="glyphicon glyphicon-remove clickable" ng-click="tagsInputCtrl.removeTag($index)"></span>
+    </span>
+      <input type="tags"
+             ng-disabled="tagsInputCtrl.isDdisabled"
+             ng-if="tagsInputCtrl.tagsArray.length < tagsInputCtrl.tagsLimit"
+             placeholder="Add tag"
+             ng-model="tagsInputCtrl.newTag"
+             ng-model-options="{debounce: 500}"
+             ng-change="tagsInputCtrl.fetchTags()"
+             ng-focus="tagsInputCtrl.focus()"
+             ng-blur="tagsInputCtrl.blur()"/>
+</div>
+<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="tagsInputCtrl.isLoading && tagsInputCtrl.skill.length < tagsInputCtrl.tagsLimit"
+     aria-hidden="{{!isOpen()}}">
+  <ul class="dropdown-menu">
+    <li ng-repeat="tag in tagsInputCtrl.availableTags"
+        ng-click="tagsInputCtrl.selectTag(tag)" role="option" id="{{::tag.id}}">
+      <a ng-bind="tag.name"></a>
+    </li>
+  </ul>
+</div>
+
