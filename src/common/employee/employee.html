@@ -9,8 +9,7 @@
       <div class="split-content">
         <!--AVATAR IMAGE-->
         <div>
-          <img class="media-object avatar" ng-if="emplCtrl.user.photo" ng-src="{{emplCtrl.user.photo}}">
-          <img class="media-object avatar" ng-if="!emplCtrl.user.photo" ng-src="{{emplCtrl.defaultAvatar}}">
+          <avatar avatar="emplCtrl.user.photo"></avatar>
         </div>
         <div class="main-content">
           <!--BEGIN FIRST/LAST NAME INPUTS -->
@@ -65,7 +64,6 @@
 
           <!--BEGIN GENDER/BIRTHDAY BLOCK-->
           <div class="field-block">
-            <!--BEGIN GENDER/BIRTHDAY BLOCK-->
               <!--BEGIN SELECT GENDER-->
               <div class="box-select">
                 <div class="black select margin-bottom-10"

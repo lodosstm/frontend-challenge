@@ -4,7 +4,7 @@
         <span class="glyphicon glyphicon-remove clickable" ng-click="tagsInputCtrl.removeTag($index)"></span>
     </span>
       <input type="tags"
-             ng-disabled="tagsInputCtrl.isdisabled"
+             ng-disabled="tagsInputCtrl.isDisabled"
              ng-if="tagsInputCtrl.tags.length < tagsInputCtrl.tagsLimit"
              placeholder="Add tag"
              ng-model="tagsInputCtrl.newTag"

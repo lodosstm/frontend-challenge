@@ -7,6 +7,7 @@ class TagsIinputController {
     vm.tagsLimit = APP_SETTINGS.MAX_TAG;
     vm.newTag = '';
     vm.isLoading = false;
+    vm.isDisabled = false;
     vm.availableTags = [];
 
     /* Add tag to selected module tag*/
@@ -27,7 +28,6 @@ class TagsIinputController {
           .$promise
           .then((data) => {
             vm.availableTags = _.differenceBy(data, vm.tagsArray, 'name');
-            console.log(vm.availableTags);
             vm.isLoading = vm.availableTags.length > 0;
           })
           .catch((error) => {

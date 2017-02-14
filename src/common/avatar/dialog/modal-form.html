@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">Load new avatar</h3>
+</div>
+<div class="modal-body" id="modal-body">
+  <form class="block-form" name="avatarDialogCtrl.form.Avatar" autocomplete="off">
+    <div class="modal-image">
+      <img class="media-object avatar" ng-click="$event.preventDefault();" ng-if="avatarDialogCtrl.currentAvatar"
+           ng-src="{{ avatarDialogCtrl.currentAvatar }}">
+      <img class="media-object avatar" ng-click="$event.preventDefault();" ng-if="!avatarDialogCtrl.currentAvatar"
+           ng-src="{{avatarDialogCtrl.defaultAvatar}}">
+    </div>
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10"
+           ng-class="{'has-error': avatarDialogCtrl.form.Avatar.avatarUrl.$dirty && avatarDialogCtrl.form.Avatar.avatarUrl.$invalid}">
+        <label for="avatar-url">Image url address:</label>
+        <input id="avatar-url"
+               class="url-input"
+               type="url"
+               placeholder="Insert image url address"
+               name="avatarUrl"
+               size="30"
+               ng-model="avatarDialogCtrl.currentAvatar"
+               pattern="https?://.+"
+               required/>
+        <div ng-show="avatarDialogCtrl.form.Avatar.avatarUrl.$dirty && avatarDialogCtrl.form.Avatar.avatarUrl.$invalid">
+          <span class="help-block" ng-show="avatarDialogCtrl.form.Avatar.avatarUrl.$error.required">The Avatar image address is required</span>
+          <span class="help-block"
+                ng-show="avatarDialogCtrl.form.Avatar.avatarUrl.$error.url || avatarDialogCtrl.form.Avatar.avatarUrl.$error.pattern">The Avatar image address should be url</span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-success" type="button" ng-disabled="avatarDialogCtrl.form.Avatar.$invalid"
+          ng-click="avatarDialogCtrl.submitAvatar()">Submit
+  </button>
+  <button class="btn btn-warning" type="button" ng-click="avatarDialogCtrl.cancel()">Cancel</button>
+</div>
