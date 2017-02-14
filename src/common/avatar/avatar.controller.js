@@ -21,9 +21,12 @@ class AvatarModalController {
           }
         }
       });
-      modalInstance.result.then((newAvatar) => {
-        vm.currentAvatar = newAvatar;
-      });
+      modalInstance.result
+        .then((newAvatar) => {
+          vm.currentAvatar = newAvatar;
+        })
+        .catch(() => {
+        });
     };
   }
 

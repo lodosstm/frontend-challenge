@@ -9,6 +9,7 @@ class TagsIinputController {
     vm.isLoading = false;
     vm.isDisabled = false;
     vm.availableTags = [];
+    vm.tagsArray = [];
 
     /* Add tag to selected module tag*/
     vm.selectTag = (selectedTag) => {

@@ -107,14 +107,14 @@
           <div class="field-block">
             <a class="handling-button green left"
                ng-if="emplCtrl.state.includes('add')"
-               ng-class="{'disabled': emplCtrl.form.userForm.$invalid || emplCtrl.isLoading}"
+               ng-class="{'disabled-e': emplCtrl.form.userForm.$invalid || emplCtrl.isLoading}"
                ng-click="emplCtrl.addUser()">
               Add
             </a>
 
             <a class="handling-button green left"
                ng-if="emplCtrl.state.includes('edit')"
-               ng-class="{'disabled': emplCtrl.form.userForm.$invalid || emplCtrl.isLoading}"
+               ng-class="{'disabled-e': emplCtrl.form.userForm.$invalid || emplCtrl.isLoading}"
                ng-click="emplCtrl.editUser()">
               Save
             </a>

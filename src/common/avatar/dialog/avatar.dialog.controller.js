@@ -7,8 +7,8 @@ class AvatarDialogController {
     vm.submitAvatar = () => {
       $uibModalInstance.close(vm.currentAvatar);
     };
-    vm.fnCancel = () => {
-      $uibModalInstance.$dismiss();
+    vm.cancel = () => {
+      $uibModalInstance.dismiss();
     };
   }
 

@@ -1,4 +1,6 @@
-<div class="bootstrap-tagsinput tag-field">
+<div class="bootstrap-tagsinput tag-field"
+     ng-class="{'tags-disabled': !(tagsInputCtrl.tags.length < tagsInputCtrl.tagsLimit)}">
+
       <span class="tag label label-default" ng-repeat="currentTag in tagsInputCtrl.tags track by $index">
         <span ng-bind="currentTag.name"></span>
         <span class="glyphicon glyphicon-remove clickable" ng-click="tagsInputCtrl.removeTag($index)"></span>
