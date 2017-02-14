@@ -1,0 +1,13 @@
+<div class="orange select margin-bottom-10"
+     ng-class="{'disabled': dateCtrl.isLoading}"
+     ng-click="dateCtrl.active = !dateCtrl.active">
+  <input type="tags"
+         name="date"
+         placeholder="{{dateCtrl.inputPlaceholder}}"
+         ng-model="birthCtrl.selectedDate"
+         ng-blur="dateCtrl.setBlur()">
+  <span ng-if="!dateCtrl.active" class="glyphicon glyphicon-chevron-down"></span>
+  <span ng-if="dateCtrl.active" class="glyphicon glyphicon-chevron-up"></span>
+</div>
+<div class="birthday-set" ng-if="dateCtrl.active">
+</div>
