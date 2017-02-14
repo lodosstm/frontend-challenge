@@ -2,12 +2,14 @@ class EmployeeController {
   constructor($state, $stateParams, userService, GENDER, APP_SETTINGS) {
     let vm = this;
     let id = $stateParams.id;
-    vm.gender = GENDER;
+    vm.genderSelect = GENDER;
     vm.defaultAvatar = APP_SETTINGS.AVATAR;
     vm.state = $state;
     vm.isLoading = false;
     vm.form = {};
-    vm.user = {};
+    vm.user = {
+      skill: []
+    };
     vm.error = '';
 
     if (id) {
@@ -26,12 +28,12 @@ class EmployeeController {
         });
     }
 
-    vm.fnSetGender = (value) => {
+    vm.setGender = (value) => {
       vm.user.gender = value;
     };
 
     /* Add user to the store */
-    vm.fnAddUser = () => {
+    vm.addUser = () => {
       vm.isLoading = true;
       userService.addUser(vm.user)
         .$promise
@@ -42,12 +44,12 @@ class EmployeeController {
         .catch((error) => {
           vm.isLoading = false;
           vm.error = error;
-          vm.fnResetForm();
+          vm.resetForm();
         });
     };
 
     /* Edit the user*/
-    vm.fnEditUser = () => {
+    vm.editUser = () => {
       vm.isLoading = true;
       userService.editUser(vm.user)
         .$promise
@@ -60,7 +62,7 @@ class EmployeeController {
         });
     };
 
-    vm.fnResetForm = () => {
+    vm.resetForm = () => {
       if (vm.form.userForm) {
         vm.form.userForm.$setPristine();
       }

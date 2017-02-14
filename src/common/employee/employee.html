@@ -65,7 +65,32 @@
 
           <!--BEGIN GENDER/BIRTHDAY BLOCK-->
           <div class="field-block">
-
+            <!--BEGIN GENDER/BIRTHDAY BLOCK-->
+              <!--BEGIN SELECT GENDER-->
+              <div class="box-select">
+                <div class="black select margin-bottom-10"
+                     ng-class="{'disabled': emplCtrl.isLoading}"
+                     ng-click="activeSelect = !activeSelect"
+                     ng-blur="activeSelect = false">
+                  <input type="tags"
+                         disabled="true"
+                         class="clickable"
+                         name="gender"
+                         placeholder="Select Gender"
+                         ng-model="emplCtrl.user.gender"
+                         required>
+                  <span ng-if="!activeSelect" class="glyphicon glyphicon-chevron-down"></span>
+                  <span ng-if="activeSelect" class="glyphicon glyphicon-chevron-up"></span>
+                  <ul class="select-dropdown"
+                      ng-show="activeSelect">
+                    <li ng-repeat="gender in emplCtrl.genderSelect"
+                        ng-click="emplCtrl.fnSetGender(gender)"
+                        class="dropdown-item">
+                      <a href="#" ng-bind="gender"></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
           </div>
           <!--BEGIN INPUT CHARACTERIZATION-->
           <div class="field-block"
@@ -85,14 +110,14 @@
             <a class="handling-button green left"
                ng-if="emplCtrl.state.includes('add')"
                ng-class="{'disabled': emplCtrl.form.userForm.$invalid || emplCtrl.isLoading}"
-               ng-click="emplCtrl.fnAddUser()">
+               ng-click="emplCtrl.addUser()">
               Add
             </a>
 
             <a class="handling-button green left"
                ng-if="emplCtrl.state.includes('edit')"
                ng-class="{'disabled': emplCtrl.form.userForm.$invalid || emplCtrl.isLoading}"
-               ng-click="emplCtrl.fnEditUser()">
+               ng-click="emplCtrl.editUser()">
               Save
             </a>
           </div>
