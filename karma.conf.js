@@ -35,17 +35,15 @@ module.exports = function (config) {
         loaders: [
           { test: /\.js/, exclude: [/src\/lib/, /node_modules/], loader: 'babel-loader' }, {
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-              fallback: 'style-loader',
-              use: [
-                'css-loader'
-              ]
-            })
+            use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
           }, {
             test: /\.html$/,
             use: 'raw-loader'
           }]
-      }
+      },
+      plugins: [
+        new ExtractTextPlugin('style.css')
+      ],
     },
 
     webpackServer: {
