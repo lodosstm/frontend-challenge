@@ -75,7 +75,6 @@
                          name="gender"
                          placeholder="Select Gender"
                          ng-model="emplCtrl.user.gender"
-                         ng-blur="emplCtrl.setBlur()"
                          required>
                   <span ng-if="!emplCtrl.activeSelect" class="glyphicon glyphicon-chevron-down"></span>
                   <span ng-if="emplCtrl.activeSelect" class="glyphicon glyphicon-chevron-up"></span>
@@ -90,8 +89,14 @@
                 </div>
               </div>
             <!--BEGIN SELECT BIRTHDAY-->
-            <div class="box-select">
-              <datepicker date="emplCtrl.user.birthday" placeholder="Birthday"></datepicker>
+            <div class="box-select"
+                 ng-class="{'has-error': emplCtrl.form.userForm.pickerDate.$dirty && emplCtrl.form.userForm.pickerDate.$invalid}">
+              <datepicker date="emplCtrl.user.birthday"
+                          placeholder="Birthday">
+              </datepicker>
+              <div ng-show="emplCtrl.form.userForm.pickerDate.$dirty && emplCtrl.form.userForm.pickerDate.$invalid">
+                <span class="help-block" ng-show="emplCtrl.form.userForm.pickerDate.$error.required">The Birthday is required</span>
+              </div>
             </div>
           </div>
           <!--BEGIN INPUT CHARACTERIZATION-->

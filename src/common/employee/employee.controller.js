@@ -1,5 +1,5 @@
 class EmployeeController {
-  constructor($state, $stateParams, $timeout, userService, GENDER, APP_SETTINGS) {
+  constructor($state, $stateParams, $timeout, userService, GENDER, APP_SETTINGS, profileService) {
     let vm = this;
     let id = $stateParams.id;
     vm.genderSelect = GENDER;
@@ -35,6 +35,7 @@ class EmployeeController {
 
     /* Add user to the store */
     vm.addUser = () => {
+      vm.user.progress = profileService.calcProgress(vm.user);
       vm.isLoading = true;
       userService.addUser(vm.user)
         .$promise
@@ -51,6 +52,7 @@ class EmployeeController {
 
     /* Edit the user*/
     vm.editUser = () => {
+      vm.user.progress = profileService.calcProgress(vm.user);
       vm.isLoading = true;
       userService.editUser(vm.user)
         .$promise
@@ -68,15 +70,15 @@ class EmployeeController {
         vm.form.userForm.$setPristine();
       }
     };
-
-    /* Blur gender select*/
-    vm.setBlur = () => {
-      console.log('blur');
-      $timeout(() => {
-        vm.activeSelect = false;
-      }, 200);
-    };
   }
 }
-EmployeeController.$inject = ['$state', '$stateParams', '$timeout', 'userService', 'GENDER', 'APP_SETTINGS'];
+EmployeeController.$inject = [
+  '$state',
+  '$stateParams',
+  '$timeout',
+  'userService',
+  'GENDER',
+  'APP_SETTINGS',
+  'profileService'
+];
 export default EmployeeController;
