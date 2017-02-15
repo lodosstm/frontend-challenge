@@ -60,3 +60,41 @@
 .profile-content-sm {
   width: 95%;
 }
+
+/* PROGRESS PROFILE STYLES*/
+.progress-bar-vertical {
+  position: absolute;
+  width: 10px;
+  display: flex;
+  align-items: flex-end;
+  float: left;
+}
+
+.profile-progress {
+  width: 5%;
+}
+
+.progress {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.progress-bar-vertical .progress-bar {
+  width: 100%;
+  height: 0;
+  -webkit-transition: height 0.6s ease;
+  -o-transition: height 0.6s ease;
+  transition: height 0.6s ease;
+}
+
+.full {
+  background: linear-gradient(to top, #b3eb50 0%, #429321 100%);
+}
+
+.half {
+  background: linear-gradient(to top, #f9d25d 0%, #f66d1d 100%);
+}
+
+.low {
+  background: linear-gradient(to top, rgba(246, 109, 29, 0.91) 0%, rgba(193, 29, 26, 0.84) 100%);
+}

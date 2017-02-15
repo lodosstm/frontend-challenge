@@ -4,28 +4,18 @@ import EmployeeComponent from './employee.component';
 import EmployeeTemplate from './employee.html';
 
 describe('Employee', () => {
-  let makeController;
+  let controller;
 
   beforeEach(window.module(EmployeeModule));
-  beforeEach(inject(() => {
-    makeController = () => {
-      return new EmployeeController();
-    };
+  beforeEach(inject((_$controller_) => {
+    // The injector unwraps the underscores (_) from around the parameter names when matching
+    controller = _$controller_;
   }));
 
   describe('Controller', () => {
     // controller specs
     it ('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
-      let controller = makeController();
       expect(controller).to.have.property('name');
-    });
-  });
-
-  describe('Template', () => {
-    // template specs
-    // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it ('has name in template [REMOVE]', () => {
-      expect(EmployeeTemplate).to.match(/{{\s?emplCtrl\.name\s?}}/g);
     });
   });
 

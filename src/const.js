@@ -26,8 +26,9 @@ const constant = angular.module('modAppConst', [])
       { field: 'characteristic', filling: 10 }
     ];
 
-    /* Names variables of type array */
+    /* Names of non primitive variables */
     profile.SKILL = 'skill';
+    profile.BIRTHDAY = 'birthday';
 
     return profile;
   })()

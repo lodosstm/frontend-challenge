@@ -12,10 +12,22 @@
           </div>
         </div>
       </li>
-      <li ng-repeat="user in staffCtrl.users"
+      <li ng-repeat="user in staffCtrl.users | filter:filter"
           class="staff-list-item clickable"
           ng-class="{active: staffCtrl.fnIsActive(user.id)}"
           ng-click="staffCtrl.fnGoToDetail(user.id)">
+
+        <div class="profile-progress">
+          <div class="progress progress-bar-vertical">
+            <div class="progress-bar"
+                 role="progressbar"
+                 ng-class="{full: user.progress >74, low: user.progress<26, half: (user.progress<75 && user.progress>25)}"
+                 style="height: {{user.progress}}%">
+              <span class="sr-only" ng-bind="user.progress+'% profile filling'"></span>
+            </div>
+          </div>
+        </div>
+
         <div class="profile-content-sm">
           <div class="row">
             <div class="col-xs-2">

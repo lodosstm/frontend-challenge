@@ -1,5 +1,7 @@
+import _ from 'lodash';
+
 class EmployeeController {
-  constructor($state, $stateParams, $timeout, userService, GENDER, APP_SETTINGS, profileService) {
+  constructor($state, $stateParams, userService, GENDER, APP_SETTINGS, profileService) {
     let vm = this;
     let id = $stateParams.id;
     vm.genderSelect = GENDER;
@@ -75,7 +77,6 @@ class EmployeeController {
 EmployeeController.$inject = [
   '$state',
   '$stateParams',
-  '$timeout',
   'userService',
   'GENDER',
   'APP_SETTINGS',

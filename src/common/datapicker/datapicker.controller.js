@@ -8,7 +8,7 @@ class DatePickerController {
   }
 
   set date(date) {
-    this.selectedDate = this.$filter('date')(date, 'dd MMM yyyy');
+    this.selectedDate = date;
   }
 
   get date() {

@@ -14,6 +14,8 @@ class ProfileService {
         progress += value.filling * user[value.field].length;
       } else if (!_.isEmpty(user[value.field])) {
         progress += value.filling;
+      } else if (_.isDate(user[value.field]) && vm.PROFILE.BIRTHDAY === value.field) {
+        progress += value.filling;
       }
     });
     return progress;
