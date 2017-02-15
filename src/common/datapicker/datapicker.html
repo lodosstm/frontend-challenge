@@ -1,0 +1,16 @@
+<div class="select-date">
+<input class="date-picker orange margin-bottom-10"
+       type="datetime"
+       ng-class="{'disabled': dateCtrl.isLoading}"
+       date-time
+       maxView="date"
+       name="pickerDate"
+       ng-model="dateCtrl.selectedDate"
+       placeholder="{{dateCtrl.inputPlaceholder}}"
+       view="date"
+       min-view="date"
+       timezone="UTC"
+       format="dd MMM yyyy"
+       required/>
+</div>
+

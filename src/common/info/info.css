@@ -1,0 +1,12 @@
+/* INFO COMPONENT STYLES */
+.tag-label {
+  padding: 10px 25px 10px 15px;
+  margin-right: 5px;
+  border: none;
+  display: inline-block;
+  color: rgb(14, 169, 159);
+  vertical-align: middle;
+  border-radius: 3px;
+  line-height: 22px;
+  cursor: default;
+}

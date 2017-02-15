@@ -1,0 +1,29 @@
+<div class="bootstrap-tagsinput tag-field"
+     ng-class="{'tags-disabled': !(tagsInputCtrl.tags.length < tagsInputCtrl.tagsLimit)}">
+
+      <span class="tag label label-default" ng-repeat="currentTag in tagsInputCtrl.tags track by $index">
+        <span ng-bind="currentTag.name"></span>
+        <span class="glyphicon glyphicon-remove clickable" ng-click="tagsInputCtrl.removeTag($index)"></span>
+    </span>
+      <input type="tags"
+             ng-disabled="tagsInputCtrl.isDisabled"
+             ng-if="tagsInputCtrl.tags.length < tagsInputCtrl.tagsLimit"
+             placeholder="Add tag"
+             ng-model="tagsInputCtrl.newTag"
+             ng-model-options="{debounce: 500}"
+             ng-change="tagsInputCtrl.fetchTags()"
+             ng-focus="tagsInputCtrl.setFocus()"
+             ng-blur="tagsInputCtrl.setBlur()"/>
+</div>
+<div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     ng-show="tagsInputCtrl.isLoading && tagsInputCtrl.tags.length < tagsInputCtrl.tagsLimit"
+     aria-hidden="{{!isOpen()}}">
+  <ul class="dropdown-menu">
+    <li ng-repeat="tag in tagsInputCtrl.availableTags"
+        ng-click="tagsInputCtrl.selectTag(tag)" role="option" id="{{::tag.id}}">
+      <a ng-bind="tag.name"></a>
+    </li>
+  </ul>
+</div>
+

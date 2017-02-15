@@ -1,0 +1,13 @@
+/*AVATAR COMPONENT STYLE*/
+.avatar {
+  height: 150px;
+  width: auto;
+}
+/* MODAL STYLE BEGIN*/
+.modal-image {
+  margin: 10px 150px 20px 200px;
+}
+.url-input {
+  font-size: 20px;
+  color: rgb(109, 69, 84);
+}
