@@ -1,0 +1,28 @@
+{
+  "extends": "airbnb/base",
+  "rules": {
+    "comma-dangle": 0,
+    "max-len": [
+      "error",
+      110,
+      4
+    ],
+    "no-plusplus": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "no-continue": 0,
+    "object-shorthand": 1,
+    "arrow-body-style": ["error", "always"],
+    "prefer-const": 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
+    "prefer-arrow-callback": 0,
+    "prefer-template":0,
+    "wrap-iife": 0,
+    "no-use-before-define": ["error", { "functions": true, "classes": true }]
+  },
+  "parser": "babel-eslint",
+  "globals": {
+    "document": true,
+    "window": true,
+    "angular": true
+  }
+}

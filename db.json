@@ -1,0 +1,144 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "photo": "http://www.youloveit.ru/uploads/posts/2016-03/1457531974_youloveit_ru_zveropolis_avatarki05.jpg",
+      "first_name": "User",
+      "last_name": "Lastmame",
+      "gender": "Male",
+      "birthday": "15 Sep 1986",
+      "position": "frontend",
+      "skill": [
+        {
+          "name": "nodeJs",
+          "id": 6
+        },
+        {
+          "id": 1,
+          "name": "AngularJs"
+        },
+        {
+          "name": "php",
+          "id": 4
+        },
+        {
+          "id": 2,
+          "name": "Bootstrap"
+        },
+        {
+          "name": "Java",
+          "id": 5
+        },
+        {
+          "id": 3,
+          "name": "Ubuntu"
+        },
+        {
+          "name": "ReactJs",
+          "id": 7
+        }
+      ],
+      "characteristic": "Easily trained worker",
+      "progress": 95
+    },
+    {
+      "id": 2,
+      "photo": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR52kphREmh2d2cwsiVvPbkUcyhgQVCBjD7p-jCSeQveYd_L_7_",
+      "first_name": "User",
+      "last_name": "Admin",
+      "gender": "Male",
+      "birthday": "1989-07-05T23:00:00.000Z",
+      "position": "Admin",
+      "skill": [
+        {
+          "id": 3,
+          "name": "Ubuntu"
+        },
+        {
+          "name": "Java",
+          "id": 5
+        },
+        {
+          "name": "Windows"
+        }
+      ],
+      "characteristic": "Excellent worker",
+      "progress": 75
+    },
+    {
+      "skill": [
+        {
+          "id": 3,
+          "name": "Ubuntu"
+        },
+        {
+          "name": "Windows",
+          "id": 9
+        },
+        {
+          "name": "Selenium"
+        }
+      ],
+      "first_name": "Employee",
+      "last_name": "Support",
+      "position": "tester",
+      "gender": "Male",
+      "characteristic": "Ui good tester",
+      "birthday": "1993-02-09T21:00:00.000Z",
+      "progress": 55,
+      "id": 3
+    },
+    {
+      "skill": [],
+      "first_name": "Server",
+      "last_name": "Account",
+      "position": "",
+      "gender": "Male",
+      "birthday": "1990-02-28T21:00:00.000Z",
+      "progress": 20,
+      "id": 4
+    }
+  ],
+  "tag": [
+    {
+      "id": 1,
+      "name": "AngularJs"
+    },
+    {
+      "id": 2,
+      "name": "Bootstrap"
+    },
+    {
+      "id": 3,
+      "name": "Ubuntu"
+    },
+    {
+      "name": "php",
+      "id": 4
+    },
+    {
+      "name": "Java",
+      "id": 5
+    },
+    {
+      "name": "nodeJs",
+      "id": 6
+    },
+    {
+      "name": "ReactJs",
+      "id": 7
+    },
+    {
+      "name": "css",
+      "id": 8
+    },
+    {
+      "name": "Windows",
+      "id": 9
+    },
+    {
+      "name": "Selenium",
+      "id": 10
+    }
+  ]
+}
