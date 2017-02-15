@@ -68,21 +68,21 @@
               <div class="box-select">
                 <div class="black select margin-bottom-10"
                      ng-class="{'disabled': emplCtrl.isLoading}"
-                     ng-click="activeSelect = !activeSelect"
-                     ng-blur="activeSelect = false">
+                     ng-click="emplCtrl.activeSelect = !emplCtrl.activeSelect"
+                     ng-mouseleave="emplCtrl.activeSelect = false">
                   <input type="tags"
-                         disabled="true"
                          class="clickable"
                          name="gender"
                          placeholder="Select Gender"
                          ng-model="emplCtrl.user.gender"
+                         ng-blur="emplCtrl.setBlur()"
                          required>
-                  <span ng-if="!activeSelect" class="glyphicon glyphicon-chevron-down"></span>
-                  <span ng-if="activeSelect" class="glyphicon glyphicon-chevron-up"></span>
+                  <span ng-if="!emplCtrl.activeSelect" class="glyphicon glyphicon-chevron-down"></span>
+                  <span ng-if="emplCtrl.activeSelect" class="glyphicon glyphicon-chevron-up"></span>
                   <ul class="select-dropdown"
-                      ng-show="activeSelect">
+                      ng-show="emplCtrl.activeSelect">
                     <li ng-repeat="gender in emplCtrl.genderSelect"
-                        ng-click="emplCtrl.fnSetGender(gender)"
+                        ng-click="emplCtrl.setGender(gender)"
                         class="dropdown-item">
                       <a href="#" ng-bind="gender"></a>
                     </li>

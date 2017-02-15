@@ -200,7 +200,7 @@ body {
   color: #fbfbfb;
 }
 
-.field-block input:not([type="tags"]) {
+.field-block input:not([type="tags"]):not([type="datetime"]) {
   display: block;
   width: 98%;
   padding: 10px 18px 10px;
@@ -227,7 +227,7 @@ body {
   width: 98%;
   border-radius: 7px;
   border: solid 2px #ccc;
-  font-size: 14px;
+  font-size: 18px;
   padding: 5px;
 }
 
@@ -282,7 +282,7 @@ body {
 .select span{
   color: #fbfbfb;
   padding-right:15px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .select a{
@@ -300,7 +300,7 @@ body {
   z-index: 1000;
   text-align: left;
   list-style: none;
-  width: 201px;
+  width: 199px;
   padding: 0;
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;

@@ -1,5 +1,5 @@
 class EmployeeController {
-  constructor($state, $stateParams, userService, GENDER, APP_SETTINGS) {
+  constructor($state, $stateParams, $timeout, userService, GENDER, APP_SETTINGS) {
     let vm = this;
     let id = $stateParams.id;
     vm.genderSelect = GENDER;
@@ -11,6 +11,7 @@ class EmployeeController {
       skill: []
     };
     vm.error = '';
+    vm.activeSelect = false;
 
     if (id) {
       vm.isLoading = true;
@@ -67,7 +68,15 @@ class EmployeeController {
         vm.form.userForm.$setPristine();
       }
     };
+
+    /* Blur gender select*/
+    vm.setBlur = () => {
+      console.log('blur');
+      $timeout(() => {
+        vm.activeSelect = false;
+      }, 200);
+    };
   }
 }
-EmployeeController.$inject = ['$state', '$stateParams', 'userService', 'GENDER', 'APP_SETTINGS'];
+EmployeeController.$inject = ['$state', '$stateParams', '$timeout', 'userService', 'GENDER', 'APP_SETTINGS'];
 export default EmployeeController;

@@ -1,3 +1,6 @@
+import 'bootstrap';
+import 'angular-ui-bootstrap';
+
 import angular from 'angular';
 import Staff from './staff/staff';
 import Employee from './employee/employee';
@@ -7,6 +10,7 @@ import Avatar from './avatar/avatar';
 import DatePicker from './datapicker/datapicker';
 
 const commonModule = angular.module('app.commons', [
+  'ui.bootstrap',
   Staff.name,
   Employee.name,
   Info.name,

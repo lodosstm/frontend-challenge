@@ -1,4 +1,44 @@
 /*BIRTHDAY DATAPICKER CUSTOM STYLE*/
-.birthday-set{
-  font-size: 14px;
+.date-picker{
+  border: none;
+  padding: 22px 0 22px 10px;
+  border-radius: 9px;
+  box-shadow: 0 3px 3px 1px rgb(194, 138, 58);
+  width: auto;
+  line-height: 22px;
+  cursor: pointer;
+  color: #fdfdfd;
+  max-width: 200px;
+}
+
+.date-picker:focus{
+  outline-style: none;
+}
+
+.select-date:after {
+  font-size: 36px;
+  line-height: 22px;
+  content: "\2304";
+  display:inline-block;
+  color: #fdfdfd;
+  margin-left:-50px;
+  cursor:pointer;
+  font-weight: bold;
+  pointer-events: none;
+}
+/* Placeholder color for custom select input */
+.box-select input::-webkit-input-placeholder {
+  color: #fdfdfd;
+}
+.box-select input:-moz-placeholder {
+  color: #fdfdfd;
+}
+.box-select input::-moz-placeholder {
+  color: #fdfdfd;
+}
+.box-select input:-ms-input-placeholder {
+  color: #fdfdfd;
+}
+.box-select input:focus {
+  border-color: #fdfdfd;
 }

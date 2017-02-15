@@ -5,17 +5,6 @@ class DatePickerController {
     vm.active = false;
     vm.inputPlaceholder = 'Input date';
     this.$filter = $filter;
-    vm.setFocus = () => {
-      $timeout(() => {
-        vm.active = true;
-      }, 200);
-    };
-    vm.setBlur = () => {
-      $timeout(() => {
-        vm.selectedDate = $filter('date')(vm.selectedDate, 'dd MMM yyyy');
-        vm.active = false;
-      }, 100);
-    };
   }
 
   set date(date) {
