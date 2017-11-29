@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+
+import {UsersService} from "../../shared/services/users.service";
+import {User} from "../../shared/models/user.model";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
   selector: 'task-login',
@@ -10,7 +15,10 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor() { }
+  constructor(
+    private userService: UsersService,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -20,7 +28,21 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.form);
+    const formData = this.form.value;
+
+    this.userService.getUserByUsername(formData.username).subscribe((user: User)=>{
+      if(user){
+        if(user.password == formData.password){
+          this.authService.logIn();
+          // this.router.navigate('');
+          window.localStorage.setItem('user', JSON.stringify(user));
+        }else{
+          alert('Password is wrong!')
+        }
+      }else{
+        alert('This username is not exist!');
+      }
+    });
   }
 
 }
