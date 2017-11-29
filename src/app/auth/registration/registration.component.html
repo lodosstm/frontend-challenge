@@ -1,3 +1,27 @@
-<p>
-  registration works!
-</p>
+<p class="registration__title">Регистрация для получения доступа</p>
+<form class="registration__form">
+  <div class="registration__group">
+    <label for="email">Email</label>
+    <input type="text" class="registration__input" id="email" placeholder="Введите email">
+  </div>
+  <div class="registration__group">
+    <label for="password">Пароль</label>
+    <input type="password" class="registration__input" id="password" placeholder="Введите пароль">
+  </div>
+  <div class="registration__group">
+    <label for="name">Имя</label>
+    <input type="text" class="registration__input" id="name" placeholder="Введите имя">
+  </div>
+  <div class="registration__group">
+    <label for="agree">
+      <input class="checkbox" id="agree" type="checkbox">
+      <span class="registration__text">Согласен с правилами</span>
+    </label>
+  </div>
+  <div class="registration__group">
+    <button type="submit" class="registration__btn">Зарегистрироваться</button>
+  </div>
+  <div class="registration__group">
+    <p class="registration__text"> Уже есть аккаунт? <a href="#"> Войти!</a></p>
+  </div>
+</form>

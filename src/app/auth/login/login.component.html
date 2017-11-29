@@ -1,3 +1,21 @@
-<p>
-  login works!
-</p>
+<p class="login__title">Войдите для работы</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="login__form">
+  <div class="login__group" [ngClass]="{'login__error': form.get('username').invalid && form.get('username').touched}">
+    <label for="username">UserName</label>
+    <input type="text" class="login__input" id="username" placeholder="username" formControlName="username">
+    <span *ngIf="form.get('username')['errors']['required'] && form.get('username').touched">Username can't be empty</span>
+    <span *ngIf="form.get('username')['errors']['minlength'] && form.get('username').touched">Username must be {{form.get('username')['errors']['minlength']['requiredLength']}} symbols</span>
+  </div>
+  <div class="login__group" [ngClass]="{'login__error': form.get('password').invalid && form.get('password').touched}">
+    <label for="password">Пароль</label>
+    <input type="password" class="login__input" id="password" placeholder="Password" formControlName="password">
+    <span *ngIf="form.get('password')['errors']['required'] && form.get('password').touched">Password can't be empty</span>
+    <span *ngIf="form.get('password')['errors']['minlength'] && form.get('password').touched">Password must be {{form.get('password')['errors']['minlength']['requiredLength']}} symbols</span>
+  </div>
+  <div class="login__group">
+    <button type="submit" class="login__btn">Войти</button>
+  </div>
+  <div class="login__group">
+    <p class="login__text"> Нет аккаунта? <a href="#" class="login__link">Зарегистрироваться!</a></p>
+  </div>
+</form>
