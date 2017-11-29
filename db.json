@@ -55,5 +55,13 @@
       "id": 5,
       "skillName": "CSS"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "admin",
+      "password": "1111",
+      "email": "mesek170297@gmail.com"
+    }
   ]
 }
