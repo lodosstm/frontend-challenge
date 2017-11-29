@@ -1,0 +1,59 @@
+{
+  "employee": [
+    {
+      "id": 1,
+      "photo": "",
+      "firstName": "F.Name",
+      "lastName" : "L.Name",
+      "Sex": "w",
+      "birthDay": "24.08.1990",
+      "position": "developer",
+      "idskill": [1, 2],
+      "characteristic": "lorem"
+    },
+    {
+      "id": 2,
+      "photo": "",
+      "firstName": "F.Name",
+      "lastName" : "L.Name",
+      "Sex": "w",
+      "birthDay": "24.08.1990",
+      "position": "developer",
+      "idskill": [1, 2],
+      "characteristic": "lorem"
+    },
+    {
+      "id": 3,
+      "photo": "",
+      "firstName": "F.Name",
+      "lastName" : "L.Name",
+      "Sex": "w",
+      "birthDay": "24.08.1990",
+      "position": "developer",
+      "idskill": [1],
+      "characteristic": "lorem"
+    }
+  ],
+  "skills":[
+    {
+      "id": 1,
+      "skillName": "Angular.js"
+    },
+    {
+      "id": 2,
+      "skillName": "React.js"
+    },
+    {
+      "id": 3,
+      "skillName": "Vue.js"
+    },
+    {
+      "id": 4,
+      "skillName": "HTML"
+    },
+    {
+      "id": 5,
+      "skillName": "CSS"
+    }
+  ]
+}
