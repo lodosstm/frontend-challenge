@@ -4,37 +4,45 @@
       "id": 1,
       "photo": "",
       "firstName": "F.Name",
-      "lastName" : "L.Name",
+      "lastName": "L.Name",
       "Sex": "w",
       "birthDay": "24.08.1990",
       "position": "developer",
-      "idskill": [1, 2],
+      "idskill": [
+        1,
+        2
+      ],
       "characteristic": "lorem"
     },
     {
       "id": 2,
       "photo": "",
       "firstName": "F.Name",
-      "lastName" : "L.Name",
+      "lastName": "L.Name",
       "Sex": "w",
       "birthDay": "24.08.1990",
       "position": "developer",
-      "idskill": [1, 2],
+      "idskill": [
+        1,
+        2
+      ],
       "characteristic": "lorem"
     },
     {
       "id": 3,
       "photo": "",
       "firstName": "F.Name",
-      "lastName" : "L.Name",
+      "lastName": "L.Name",
       "Sex": "w",
       "birthDay": "24.08.1990",
       "position": "developer",
-      "idskill": [1],
+      "idskill": [
+        1
+      ],
       "characteristic": "lorem"
     }
   ],
-  "skills":[
+  "skills": [
     {
       "id": 1,
       "skillName": "Angular.js"
@@ -58,10 +66,10 @@
   ],
   "users": [
     {
-      "id": 1,
-      "name": "admin",
+      "username": "admin",
+      "email": "mesek170297@gmail.com",
       "password": "1111",
-      "email": "mesek170297@gmail.com"
+      "id": 1
     }
   ]
 }
