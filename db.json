@@ -9,8 +9,8 @@
       "birthDay": "24.08.1990",
       "position": "developer",
       "idskill": [
-        1,
-        2
+        3,
+        5
       ],
       "characteristic": "lorem"
     },
@@ -23,8 +23,8 @@
       "birthDay": "24.08.1990",
       "position": "developer",
       "idskill": [
-        1,
-        2
+        4,
+        5
       ],
       "characteristic": "lorem"
     },
@@ -37,7 +37,7 @@
       "birthDay": "24.08.1990",
       "position": "developer",
       "idskill": [
-        1
+        4
       ],
       "characteristic": "lorem"
     }
@@ -66,9 +66,9 @@
   ],
   "users": [
     {
-      "username": "admin",
+      "username": "administrator",
       "email": "mesek170297@gmail.com",
-      "password": "1111",
+      "password": "111111",
       "id": 1
     }
   ]

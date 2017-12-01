@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       if(user){
         if(user.password == formData.password){
           this.authService.logIn();
-          // this.router.navigate('');
+          this.router.navigate(['/system']);
           window.localStorage.setItem('user', JSON.stringify(user));
         }else{
           alert('Password is wrong!')
