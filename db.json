@@ -2,7 +2,7 @@
   "employee": [
     {
       "id": 1,
-      "photo": "",
+      "photo": "http://dummyimage.com/150",
       "firstName": "F.Name",
       "lastName": "L.Name",
       "Sex": "w",
@@ -16,7 +16,7 @@
     },
     {
       "id": 2,
-      "photo": "",
+      "photo": "http://dummyimage.com/150",
       "firstName": "F.Name",
       "lastName": "L.Name",
       "Sex": "w",
@@ -30,7 +30,7 @@
     },
     {
       "id": 3,
-      "photo": "",
+      "photo": "http://dummyimage.com/150",
       "firstName": "F.Name",
       "lastName": "L.Name",
       "Sex": "w",
@@ -70,6 +70,19 @@
       "email": "mesek170297@gmail.com",
       "password": "111111",
       "id": 1
+    }
+  ],
+  "percents": [
+    {
+      "id": 1,
+      "photo": 20,
+      "firstName": 5,
+      "lastName": 5,
+      "Sex": 5,
+      "birthDay": 5,
+      "position": 10,
+      "idskill": 5,
+      "characteristic": 10
     }
   ]
 }

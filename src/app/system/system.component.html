@@ -4,11 +4,11 @@
 <section class="content">
   <div class="sidebar">
     <div class="sidebar__add">
-      <i class="large material-icons">add_circle_outline</i>
+      <a [routerLink]="'/system/add'" class="sidebar__link"><i class="large material-icons">add_circle_outline</i></a>
     </div>
     <task-sidebar></task-sidebar>
   </div>
   <div class="employee">
-
+    <router-outlet></router-outlet>
   </div>
 </section>

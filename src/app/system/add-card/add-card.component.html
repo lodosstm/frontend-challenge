@@ -1,3 +1,35 @@
-<p>
-  add-card works!
-</p>
+<div class="employee__i">
+  <div class="employee__photo">
+    <img src="http://dummyimage.com/150" alt="" class="sidebar__photo">
+  </div>
+  <div class="employee__description">
+    <a href="" class="employee__link">
+      <i class="large material-icons" [routerLink]="'/system'" onclick="deleteCard()">cancel</i>
+    </a>
+    <form class="employee__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="employee__name">
+        <input type="text" placeholder="First Name" class="employee__input" formControlName="firstname" (ngModelChange)="UpdateBase()">
+        <input type="text" placeholder="Last Name" class="employee__input" formControlName="lastname" (ngModelChange)="UpdateBase()">
+      </div>
+      <input type="text" placeholder="Position" class="employee__input" formControlName="position" (ngModelChange)="UpdateBase()">
+      <input type="text" placeholder="Skills" class="employee__input" formControlName="skills" (ngModelChange)="UpdateBase()">
+      <div class="employee__sex-and-birthday">
+        <div class="input-field employee__select">
+          <select formControlName="sex" class="employee__sex" (ngModelChange)="UpdateBase()">
+            <option value="" disabled selected>Gender</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+          </select>
+        </div>
+        <div class="input-field employee__select">
+          <select formControlName="birthday" class="employee__sex" (ngModelChange)="UpdateBase()">
+            <option value="" disabled selected>Birthday</option>
+            <option value="1">Male</option>
+          </select>
+        </div>
+      </div>
+      <textarea formControlName="character" placeholder="Characteristic" class="employee__textarea" (ngModelChange)="UpdateBase()"></textarea>
+      <button class="employee__btn" type="submit" [routerLink]="'/system'">Save</button>
+    </form>
+  </div>
+</div>
