@@ -47,6 +47,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   onClick(employee){
     this.employeesService.bringEmployee(employee);
-    this.router.navigate(['/system', 'watch']);
+    this.router.navigate(['/system/watch', `${employee.id}`]);
   }
 }

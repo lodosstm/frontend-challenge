@@ -37,6 +37,11 @@ export class EmployeesService extends BaseApi{
     this.flag=true;
   }
 
+  public getEmployeeById(id:number): Observable<Employee>{
+    return this.get(`employee?id=${id}`)
+      .map((employee: Employee[]) => employee[0] ? employee[0] : undefined);
+  }
+
   public giveEmployee(){
     return this.givenemployee;
   }
