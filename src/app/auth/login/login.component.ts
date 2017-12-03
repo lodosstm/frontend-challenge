@@ -25,6 +25,16 @@ export class LoginComponent implements OnInit {
       'username': new FormControl(null, [Validators.required, Validators.minLength(6)]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
+    const formData = this.form.value;
+    if(window.localStorage.getItem('username')){
+      this.userService.getUserByUsername(window.localStorage.getItem('username')).subscribe((user: User)=> {
+        if(user){
+          if(user.password==window.localStorage.getItem('password')){
+            this.router.navigate(['/system']);
+          }
+        }
+      });
+    }
   }
 
   onSubmit(){
@@ -35,7 +45,8 @@ export class LoginComponent implements OnInit {
         if(user.password == formData.password){
           this.authService.logIn();
           this.router.navigate(['/system']);
-          window.localStorage.setItem('user', JSON.stringify(user));
+          window.localStorage.setItem('username', user.username);
+          window.localStorage.setItem('password', user.password);
         }else{
           alert('Password is wrong!')
         }

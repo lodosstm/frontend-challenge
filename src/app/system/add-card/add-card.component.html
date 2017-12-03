@@ -4,6 +4,7 @@
   </a>
   <div class="employee__photo">
     <img src="http://dummyimage.com/150" alt="" class="sidebar__photo">
+    <p class="employee__percents">Filled profile: {{percentsEmployee}}%</p>
   </div>
   <div class="employee__description">
     <form class="employee__form" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -43,8 +44,8 @@
       <div class="employee__sex-and-birthday">
         <mat-form-field>
           <mat-select class="employee__sex" (ngModelChange)="UpdateBase()" placeholder="Gender" formControlName="sex">
-            <mat-option value="M">Male</mat-option>
-            <mat-option value="F">Female</mat-option>
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>

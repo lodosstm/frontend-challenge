@@ -6,7 +6,7 @@ import {Employee} from "../../shared/models/employee.model";
 import {EmployeesService} from "../shared/services/employees.service";
 import {SkillsService} from "../shared/services/skills.service";
 import {Skill} from "../../shared/models/skill.module";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'task-add-card',
@@ -28,15 +28,26 @@ export class AddCardComponent implements OnInit {
   birthYear = [];
   birthMonth = [];
   birthDay = [];
+  percentsEmployee: number;
+  persents = {
+    'photo': 20,
+    'firstName': 5,
+    'lastName': 5,
+    'Sex': 5,
+    'birthDay': 5,
+    'position': 10,
+    'idskill': 5,
+    'characteristic': 10
+  };
 
   add(event: MatChipInputEvent) {
     let input = event.input;
     let value = event.value;
-    if ((value || '').trim()) {
+    if ((value || '').trim() && this.skills.length<5) {
       this.skills.push(value.trim());
       this.result.length = 0;
     }
-    if (input) {
+    if (input && this.skills.length<=5) {
       input.value = '';
     }
   }
@@ -50,7 +61,8 @@ export class AddCardComponent implements OnInit {
 
   constructor(private employeeService: EmployeesService,
               private skillsService: SkillsService,
-              private router: Router) {
+              private router: Router,
+              private activateRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -88,7 +100,7 @@ export class AddCardComponent implements OnInit {
       }else
         this.birthMonth[i] = i+1;
     }
-
+    this.calculator();
   }
 
   InitEmployee() {
@@ -103,14 +115,16 @@ export class AddCardComponent implements OnInit {
 
             this.skillsService.getSkillByName(this.skills[i]).subscribe((skilli: Skill) => {
               if (skilli) {
-                this.idskills[i] = skill.id;
+                this.idskills[i] = skilli.id;
               }
             });
           }
         });
       }
     }
-    let str=this.form.value.birthday+"." + this.form.value.birthmonth+"." + this.form.value.birthyear;
+    let str=null;
+    if(this.form.value.birthday!=null && this.form.value.birthmonth!=null && this.form.value.birthyear!=null)
+      str=this.form.value.birthday+"." + this.form.value.birthmonth+"." + this.form.value.birthyear;
     return new Employee('http://dummyimage.com/150',
       this.form.value.firstname,
       this.form.value.lastname,
@@ -131,6 +145,7 @@ export class AddCardComponent implements OnInit {
 
   UpdateBase() {
     this.search();
+    this.calculator();
     const employee = this.InitEmployee();
     this.employeeService.updateNewEmployee(this.id, employee).subscribe((employee: Employee)=>{
 
@@ -158,6 +173,43 @@ export class AddCardComponent implements OnInit {
           k++;
         }
       }
+    }
+  }
+
+  calculator(){
+    this.percentsEmployee=0;
+    const employee = this.InitEmployee();
+    if(employee.photo!=null){
+      this.percentsEmployee+=this.persents.photo;
+      console.log(this.percentsEmployee);
+    }
+    if(employee.firstName!=null){
+      this.percentsEmployee+=this.persents.firstName;
+      console.log(this.percentsEmployee);
+    }
+    if(employee.lastName!=null){
+      this.percentsEmployee+=this.persents.lastName;
+      console.log(this.percentsEmployee);
+    }
+    if(employee.position!=null){
+      this.percentsEmployee+=this.persents.position;
+      console.log(this.percentsEmployee);
+    }
+    if(employee.characteristic!=null){
+      this.percentsEmployee+=this.persents.characteristic;
+      console.log(this.percentsEmployee);
+    }
+    if(employee.Sex!=null){
+      this.percentsEmployee+=this.persents.Sex;
+      console.log(this.percentsEmployee);
+    }
+    if(employee.birthDay!=null){
+      this.percentsEmployee+=this.persents.birthDay;
+      console.log(this.percentsEmployee);
+    }
+    if(employee.idskill.length>0){
+      this.percentsEmployee+=this.persents.idskill*employee.idskill.length;
+      console.log(this.percentsEmployee);
     }
   }
 }

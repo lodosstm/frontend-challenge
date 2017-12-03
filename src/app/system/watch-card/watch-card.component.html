@@ -3,10 +3,27 @@
     <mat-icon class="large material-icons">cancel</mat-icon>
   </a>
   <div class="employee__photo">
-    <img src="{{employee.photo}}" alt="" class="sidebar__photo">
+    <img src="{{employeee.photo}}" alt="" class="sidebar__photo">
   </div>
   <div class="employee__description">
-
+    <div class="employee__caption">
+      <h1 class="employee__name">{{employeee.lastName}}</h1>
+      <h1 class="employee__name">{{employeee.firstName}}</h1>
+      <span class="employee__data">
+        <p class="employee__sex-birthday">
+          ({{employeee.Sex}}, {{employeee.birthDay}})
+        </p>
+      </span>
+    </div>
+    <div class="employee__all-skills">
+      <span class="employee__skill-item" *ngFor="let item of skills">
+        {{item}}
+      </span>
+    </div>
+    <div class="employee__character">
+      <p class="employee__text">{{employeee.characteristic}}</p>
+    </div>
+    <button mat-button class="employee__delete-btn" (click)="DeleteEmployee()">Delete user</button>
   </div>
 </div>
 
