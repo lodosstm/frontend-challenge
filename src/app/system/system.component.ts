@@ -1,4 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+import {EmployeesService} from "./shared/services/employees.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'task-system',
@@ -6,4 +8,10 @@ import {Component} from "@angular/core";
   styleUrls: ['./system.component.less']
 })
 
-export class SystemComponent {}
+export class SystemComponent implements OnInit{
+  constructor(private employeeService: EmployeesService,
+              private router: Router){}
+
+  ngOnInit() {
+  }
+}

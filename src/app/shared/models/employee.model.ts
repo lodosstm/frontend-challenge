@@ -6,7 +6,7 @@ export class Employee{
     public Sex: string,
     public birthDay: string,
     public position: string,
-    public idskill: object,
+    public idskill = [],
     public characteristic: string,
     public id?: number
   ){}

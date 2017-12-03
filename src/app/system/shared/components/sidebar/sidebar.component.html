@@ -1,4 +1,4 @@
-<div class="sidebar__card" *ngFor="let item of employee, let i = index" [routerLink]="'/system/watch'" routerLinkActive="sidebar__card_active">
+<div class="sidebar__card" *ngFor="let item of employee, let i = index" [ngClass]="{'active-card': employeesService.flag && employeesService.giveEmployee().id == item.id}" (click)="onClick(item)">
   <img src="{{item.photo}}" alt="" class="sidebar__photo">
   <div class="sidebar__description">
     <h1 class="sidebar__name">{{item.firstName}} {{item.lastName}}</h1>

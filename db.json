@@ -1,67 +1,67 @@
 {
   "employee": [
     {
-      "id": 1,
       "photo": "http://dummyimage.com/150",
       "firstName": "F.Name",
       "lastName": "L.Name",
-      "Sex": "w",
+      "Sex": "F",
       "birthDay": "24.08.1990",
       "position": "developer",
       "idskill": [
         3,
         5
       ],
-      "characteristic": "lorem"
+      "characteristic": "lorem",
+      "id": 1
     },
     {
-      "id": 2,
       "photo": "http://dummyimage.com/150",
       "firstName": "F.Name",
       "lastName": "L.Name",
-      "Sex": "w",
+      "Sex": "F",
       "birthDay": "24.08.1990",
       "position": "developer",
       "idskill": [
         4,
         5
       ],
-      "characteristic": "lorem"
+      "characteristic": "lorem",
+      "id": 2
     },
     {
-      "id": 3,
       "photo": "http://dummyimage.com/150",
       "firstName": "F.Name",
       "lastName": "L.Name",
-      "Sex": "w",
+      "Sex": "F",
       "birthDay": "24.08.1990",
       "position": "developer",
       "idskill": [
         4
       ],
-      "characteristic": "lorem"
+      "characteristic": "lorem",
+      "id": 3
     }
   ],
   "skills": [
     {
-      "id": 1,
-      "skillName": "Angular.js"
+      "skillName": "Angular.js",
+      "id": 1
     },
     {
-      "id": 2,
-      "skillName": "React.js"
+      "skillName": "React.js",
+      "id": 2
     },
     {
-      "id": 3,
-      "skillName": "Vue.js"
+      "skillName": "Vue.js",
+      "id": 3
     },
     {
-      "id": 4,
-      "skillName": "HTML"
+      "skillName": "HTML",
+      "id": 4
     },
     {
-      "id": 5,
-      "skillName": "CSS"
+      "skillName": "CSS",
+      "id": 5
     }
   ],
   "users": [

@@ -27,8 +27,8 @@ export class BaseApi{
       .map((response: Response) => response.json());
   }
 
-  public delete(url: string='', data: any={}): Observable<any>{
-    return this.http.delete(this.getUrl(url), data)
+  public delete(url: string=''): Observable<any>{
+    return this.http.delete(this.getUrl(url))
       .map((response: Response) => response.json());
   }
 }

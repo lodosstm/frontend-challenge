@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
 import {SkillsService} from "../../services/skills.service";
 import {Skill} from "../../../../shared/models/skill.module";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'task-sidebar',
@@ -20,7 +21,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   constructor(
     private employeesService: EmployeesService,
-    private skillsService: SkillsService
+    private skillsService: SkillsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -41,5 +43,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
+  }
+
+  onClick(employee){
+    this.employeesService.bringEmployee(employee);
+    this.router.navigate(['/system', 'watch']);
   }
 }

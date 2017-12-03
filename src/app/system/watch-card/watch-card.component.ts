@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {EmployeesService} from "../shared/services/employees.service";
+import {Employee} from "../../shared/models/employee.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'task-watch-card',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WatchCardComponent implements OnInit {
 
-  constructor() { }
+  employee: Employee;
+
+  constructor(private employeeService: EmployeesService,
+              private router: Router) { }
 
   ngOnInit() {
+    this.employee = this.employeeService.giveEmployee();
   }
-
 }
