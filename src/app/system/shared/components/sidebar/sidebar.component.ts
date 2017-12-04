@@ -28,9 +28,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = Observable.combineLatest(
       this.employeesService.getEmployees()
-    ).subscribe((data: [Employee])=>{
+    ).subscribe((data: [Employee]) => {
         this.employee = data[0];
-        for(let i in this.employee){
+        for(let i in this.employee) {
           this.skills[i] = [];
           for(let j in this.employee[i].idskill) {
             this.skillsService.getSkill(this.employee[i].idskill[j]).subscribe((skill: Skill) => {
@@ -45,7 +45,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onClick(employee){
+  onClick(employee) {
     this.employeesService.bringEmployee(employee);
     this.router.navigate(['/system/watch', `${employee.id}`]);
   }
