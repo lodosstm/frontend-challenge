@@ -1,0 +1,49 @@
+.sidebar{
+  &__card{
+    box-shadow: 5px 0px 8px -5px rgba(0,0,0,0.5);
+    padding: 10px 10px 0;
+    height: 150px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+    position: relative;
+
+    &:first-child{
+      border-top: 1px solid #ddd;
+    }
+
+    @media only screen and (max-width: 1200px){
+      justify-content: center;
+    }
+
+    &_active{
+      box-shadow: none!important;
+    }
+  }
+
+  &__end{
+    height: 100%;
+  }
+
+  &__photo{
+    max-width: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  &__description{
+    @media only screen and (max-width: 1200px){
+      display: none;
+    }
+  }
+
+  &__progress{
+    transform: rotate(300grad);
+    width: 160px;
+    position: absolute;
+    left: -77px;
+    top: 78px;
+  }
+}

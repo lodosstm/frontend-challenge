@@ -26,7 +26,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.router.navigate(['/system']);
     this.subscription = Observable.combineLatest(
       this.employeesService.getEmployees()
     ).subscribe((data: [Employee])=>{

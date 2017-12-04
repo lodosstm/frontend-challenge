@@ -25,10 +25,8 @@ export class AddCardComponent implements OnInit {
   searchable: object;
   result = [];
   id: number;
-  birthYear = [];
-  birthMonth = [];
   birthDay = [];
-  percentsEmployee: number;
+  percentsEmployee = 20;
   persents = {
     'photo': 20,
     'firstName': 5,
@@ -73,9 +71,7 @@ export class AddCardComponent implements OnInit {
       'sex': new FormControl(null, []),
       'birthday': new FormControl(null, []),
       'character': new FormControl(null, []),
-      'skill': new FormControl(null, []),
-      'birthyear': new FormControl(null, []),
-      'birthmonth': new FormControl(null, [])
+      'skill': new FormControl(null, [])
     });
     this.employeeService.createNewEmployee(this.InitEmployee())
       .subscribe((employ: Employee)=>{this.id=employ.id});
@@ -84,22 +80,6 @@ export class AddCardComponent implements OnInit {
         this.searchable = skills;
       });
     this.search();
-    let data = new Date();
-    for(let i=1950;i<=data.getFullYear();i++){
-      this.birthYear[i-1950] = i;
-    }
-    for(let i=0;i<30;i++){
-      if(i<9){
-        this.birthDay [i] = '0'+ (i+1);
-      }else
-        this.birthDay[i] = i+1;
-    }
-    for(let i=0;i<12;i++){
-      if(i<9){
-        this.birthMonth [i] = '0'+ (i+1);
-      }else
-        this.birthMonth[i] = i+1;
-    }
     this.calculator();
   }
 
@@ -123,8 +103,9 @@ export class AddCardComponent implements OnInit {
       }
     }
     let str=null;
-    if(this.form.value.birthday!=null && this.form.value.birthmonth!=null && this.form.value.birthyear!=null)
-      str=this.form.value.birthday+"." + this.form.value.birthmonth+"." + this.form.value.birthyear;
+    if(this.form.value.birthDay!=null){
+      str=this.form.value.birthday.substring(0,10);
+    }
     return new Employee('http://dummyimage.com/150',
       this.form.value.firstname,
       this.form.value.lastname,
@@ -132,7 +113,8 @@ export class AddCardComponent implements OnInit {
       str,
       this.form.value.position,
       this.idskills,
-      this.form.value.character);
+      this.form.value.character,
+      this.percentsEmployee);
   }
 
   onSubmit() {
@@ -177,12 +159,8 @@ export class AddCardComponent implements OnInit {
   }
 
   calculator(){
-    this.percentsEmployee=0;
+    this.percentsEmployee=20;
     const employee = this.InitEmployee();
-    if(employee.photo!=null){
-      this.percentsEmployee+=this.persents.photo;
-      console.log(this.percentsEmployee);
-    }
     if(employee.firstName!=null){
       this.percentsEmployee+=this.persents.firstName;
       console.log(this.percentsEmployee);

@@ -1,27 +1,26 @@
-<p class="registration__title">Registration for work</p>
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="registration__form">
-  <div class="registration__group" [ngClass]="{'form-error': form.get('email').invalid && form.get('email').touched}">
-    <label for="email">Email</label>
-    <input type="text" class="registration__input" id="email" placeholder="Email" formControlName="email">
+  <div class="registration__group">
+    <label for="email" class="registration__label">Email</label>
+    <input [ngClass]="{'registration__input_error': form.get('email').invalid && form.get('email').touched}" type="text" class="registration__input" id="email" placeholder="Email" formControlName="email">
     <span class="registration__error" *ngIf="form.get('email').invalid && form.get('email').touched">Email can not be empty and without . or @</span>
   </div>
-  <div class="registration__group" [ngClass]="{'form-error': form.get('username').invalid && form.get('username').touched}">
-    <label for="username">Username</label>
-    <input type="text" class="registration__input" id="username" placeholder="Username" formControlName="username">
-    <span *ngIf="form.get('username').invalid && form.get('username').touched">Username can't be empty and less than 6 symbols</span>
+  <div class="registration__group">
+    <label for="username" class="registration__label">Username</label>
+    <input [ngClass]="{'registration__input_error': form.get('username').invalid && form.get('username').touched}" type="text" class="registration__input" id="username" placeholder="Username" formControlName="username">
+    <span *ngIf="form.get('username').invalid && form.get('username').touched" class="registration__error">Username can't be empty and less than 6 symbols</span>
   </div>
-  <div class="registration__group" [ngClass]="{'form-error': form.get('password').invalid && form.get('password').touched}">
-    <label for="password">Password</label>
-    <input type="password" class="registration__input" id="password" placeholder="Password" formControlName="password">
+  <div class="registration__group">
+    <label for="password" class="registration__label">Password</label>
+    <input [ngClass]="{'registration__input_error': form.get('password').invalid && form.get('password').touched}" type="password" class="registration__input" id="password" placeholder="Password" formControlName="password">
     <span class="registration__error" *ngIf="form.get('password').invalid && form.get('password').touched">Password can not be empty and less than 6 symbols</span>
   </div>
-  <div class="registration__group" [ngClass]="{'form-error': form.get('name').invalid && form.get('name').touched}">
-    <label for="name">Name</label>
-    <input type="text" class="registration__input" id="name" placeholder="Name" formControlName="name">
+  <div class="registration__group">
+    <label for="name" class="registration__label">Name</label>
+    <input [ngClass]="{'registration__input_error': form.get('name').invalid && form.get('name').touched}" type="text" class="registration__input" id="name" placeholder="Name" formControlName="name">
     <span class="registration__error" *ngIf="form.get('name').invalid && form.get('name').touched">Name can not be empty</span>
   </div>
   <div class="registration__group">
-    <label for="agree">
+    <label for="agree" class="registration__label">
       <input class="checkbox" id="agree" type="checkbox" formControlName="agree">
       <span class="registration__text">Согласен с правилами</span>
     </label>
@@ -30,6 +29,6 @@
     <button [disabled]="form.invalid" type="submit" class="registration__btn">Registration</button>
   </div>
   <div class="registration__group">
-    <p class="registration__text"> Do you have account? <a href="'/login'"> Entry!</a></p>
+    <p class="registration__text"> Do you have account? <a [routerLink]="'/login'" class="registration__link"> Entry!</a></p>
   </div>
 </form>

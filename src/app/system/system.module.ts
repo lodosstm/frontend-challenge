@@ -3,7 +3,7 @@ import {CommonModule} from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatOptionModule,
-  MatSelectModule, MatToolbarModule
+  MatSelectModule, MatToolbarModule, MatDatepickerModule, MatNativeDateModule, MatProgressBarModule
 } from '@angular/material';
 
 import {SharedModule} from "../shared/shared.module";
@@ -29,7 +29,10 @@ import {SkillsService} from "./shared/services/skills.service";
     MatOptionModule,
     MatSelectModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressBarModule
   ],
   declarations: [AddCardComponent, WatchCardComponent, SystemComponent, SidebarComponent, HeaderComponent],
   providers: [EmployeesService, SkillsService]

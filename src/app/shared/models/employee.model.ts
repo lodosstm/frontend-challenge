@@ -8,6 +8,7 @@ export class Employee{
     public position: string,
     public idskill = [],
     public characteristic: string,
+    public progress: number,
     public id?: number
   ){}
 }

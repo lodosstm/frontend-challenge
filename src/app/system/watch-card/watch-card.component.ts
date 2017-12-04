@@ -24,20 +24,21 @@ export class WatchCardComponent implements OnInit {
   ngOnInit() {
     this.activateRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'));
+      this.employeeService.getEmployeeById(this.id).subscribe((empl: Employee)=>{
+        this.employeee=empl;
+        this.FindSkills(this.employeee);
+      });
     });
     this.employeee=this.employeeService.giveEmployee();
-    // this.employeeService.getEmployeeById(this.id).subscribe((empl: Employee)=>{
-    //   this.employeee=empl;
-    // });
-    this.FindSkills();
   }
 
-  FindSkills(){
-    if (this.employeee.idskill.length != 0) {
-      for (let i in this.employeee.idskill) {
-        this.skillsService.getSkill(this.employeee.idskill[i]).subscribe((skill: Skill) => {
+  FindSkills(employeee){
+    this.skills.length = 0;
+    if (employeee.idskill.length != 0) {
+      for (let i in employeee.idskill) {
+        this.skillsService.getSkill(employeee.idskill[i]).subscribe((skill: Skill) => {
           if (skill) {
-            this.skills[i] = skill.skillName;
+            this.skills.push(skill.skillName);
           }
         });
       }
