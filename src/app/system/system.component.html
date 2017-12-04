@@ -1,0 +1,14 @@
+<mat-toolbar class="header">
+  <task-header></task-header>
+</mat-toolbar>
+<section class="content">
+  <div class="sidebar">
+    <div [routerLink]="'/system/add'" class="sidebar__add">
+      <a class="sidebar__link"><mat-icon class="large material-icons">add_circle_outline</mat-icon></a>
+    </div>
+    <task-sidebar></task-sidebar>
+  </div>
+  <div class="employee">
+    <router-outlet></router-outlet>
+  </div>
+</section>

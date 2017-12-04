@@ -1,0 +1,117 @@
+.demo-chip-list {
+  width: 100%;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+.employee{
+  &__i{
+    height: 100vh;
+    background: #ddd;
+    padding: 20px;
+  }
+
+  &__link{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    color: #5a5a5a;
+  }
+
+  &__photo{
+    margin: 40px 20px;
+    width: 150px;
+    text-align: center;
+  }
+
+  &__form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__description{
+    padding: 40px 30px;
+    width: 70%;
+    position: relative;
+
+    &__input{
+      width: 100%;
+    }
+  }
+
+  &__name{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    mat-form-field{
+      width: 45%;
+    }
+  }
+
+  &__card{
+    width: 100%;
+  }
+
+  &__sex-and-birthday{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    mat-form-field{
+      width: 100px;
+      margin-right: 30px;
+    }
+  }
+
+  &__textarea{
+    height: 100px;
+  }
+
+  &__btn{
+    text-align: center;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    background: #0f9d58;
+    position: absolute;
+    color: #fff;
+    right: 30px;
+    bottom: -50px;
+    border-radius: 6px;
+
+    &:hover{
+      background: #00C853;
+      transition: all .5s;
+    }
+  }
+}
+
+//mat-chip{
+//  background: #ef6c00;
+//  border-radius: 5px;
+//}
+
+//input{
+//  background: #fff;
+//  border-radius: 5px;
+//  border: 1px solid #ccc;
+//  text-decoration: none;
+//  width: 100%;
+//}
+//
+//input.mat-input-element.mat-form-field-autofill-control.ng-untouched.ng-pristine.ng-valid{
+//  padding: 10px;
+//}
+//
+//label.mat-input-placeholder.mat-form-field-placeholder.ng-tns-c8-8.mat-empty.mat-form-field-empty.ng-star-inserted{
+//  padding: 10px !important;
+//  margin: 10px !important;
+//}
+//
+//div.mat-input-underline.mat-form-field-underline{
+//  display: none !important;
+//}
