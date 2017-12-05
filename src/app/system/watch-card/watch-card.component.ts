@@ -13,7 +13,7 @@ import {SkillsService} from "../shared/services/skills.service";
 export class WatchCardComponent implements OnInit {
 
   id: number;
-  employeee: Employee;
+  employee: Employee;
   skills=[];
 
   constructor(private employeeService: EmployeesService,
@@ -25,18 +25,18 @@ export class WatchCardComponent implements OnInit {
     this.activateRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'));
       this.employeeService.getEmployeeById(this.id).subscribe((empl: Employee)=>{
-        this.employeee=empl;
-        this.FindSkills(this.employeee);
+        this.employee=empl;
+        this.FindSkills(this.employee);
       });
     });
-    this.employeee=this.employeeService.giveEmployee();
+    this.employee=this.employeeService.giveEmployee();
   }
 
-  FindSkills(employeee){
+  FindSkills(employee){
     this.skills.length = 0;
-    if (employeee.idskill.length != 0) {
-      for (let i in employeee.idskill) {
-        this.skillsService.getSkill(employeee.idskill[i]).subscribe((skill: Skill) => {
+    if (employee.idskill.length != 0) {
+      for (let i in employee.idskill) {
+        this.skillsService.getSkill(employee.idskill[i]).subscribe((skill: Skill) => {
           if (skill) {
             this.skills.push(skill.skillName);
           }

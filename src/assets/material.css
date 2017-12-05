@@ -390,21 +390,26 @@ input.mat-input-element.employee__input_skill {
   height: 17px;
 }
 
+.employee__name .mat-form-field-infix.mat-input-infix{
+  border: none;
+}
+
+.employee__birthday .mat-input-element.ng-valid.ng-touched.ng-dirty{
+  color: #fff;
+  position: relative;
+  bottom: -5px;
+}
+
 .employee__skills .mat-input-wrapper{
   padding: 0 !important;
 }
 
-.employee__skills .mat-form-field-inflix{
+.employee__skills .mat-form-field-infix{
   padding-bottom: 0 !important;
 }
 
 .employee__sex-and-birthday .mat-input-wrapper{
   padding-bottom: 0 !important;
-}
-
-.employee__sex-and-birthday .mat-form-field-inflix.mat-input-inflix{
-  background: #f9a825;
-  height: 30px;
 }
 
 .employee__birthday .mat-form-field-flex{
@@ -824,11 +829,11 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-option {
-  color: rgba(0, 0, 0, .87)
+  color: #fff
 }
 
 .mat-option:focus:not(.mat-option-disabled), .mat-option:hover:not(.mat-option-disabled) {
-  background: rgba(0, 0, 0, .04)
+  background: #323232;
 }
 
 .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
@@ -849,7 +854,7 @@ input.mat-input-element.employee__input_skill {
 
 .mat-option.mat-active {
   background: rgba(0, 0, 0, .04);
-  color: rgba(0, 0, 0, .87)
+  color: #fff
 }
 
 .mat-option.mat-option-disabled {
@@ -1178,6 +1183,12 @@ input.mat-input-element.employee__input_skill {
   background-color: #fff;
   color: rgba(0, 0, 0, .87)
 }
+
+/*.cdk-overlay-container{*/
+  /*position: absolute;*/
+  /*top: 45%;*/
+  /*left: 55%;*/
+/*}*/
 
 .mat-calendar-arrow {
   border-top-color: rgba(0, 0, 0, .54)
@@ -1545,11 +1556,15 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-select-content, .mat-select-panel-done-animating {
-  background: #fff
+  background: #000
 }
 
 .mat-select-value {
-  color: rgba(0, 0, 0, .87)
+  color: #fff;
+  position: relative;
+  bottom: -6px;
+  left: 3px;
+  font-weight: 700;
 }
 
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
