@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {MatChipInputEvent} from "@angular/material/chips";
 
@@ -141,14 +141,15 @@ export class AddCardComponent implements OnInit {
 
   itemClick(i){
     this.skills.push(this.result[i].trim());
-    this.form.value.skill = null;
+    this.result.length = 0;
+    this.form.value.skill = '';
     this.UpdateBase();
   }
 
   search() {
     let k = 0;
     this.result.length = 0;
-    if (this.form.controls.skill.value != '') {
+    if (this.form.value.skill != '') {
       for (let j in this.searchable) {
         if (this.searchable[j].skillName.indexOf(this.form.controls.skill.value) == 0 && this.form.controls.skill.value.length <= this.searchable[j].skillName.length) {
           this.result[k] = this.searchable[j].skillName;

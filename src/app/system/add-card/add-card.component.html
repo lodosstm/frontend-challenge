@@ -20,7 +20,7 @@
           </mat-form-field>
         </div>
         <mat-form-field>
-          <input matInput placeholder="position" formControlName="position" (ngModelChange)="UpdateBase()">
+          <input class="employee__position" matInput placeholder="Position" formControlName="position" (ngModelChange)="UpdateBase()">
         </mat-form-field>
         <div class="employee__skills">
           <mat-form-field>
@@ -30,6 +30,7 @@
                 {{skill}}
               </mat-chip>
               <input
+                class="employee__input_skill"
                 formControlName="skill"
                 matInput
                 (ngModelChange)="UpdateBase()"
@@ -39,20 +40,20 @@
             </mat-chip-list>
           </mat-form-field>
           <div class="search" *ngFor="let item of result, let i=index">
-            <ul class="search__list" *ngIf="form.controls.skill.value.length>0 || result.length==0">
+            <ul class="search__list" *ngIf="form.value.skill.length>0 || result.length==0">
               <li class="search__item" (click)="itemClick(i)">{{item}}</li>
             </ul>
           </div>
         </div>
         <div class="employee__sex-and-birthday">
           <mat-form-field>
-            <mat-select class="employee__sex" (ngModelChange)="UpdateBase()" placeholder="Gender" formControlName="sex">
+            <mat-select class="employee__sex" (selectionChange)="UpdateBase()" placeholder="Gender" formControlName="sex">
               <mat-option value="Male">Male</mat-option>
               <mat-option value="Female">Female</mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field>
-            <input class="employee__birthday" matInput [matDatepicker]="picker" placeholder="Birth Day" formControlName="birthday" (ngModelChange)="UpdateBase()">
+          <mat-form-field class="employee__birthday">
+            <input  matInput [matDatepicker]="picker" placeholder="Birth Day" formControlName="birthday" (selectionChange)="UpdateBase()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>

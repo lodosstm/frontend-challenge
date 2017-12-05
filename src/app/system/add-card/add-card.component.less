@@ -3,7 +3,7 @@
 }
 
 mat-form-field{
-  width: 100%;
+  width: 97.5%;
 }
 
 .employee{
@@ -33,7 +33,7 @@ mat-form-field{
   }
 
   &__description{
-    padding: 40px 30px;
+    padding: 40px 0 40px 30px;
     width: 70%;
     position: relative;
 
@@ -50,6 +50,10 @@ mat-form-field{
 
     mat-form-field{
       width: 45%;
+    }
+
+    input{
+      width: 88%;
     }
   }
 
@@ -88,30 +92,23 @@ mat-form-field{
       transition: all .5s;
     }
   }
+
+  &__position{
+    width: 97.5%;
+  }
 }
 
-//mat-chip{
-//  background: #ef6c00;
-//  border-radius: 5px;
-//}
+.search{
+  width: 97%;
+  margin: 3px 3px 0;
 
-//input{
-//  background: #fff;
-//  border-radius: 5px;
-//  border: 1px solid #ccc;
-//  text-decoration: none;
-//  width: 100%;
-//}
-//
-//input.mat-input-element.mat-form-field-autofill-control.ng-untouched.ng-pristine.ng-valid{
-//  padding: 10px;
-//}
-//
-//label.mat-input-placeholder.mat-form-field-placeholder.ng-tns-c8-8.mat-empty.mat-form-field-empty.ng-star-inserted{
-//  padding: 10px !important;
-//  margin: 10px !important;
-//}
-//
-//div.mat-input-underline.mat-form-field-underline{
-//  display: none !important;
-//}
+  &__list{
+    list-style: none;
+  }
+
+  &__item{
+    cursor: pointer;
+  }
+}
+
+
