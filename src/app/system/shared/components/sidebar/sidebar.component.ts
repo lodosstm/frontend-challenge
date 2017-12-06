@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, HostListener, Output, EventEmitter, Input} from '@angular/core';
 
 import {EmployeesService} from '../../services/employees.service';
 import {Employee} from '../../../../shared/models/employee.model';
@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    Observable.combineLatest(
+    this.subscription=Observable.combineLatest(
       this.employeesService.getEmployees()
       ).subscribe((data: [Employee]) => {
         this.employee = data[0];

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {MatChipInputEvent} from '@angular/material/chips';
 
@@ -15,6 +15,7 @@ import {Router} from '@angular/router';
 })
 export class AddCardComponent implements OnInit {
 
+  @Output() addNewEmployee = new EventEmitter();
   form: FormGroup;
   selectable = true;
   removable = true;
@@ -81,7 +82,7 @@ export class AddCardComponent implements OnInit {
             } else {
               const skills = new Skill(this.skills[i]);
               this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
-                if (!skillsi) {
+                if (skillsi == undefined) {
                   alert('Error of creating skill!');
                 }
               });
@@ -111,18 +112,29 @@ export class AddCardComponent implements OnInit {
   }
 
   onSubmit() {
-    this.employeeService.updateNewEmployee(this.id, this.InitEmployee());
-    this.router.navigate(['/system']);
+    this.addNewEmployee.emit();
+    this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
+      if (data) {
+        this.router.navigate(['/system']);
+      }
+    });
   }
 
   UpdateBase() {
-    this.search();
-    this.calculator();
-    this.employeeService.updateNewEmployee(this.id, this.InitEmployee());
+    this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe(data => {
+      if (data) {
+        this.search();
+        this.calculator();
+      }
+    });;
   }
 
   deleteCard() {
-    this.employeeService.deleteEmployee(this.id);
+    this.employeeService.deleteEmployee(this.id).subscribe(data => {
+      if(data){
+        this.router.navigate(['/system']);
+      }
+    });
   }
 
   itemClick(i) {

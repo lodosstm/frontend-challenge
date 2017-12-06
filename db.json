@@ -9,7 +9,7 @@
       "position": "developer",
       "idskill": [
         4,
-        5
+        3
       ],
       "characteristic": "lorem",
       "progress": 70,
@@ -23,10 +23,11 @@
       "birthDay": "24.08.1990",
       "position": "developer",
       "idskill": [
-        4
+        4,
+        5
       ],
       "characteristic": "lorem",
-      "progress": 50,
+      "progress": 40,
       "id": 2
     },
     {

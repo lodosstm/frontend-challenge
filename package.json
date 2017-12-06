@@ -4,13 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "server": "json-server --watch db.json --port 3000",
-    "dev": "concurrently --kill-others \"npm run start\" \"npm run server\""
+    "start": "concurrently --kill-others \"npm run dev\" \"npm run server\""
   },
   "private": true,
   "dependencies": {

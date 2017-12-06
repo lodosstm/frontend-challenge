@@ -54,10 +54,11 @@ export class WatchCardComponent implements OnInit {
   }
 
   DeleteEmployee() {
-    this.employeeService.deleteEmployee(this.id);
+    this.employeeService.deleteEmployee(this.id).subscribe((data => {
+      console.log(data);
+    }));
     this.employeeService.getEmployeeById(this.id).subscribe((employee: Employee) => {
-      console.log(employee);
-      if (!employee) {
+      if (employee == undefined) {
         this.employeeService.ChangeFlag();
         this.router.navigate(['/system']);
       }

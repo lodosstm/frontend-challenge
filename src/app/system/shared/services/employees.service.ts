@@ -31,7 +31,7 @@ export class EmployeesService extends BaseApi {
   }
 
   public deleteEmployee (id: number) {
-    return this.delete(`employee/?id=${id}`);
+    return this.delete(`employee/${id}`);
   }
 
   public bringEmployee(item) {
@@ -40,7 +40,7 @@ export class EmployeesService extends BaseApi {
   }
 
   public getEmployeeById(id: number): Observable<Employee> {
-    return this.get(`employee?id=${id}`)
+    return this.get(`employee/${id}`)
       .map((employee: Employee[]) => employee[0] ? employee[0] : undefined);
   }
 
