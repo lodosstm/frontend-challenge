@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
-import {UsersService} from "../../shared/services/users.service";
-import {AuthService} from "../../shared/services/auth.service";
-import {User} from "../../shared/models/user.model";
+import {UsersService} from '../../shared/services/users.service';
+import {AuthService} from '../../shared/services/auth.service';
+import {User} from '../../shared/models/user.model';
 
 @Component({
   selector: 'task-registration',
@@ -21,13 +21,7 @@ export class RegistrationComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      'username': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      'name': new FormControl(null, [Validators.required]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'agree': new FormControl(false, [Validators.requiredTrue])
-    });
+    this.form = this.userService.Registration();
   }
 
   onSubmit() {
@@ -35,8 +29,10 @@ export class RegistrationComponent implements OnInit {
     const user = new User(email, password, username);
 
     this.userService.createNewUser(user)
-      .subscribe((user: User)=>{
-        this.router.navigate(['/login']);
-      })
+      .subscribe((newuser: User) => {
+        if (newuser) {
+          this.router.navigate(['/login']);
+        }
+      });
   }
 }

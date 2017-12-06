@@ -4,8 +4,11 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthComponent } from './auth.component';
-import {AuthRoutingModule} from "./auth-routing.module";
-import {SharedModule} from "../shared/shared.module";
+import {AuthRoutingModule} from './auth-routing.module';
+import {SharedModule} from '../shared/shared.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {SystemModule} from '../system/system.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,11 @@ import {SharedModule} from "../shared/shared.module";
   imports: [
     CommonModule,
     AuthRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    SystemModule
   ]
 })
 

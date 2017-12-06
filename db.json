@@ -23,8 +23,7 @@
       "birthDay": "24.08.1990",
       "position": "developer",
       "idskill": [
-        4,
-        5
+        4
       ],
       "characteristic": "lorem",
       "progress": 50,

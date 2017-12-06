@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 
-import {EmployeesService} from "../../services/employees.service";
-import {Employee} from "../../../../shared/models/employee.model";
-import {Observable} from "rxjs/Observable";
-import {Subscription} from "rxjs/Subscription";
-import {SkillsService} from "../../services/skills.service";
-import {Skill} from "../../../../shared/models/skill.module";
-import {Router} from "@angular/router";
+import {EmployeesService} from '../../services/employees.service';
+import {Employee} from '../../../../shared/models/employee.model';
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
+import {SkillsService} from '../../services/skills.service';
+import {Skill} from '../../../../shared/models/skill.module';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'task-sidebar',
@@ -26,22 +26,26 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.subscription = Observable.combineLatest(
+    Observable.combineLatest(
       this.employeesService.getEmployees()
-    ).subscribe((data: [Employee]) => {
+      ).subscribe((data: [Employee]) => {
         this.employee = data[0];
-        for(let i in this.employee) {
-          this.skills[i] = [];
-          for(let j in this.employee[i].idskill) {
-            this.skillsService.getSkill(this.employee[i].idskill[j]).subscribe((skill: Skill) => {
-              this.skills[i][j] = skill.skillName;
-            });
+        for (const i in this.employee) {
+          if (this.employee.hasOwnProperty(i)) {
+            this.skills[i] = [];
+            for (const j in this.employee[i].idskill) {
+              if (this.employee[i].idskill.hasOwnProperty(j)) {
+                this.skillsService.getSkill(this.employee[i].idskill[j]).subscribe((skill: Skill) => {
+                  this.skills[i][j] = skill.skillName;
+                });
+              }
+            }
           }
         }
-    });
+      });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 

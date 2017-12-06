@@ -1,6 +1,6 @@
-import {Http, Response} from "@angular/http";
+import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs";
 
 import {BaseApi} from "../../../shared/core/base-api";
 import {Skill} from "../../../shared/models/skill.module";

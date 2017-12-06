@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'task-auth',
@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./auth.component.less']
 })
 export class AuthComponent implements  OnInit {
-  constructor (private router: Router){
+  constructor (private router: Router) {
 
   }
 
