@@ -17,6 +17,17 @@
       "characteristic": "some text",
       "progress": 85,
       "id": 1
+    },
+    {
+      "photo": "http://dummyimage.com/150",
+      "firstName": null,
+      "lastName": null,
+      "Sex": null,
+      "position": null,
+      "idskill": [],
+      "characteristic": null,
+      "progress": 20,
+      "id": 2
     }
   ],
   "skills": [
