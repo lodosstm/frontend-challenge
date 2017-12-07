@@ -1,9 +1,7 @@
-import {Component, OnDestroy, OnInit, HostListener, Output, EventEmitter, Input} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 import {EmployeesService} from '../../services/employees.service';
 import {Employee} from '../../../../shared/models/employee.model';
-import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
 import {SkillsService} from '../../services/skills.service';
 import {Skill} from '../../../../shared/models/skill.module';
 import {Router} from '@angular/router';
@@ -13,10 +11,10 @@ import {Router} from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.less']
 })
-export class SidebarComponent implements OnInit, OnDestroy {
 
-  subscription: Subscription;
-  employee: Employee;
+export class SidebarComponent implements OnInit {
+
+  @Input() item: Employee;
   skills = [];
 
   constructor(
@@ -26,27 +24,15 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.subscription=Observable.combineLatest(
-      this.employeesService.getEmployees()
-      ).subscribe((data: [Employee]) => {
-        this.employee = data[0];
-        for (const i in this.employee) {
-          if (this.employee.hasOwnProperty(i)) {
-            this.skills[i] = [];
-            for (const j in this.employee[i].idskill) {
-              if (this.employee[i].idskill.hasOwnProperty(j)) {
-                this.skillsService.getSkill(this.employee[i].idskill[j]).subscribe((skill: Skill) => {
-                  this.skills[i][j] = skill.skillName;
-                });
-              }
-            }
-          }
-        }
-      });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    let k = 0;
+    for (const j in this.item.idskill) {
+      if (this.item.idskill.hasOwnProperty(j)) {
+        this.skillsService.getSkill(this.item.idskill[j]).subscribe((skill: Skill) => {
+          this.skills[k] = skill.skillName;
+          k++;
+        });
+      }
+    }
   }
 
   onClick(employee) {

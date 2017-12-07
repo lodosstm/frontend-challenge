@@ -54,7 +54,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field class="employee__birthday">
-            <input  matInput [matDatepicker]="picker" placeholder="Birth Day" formControlName="birthday" (selectionChange)="UpdateBase()">
+            <input  matInput [matDatepicker]="picker" placeholder="Birth Day" formControlName="birthday" (dateChange)="SelectionChange($event)">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>

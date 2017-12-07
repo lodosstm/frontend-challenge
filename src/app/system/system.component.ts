@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+
+import {EmployeesService} from './shared/services/employees.service';
 
 @Component({
   selector: 'task-system',
@@ -8,8 +9,9 @@ import {Router} from "@angular/router";
 })
 
 export class SystemComponent implements OnInit {
-  constructor(private router:Router) {}
+  constructor(private employeeService: EmployeesService) {}
 
   ngOnInit() {
+    this.employeeService.updateEmployees();
   }
 }

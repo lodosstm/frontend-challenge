@@ -2,47 +2,21 @@
   "employee": [
     {
       "photo": "http://dummyimage.com/150",
-      "firstName": "F.Name",
-      "lastName": "L.Name",
+      "firstName": "Larisa",
+      "lastName": "Gorobets",
       "Sex": "Female",
-      "birthDay": "24.08.1990",
-      "position": "developer",
+      "birthDay": "17.02.1997",
+      "position": "Junior",
       "idskill": [
         4,
-        3
+        1,
+        6,
+        3,
+        2
       ],
-      "characteristic": "lorem",
-      "progress": 70,
+      "characteristic": "some text",
+      "progress": 85,
       "id": 1
-    },
-    {
-      "photo": "http://dummyimage.com/150",
-      "firstName": "F.Name",
-      "lastName": "L.Name",
-      "Sex": "Female",
-      "birthDay": "24.08.1990",
-      "position": "developer",
-      "idskill": [
-        4,
-        5
-      ],
-      "characteristic": "lorem",
-      "progress": 40,
-      "id": 2
-    },
-    {
-      "photo": "http://dummyimage.com/150",
-      "firstName": "F.Name",
-      "lastName": "L.Name",
-      "Sex": "Female",
-      "birthDay": "24.08.1990",
-      "position": "developer",
-      "idskill": [
-        4
-      ],
-      "characteristic": "lorem",
-      "progress": 20,
-      "id": 3
     }
   ],
   "skills": [
@@ -65,6 +39,14 @@
     {
       "skillName": "CSS",
       "id": 5
+    },
+    {
+      "skillName": "JavaScript",
+      "id": 6
+    },
+    {
+      "skillName": "Git",
+      "id": 7
     }
   ],
   "users": [

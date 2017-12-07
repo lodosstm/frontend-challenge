@@ -7,6 +7,7 @@ import {EmployeesService} from '../shared/services/employees.service';
 import {SkillsService} from '../shared/services/skills.service';
 import {Skill} from '../../shared/models/skill.module';
 import {Router} from '@angular/router';
+import {MatCalendar} from '@angular/material';
 
 @Component({
   selector: 'task-add-card',
@@ -25,7 +26,7 @@ export class AddCardComponent implements OnInit {
   searchable: object;
   result = [];
   id: number;
-  birthDay = [];
+  birthDay: string;
   percentsEmployee = 20;
   persents = {
     'photo': 20,
@@ -82,7 +83,7 @@ export class AddCardComponent implements OnInit {
             } else {
               const skills = new Skill(this.skills[i]);
               this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
-                if (skillsi == undefined) {
+                if (skillsi === undefined) {
                   alert('Error of creating skill!');
                 }
               });
@@ -96,15 +97,11 @@ export class AddCardComponent implements OnInit {
         }
       }
     }
-    let str = null;
-    if (this.form.value.birthDay != null) {
-      str = this.form.value.birthday.substring(0, 10);
-    }
     return new Employee('http://dummyimage.com/150',
       this.form.value.firstname,
       this.form.value.lastname,
       this.form.value.sex,
-      str,
+      this.birthDay,
       this.form.value.position,
       this.idskills,
       this.form.value.character,
@@ -115,23 +112,37 @@ export class AddCardComponent implements OnInit {
     this.addNewEmployee.emit();
     this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
       if (data) {
+        this.employeeService.updateEmployees();
         this.router.navigate(['/system']);
       }
     });
   }
 
   UpdateBase() {
-    this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe(data => {
+    let empl: Employee;
+    empl = this.InitEmployee();
+    this.employeeService.updateNewEmployee(this.id, empl).subscribe(data => {
       if (data) {
+        console.log(data);
         this.search();
         this.calculator();
       }
-    });;
+    });
+  }
+
+  SelectionChange(event) {
+    this.form.value.birthDay = event.value;
+    this.birthDay = [this.form.value.birthDay.getDate(),
+      this.form.value.birthDay.getMonth() + 1,
+      this.form.value.birthDay.getFullYear()].join('.');
+    this.UpdateBase();
   }
 
   deleteCard() {
-    this.employeeService.deleteEmployee(this.id).subscribe(data => {
-      if(data){
+    this.employeeService.deleteEmployee(this.id).subscribe((data: Employee) => {
+      this.employeeService.updateEmployees();
+      this.employeeService.getEmployeeById(this.id).isEmpty();
+      {
         this.router.navigate(['/system']);
       }
     });

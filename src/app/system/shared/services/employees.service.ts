@@ -11,6 +11,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 @Injectable()
 export class EmployeesService extends BaseApi {
   givenemployee: Employee;
+  public employees: Employee;
   public flag = false;
 
   constructor (public http: Http,
@@ -40,7 +41,7 @@ export class EmployeesService extends BaseApi {
   }
 
   public getEmployeeById(id: number): Observable<Employee> {
-    return this.get(`employee/${id}`)
+    return this.get(`employee?id=${id}`)
       .map((employee: Employee[]) => employee[0] ? employee[0] : undefined);
   }
 
@@ -61,6 +62,12 @@ export class EmployeesService extends BaseApi {
       'birthday': new FormControl(null, []),
       'character': new FormControl(null, []),
       'skill': new FormControl(null, [])
+    });
+  }
+
+  updateEmployees() {
+    this.getEmployees().subscribe((data: Employee) => {
+      this.employees = data;
     });
   }
 }

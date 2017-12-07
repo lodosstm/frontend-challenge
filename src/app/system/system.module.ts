@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -9,14 +9,13 @@ import {
 import {SharedModule} from '../shared/shared.module';
 import {SystemRoutingModule} from './system-routing.module';
 import { AddCardComponent } from './add-card/add-card.component';
-import { WatchCardComponent } from './watch-card/watch-card.component';
 import {SystemComponent} from './system.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import {EmployeesService} from './shared/services/employees.service';
 import {SkillsService} from './shared/services/skills.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AppModule} from '../app.module';
+import { WatchComponent } from './watch/watch.component';
 
 @NgModule({
   imports: [
@@ -38,11 +37,15 @@ import {AppModule} from '../app.module';
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: [AddCardComponent, WatchCardComponent, SystemComponent, SidebarComponent, HeaderComponent],
+  declarations: [AddCardComponent, SystemComponent, SidebarComponent, HeaderComponent, WatchComponent],
   providers: [EmployeesService, SkillsService],
   exports: [
     ReactiveFormsModule,
     FormsModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ]
 })
 

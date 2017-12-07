@@ -1,6 +1,6 @@
 <div class="employee__i">
   <a class="employee__link" >
-    <mat-icon class="large material-icons" (click)="onClick()">cancel</mat-icon>
+    <mat-icon class="large material-icons" (click)="deleteCard()">cancel</mat-icon>
   </a>
   <div class="employee__form">
     <div class="employee__photo">
@@ -25,8 +25,7 @@
       <div class="employee__character">
         <p class="employee__text">{{employee.characteristic}}</p>
       </div>
-      <button mat-button class="employee__btn" (click)="DeleteEmployee()">Delete user</button>
+      <button mat-button class="employee__btn" (click)="deleteEmployee()">Delete user</button>
     </div>
   </div>
 </div>
-
