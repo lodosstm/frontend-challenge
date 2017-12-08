@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {MatChipInputEvent} from '@angular/material/chips';
 
@@ -7,7 +7,6 @@ import {EmployeesService} from '../shared/services/employees.service';
 import {SkillsService} from '../shared/services/skills.service';
 import {Skill} from '../../shared/models/skill.module';
 import {Router} from '@angular/router';
-import {MatCalendar} from '@angular/material';
 
 @Component({
   selector: 'task-add-card',
@@ -16,14 +15,12 @@ import {MatCalendar} from '@angular/material';
 })
 export class AddCardComponent implements OnInit {
 
-  @Output() addNewEmployee = new EventEmitter();
   form: FormGroup;
   selectable = true;
   removable = true;
 
   skills = [];
   idskills = [];
-  searchable: object;
   result = [];
   id: number;
   birthDay: string;
@@ -47,8 +44,7 @@ export class AddCardComponent implements OnInit {
     this.form = this.employeeService.InitEmployee();
     this.employeeService.createNewEmployee(this.InitEmployee())
       .subscribe((employ: Employee) => { this.id = employ.id; });
-    this.skillsService.getAllSkills()
-      .subscribe((skills: Skill) => { this.searchable = skills; });
+    this.skillsService.Skills();
     this.search();
     this.calculator();
   }
@@ -109,7 +105,6 @@ export class AddCardComponent implements OnInit {
   }
 
   onSubmit() {
-    this.addNewEmployee.emit();
     this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
       if (data) {
         this.employeeService.updateEmployees();
@@ -139,7 +134,7 @@ export class AddCardComponent implements OnInit {
   }
 
   deleteCard() {
-    this.employeeService.deleteEmployee(this.id).subscribe((data: Employee) => {
+    this.employeeService.deleteEmployee(this.id).subscribe(() => {
       this.employeeService.updateEmployees();
       this.employeeService.getEmployeeById(this.id).isEmpty();
       {
@@ -167,11 +162,11 @@ export class AddCardComponent implements OnInit {
     let k = 0;
     this.result.length = 0;
     if (this.form.value.skill !== '') {
-      for (const j in this.searchable) {
-        if (this.searchable.hasOwnProperty(j)) {
-            if (this.searchable[j].skillName.indexOf(this.form.controls.skill.value) === 0
-              && this.form.controls.skill.value.length <= this.searchable[j].skillName.length) {
-            this.result[k] = this.searchable[j].skillName;
+      for (const j in this.skillsService.skills) {
+        if (this.skillsService.skills.hasOwnProperty(j)) {
+            if (this.skillsService.skills[j].skillName.indexOf(this.form.controls.skill.value) === 0
+              && this.form.controls.skill.value.length <= this.skillsService.skills[j].skillName.length) {
+            this.result[k] = this.skillsService.skills[j].skillName;
             k++;
           }
         }

@@ -12,16 +12,16 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private userService: UsersService) { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.form = this.userService.LogIn();
+    this.form = this.usersService.LogIn();
 
-    this.userService.CheckLocalStorage();
+    this.usersService.CheckLocalStorage();
   }
 
   onSubmit() {
-    this.userService.CheckPassword(this.form.value.password);
+    this.usersService.CheckPassword(this.form.value.username, this.form.value.password);
   }
 
 }

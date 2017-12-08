@@ -1,6 +1,7 @@
 import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 import {Employee} from '../../../shared/models/employee.model';
 import {BaseApi} from '../../../shared/core/base-api';

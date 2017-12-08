@@ -9,7 +9,7 @@ import {EmployeesService} from './shared/services/employees.service';
 })
 
 export class SystemComponent implements OnInit {
-  constructor(private employeeService: EmployeesService) {}
+  constructor(public employeeService: EmployeesService) {}
 
   ngOnInit() {
     this.employeeService.updateEmployees();

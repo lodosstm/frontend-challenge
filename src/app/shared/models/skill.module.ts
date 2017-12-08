@@ -1,6 +1,6 @@
-export class Skill{
+export class Skill {
   constructor(
     public skillName: string,
     public id?: number
-  ){}
+  ) { }
 }

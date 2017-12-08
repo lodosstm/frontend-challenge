@@ -1,7 +1,7 @@
 export class AuthService{
   private isAuthorated = false;
 
-  logIn(){
+  logIn() {
     this.isAuthorated = true;
   }
 }
