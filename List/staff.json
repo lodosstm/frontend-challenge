@@ -1,0 +1,95 @@
+{
+
+  "users":[
+    {
+      "id": 1,
+      "firstname":"Maks",
+      "lastname":"Litvinov",
+      "sometext":"sometext1",
+      "skills":["skill1","skill2","skill3","skill4","skill5"],
+      "gender":"M",
+      "birthday":"19.03.1976",
+      "moretext":"moretext1",
+      "photo":"",
+      "full": "76.54"
+    },
+    {
+      "id": 2,
+      "firstname":"Irina",
+      "lastname":"Zeinberg",
+      "sometext":"sometext2",
+      "skills":["skill1","skill2","skill3","skill4"],
+      "gender":"F",
+      "birthday":"05.04.1998",
+      "moretext":"moretext2",
+      "photo":"",
+      "full": "70.61"
+    },
+    {
+      "id": 3,
+      "firstname":"Anna",
+      "lastname":"Repina",
+      "sometext":"sometext3",
+      "skills":["skill1","skill2"],
+      "gender":"F",
+      "birthday":"21.07.1992",
+      "moretext":"moretext3",
+      "photo":"",
+      "full": "58.92"
+    },
+    {
+      "id": 4,
+      "firstname":"Andrew",
+      "lastname":"Kovalev",
+      "sometext":"sometext4",
+      "skills":["skill1","skill2","skill3","skill4","skill5"],
+      "gender":"M",
+      "birthday":"29.04.1983",
+      "moretext":"moretext4",
+      "photo":"",
+      "full": "76.54"
+    },
+    {
+      "id": 5,
+      "firstname":"Ivan",
+      "lastname":"Rotlyarov",
+      "sometext":"sometext5",
+      "skills":["skill1"],
+      "gender":"M",
+      "birthday":"29.04.2000",
+      "moretext":"moretext5",
+      "photo":"",
+      "full": "52.94"
+    },
+    {
+      "id": 6,
+      "firstname":"Illa",
+      "lastname":"Klove",
+      "sometext":"sometext6",
+      "skills":["skill1","skill2","skill3"],
+      "gender":"F",
+      "birthday":"05.01.1993",
+      "moretext":"moretext6",
+      "photo":"",
+      "full": "64.71"
+    },
+    {
+      "id": 7,
+      "firstname":"Nikolay",
+      "lastname":"Borev",
+      "sometext":"sometext7",
+      "skills":["skill1","skill2","skill3"],
+      "gender":"M",
+      "birthday":"29.04.1989",
+      "moretext":"moretext7",
+      "photo":"",
+      "full": "64.71"
+    }
+
+
+
+
+
+
+  ]
+}

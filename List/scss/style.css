@@ -1,0 +1,268 @@
+body {
+  min-width: 950px; }
+  body header {
+    border: 2px solid #dcdcdc;
+    box-shadow: 0 0 2px 1px #dcdcdc;
+    height: 8%;
+    background-color: #f5f5f5; }
+    body header p {
+      text-indent: 2%;
+      font-family: arial, verdana, sans-serif;
+      font-weight: bold; }
+  body #leftcol {
+    border: 2px solid #dcdcdc;
+    box-shadow: 0 0 2px 1px #dcdcdc;
+    position: absolute;
+    float: left;
+    width: 25%;
+    height: 91%;
+    overflow: auto;
+    min-width: 250px; }
+    body #leftcol #plus {
+      height: 5%;
+      border-bottom: 2px solid #dcdcdc;
+      min-height: 20px; }
+      body #leftcol #plus #addico {
+        height: 65%;
+        display: block;
+        margin: auto;
+        margin-top: 2%; }
+    body #leftcol .eloflist {
+      height: 16%;
+      border-bottom: 2px solid #dcdcdc;
+      min-height: 90px; }
+      body #leftcol .eloflist #ava {
+        float: left;
+        width: 20%;
+        border-radius: 50%;
+        margin-top: 5%;
+        margin-left: 5%; }
+      body #leftcol .eloflist #data {
+        text-indent: 2%;
+        font-family: arial, verdana, sans-serif;
+        font-size: 80%;
+        width: 72%;
+        padding: 0%;
+        padding-left: 1.5%;
+        margin-top: 2%; }
+        body #leftcol .eloflist #data .namefield {
+          font-weight: bold; }
+        body #leftcol .eloflist #data .rect {
+          display: inline;
+          margin-left: 2%;
+          font-size: 90%;
+          background-color: #d3d3d3;
+          color: #008000;
+          max-width: 30%; }
+        body #leftcol .eloflist #data progress {
+          width: 40%;
+          height: 7px;
+          border-radius: 5px; }
+        body #leftcol .eloflist #data .ico {
+          float: right;
+          margin-bottom: 0%;
+          height: 13%; }
+  body #cont {
+    border: 2px solid #dcdcdc;
+    box-shadow: 0 0 2px 1px #dcdcdc;
+    position: absolute;
+    margin-left: 25%;
+    float: left;
+    width: 73.5%;
+    height: 91%;
+    background-color: #f5f5f5;
+    overflow: auto;
+    min-width: 600px;
+    min-height: 500px; }
+    body #cont #personalcard {
+      width: 95%;
+      height: 100%;
+      background-color: #ffffff;
+      border-right: 2px solid #dcdcdc; }
+      body #cont #personalcard .closeico {
+        height: 4%;
+        margin-left: 96.5%;
+        margin-top: 1%; }
+      body #cont #personalcard .photo {
+        float: left;
+        margin-left: 5%;
+        width: 100px; }
+      body #cont #personalcard #eldate {
+        text-indent: 2%;
+        font-family: arial, verdana, sans-serif;
+        width: 80%;
+        font-size: 100%; }
+        body #cont #personalcard #eldate .namefield {
+          font-weight: bold; }
+        body #cont #personalcard #eldate .rect {
+          display: inline;
+          margin-left: 2%;
+          font-size: 90%;
+          background-color: #d3d3d3;
+          color: #3cb371;
+          max-width: 30%; }
+    body #cont .addnewuser {
+      width: 95%;
+      height: 100%;
+      background-color: #ffffff;
+      border-right: 2px solid #dcdcdc;
+      min-width: 500px; }
+      body #cont .addnewuser .closeico {
+        height: 4%;
+        margin-left: 96.5%;
+        margin-top: 1%; }
+      body #cont .addnewuser .photo {
+        display: block;
+        position: absolute;
+        float: left;
+        margin-left: 5%;
+        width: auto;
+        height: 19%; }
+      body #cont .addnewuser .namefield1 {
+        float: left;
+        margin-left: 20.5%;
+        border-radius: 5px;
+        height: 4.8%;
+        padding-left: 1%;
+        width: 30%; }
+      body #cont .addnewuser .namefield2 {
+        float: left;
+        margin-left: 5%;
+        border-radius: 5px;
+        height: 4.8%;
+        padding-left: 1%;
+        width: 30%; }
+      body #cont .addnewuser .sometext {
+        margin-left: 20.5%;
+        margin-top: 2%;
+        border-radius: 5px;
+        height: 4.8%;
+        padding-left: 1%;
+        width: 67%; }
+      body #cont .addnewuser .status {
+        position: absolute;
+        margin-left: 4.5%;
+        float: left;
+        width: 13%; }
+      body #cont .addnewuser .skillsarea {
+        border: 2px solid #d3d3d3;
+        border-radius: 5px;
+        padding-left: 1%;
+        width: 67%;
+        margin-left: 20.5%;
+        padding: 0.5%;
+        height: 7%; }
+        body #cont .addnewuser .skillsarea .skillarea {
+          float: left;
+          width: 17.5%;
+          border: none;
+          margin-left: 1%;
+          padding: 0.5%; }
+          body #cont .addnewuser .skillsarea .skillarea .skill {
+            background-color: #ff8c00;
+            width: 98%;
+            height: 19px;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 5px; }
+          body #cont .addnewuser .skillsarea .skillarea .skill:hover {
+            background-color: #ffffff;
+            color: #000000; }
+          body #cont .addnewuser .skillsarea .skillarea .skill:focus + .auto {
+            opacity: 1; }
+          body #cont .addnewuser .skillsarea .skillarea .auto {
+            width: 90%;
+            height: 15px;
+            opacity: 0; }
+          body #cont .addnewuser .skillsarea .skillarea .auto:hover {
+            background-color: #ff8c00;
+            color: #ffffff; }
+      body #cont .addnewuser .textgender {
+        display: block;
+        position: absolute;
+        margin-left: 21%;
+        margin-top: 2.8%;
+        color: #ffffff;
+        font-size: 110%;
+        min-height: 4%;
+        min-width: 1%;
+        background-color: #ff8c00; }
+      body #cont .addnewuser .gender {
+        width: 15%;
+        height: 7%;
+        color: #ffffff;
+        float: left;
+        margin-left: 20.5%;
+        margin-top: 2%;
+        border-radius: 5px;
+        background-color: #ff8c00;
+        padding: 1%;
+        color: #ffffff; }
+      body #cont .addnewuser .textbirthday {
+        display: block;
+        position: absolute;
+        margin-left: 36.8%;
+        padding-left: 1.2%;
+        width: 8%;
+        margin-top: 2.8%;
+        color: #ffffff;
+        font-size: 110%;
+        min-height: 3.5%;
+        min-width: 1%;
+        background-color: #ff8c00; }
+      body #cont .addnewuser .birthday {
+        border-radius: 5px;
+        float: left;
+        margin-left: 3%;
+        margin-top: 2%;
+        width: 15%;
+        height: 6.1%;
+        background-color: #ff8c00;
+        color: #ffffff; }
+        body #cont .addnewuser .birthday ::-webkit-inner-spin-button {
+          display: none; }
+      body #cont .addnewuser .textarea {
+        margin-left: 21%;
+        margin-top: 2%;
+        width: 66%;
+        height: 30%;
+        border-radius: 5px;
+        padding: 1%; }
+      body #cont .addnewuser .button {
+        width: 15%;
+        height: 7%;
+        color: #ffffff;
+        margin-left: 72.7%;
+        background-color: #3cb371;
+        border-radius: 5px; }
+    body #cont #search {
+      border: 2px solid #d3d3d3;
+      height: 9%;
+      width: 35%;
+      margin-left: 15%;
+      margin-top: 2%; }
+      body #cont #search legend {
+        border: 2px solid #d3d3d3;
+        font-weight: bold; }
+      body #cont #search .namefield1 {
+        float: right;
+        margin-right: 20%;
+        border-radius: 5px;
+        height: 20px; }
+    body #cont #filter {
+      border: 2px solid #d3d3d3;
+      height: 50%;
+      width: 34%;
+      margin-left: 15%;
+      padding-left: 2%;
+      min-height: 300px; }
+      body #cont #filter legend {
+        border: 2px solid #d3d3d3;
+        font-weight: bold; }
+      body #cont #filter .namefield1 {
+        float: right;
+        margin-right: 20%;
+        border-radius: 5px;
+        height: 20px; }
+
+/*# sourceMappingURL=style.css.map */
