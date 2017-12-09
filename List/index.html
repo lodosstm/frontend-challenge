@@ -17,33 +17,25 @@
 				<!--Кнопка, открывающая форму для добавления нового сотрудника-->
 				<img id="addico" src="images/add.ico" ng-click= " shownewuserform () "/>
 			</div>
-
-
 			<!--Список сотрудников с кратким описанием-->
 			<div class="eloflist" ng-repeat="x in users | filter:searchText | filter:search" >
 				<img id="ava" src="http://placehold.it/100x100/" />
 				<table id="data">
 					<tr><td class="namefield">{{x.firstname}} {{x.lastname}}</td></tr>
 					<tr><td>{{x.sometext}}</td></tr>
-					<tr>
+					<tr>	
 						<td><p class="rect">{{x.skills[0]}}</p><p class="rect">{{x.skills[1]}}</p><p class="rect">{{x.skills[2]}}</p></td>
 					</tr>
 					<tr><td><progress value={{x.full}} max="100"></progress></td>
 					<td>
 						<!--Кнопка для отображения карточки с персональными данными сотрудника-->
 						<img class="ico" src="images/right.ico" ng-click= " showpersonalcard ($index) "/>
-
-
 						<!--Кнопка удаления сотрудника из списка-->
 						<img class="ico" src="images/close.ico" ng-click= " deleteuser ($index) "/>
 						<!--Кнопка, открывающая форму для изменения данных сотрудника-->
 						<img class="ico" src="images/compose.ico" ng-click= " showchangeform($index) "/>
 					</td></tr>
-
 				</table>
-
-
-
 			</div>
 		</div>
 		<div id="cont">
