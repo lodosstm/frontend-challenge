@@ -1,0 +1,181 @@
+<!doctype html>
+<html ng-app="myApp">
+	<head>
+		<title>List</title>
+		<meta charset="utf8">
+		<link href="scss/style.css" type="text/css" rel="stylesheet"/>
+		<script src="angular.min.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<body ng-controller="firstctrl">
+		<header>
+			<p>List</p>
+		</header>
+		<!--Левая колонка со списком сотрудников-->
+		<div id="leftcol" ng-model="users">
+			<div id="plus">
+				<!--Кнопка, открывающая форму для добавления нового сотрудника-->
+				<img id="addico" src="images/add.ico" ng-click= " shownewuserform () "/>
+			</div>
+			<!--Список сотрудников с кратким описанием-->
+			<div class="eloflist" ng-repeat="x in users | filter:searchText | filter:search" >
+				<img id="ava" src="http://placehold.it/100x100/" />
+				<table id="data">
+					<tr><td class="namefield">{{x.firstname}} {{x.lastname}}</td></tr>
+					<tr><td>{{x.sometext}}</td></tr>
+					<tr>	
+						<td><p class="rect">{{x.skills[0]}}</p><p class="rect">{{x.skills[1]}}</p><p class="rect">{{x.skills[2]}}</p></td>
+					</tr>
+					<tr><td><progress value={{x.full}} max="100"></progress></td>
+					<td>
+						<!--Кнопка для отображения карточки с персональными данными сотрудника-->
+						<img class="ico" src="images/right.ico" ng-click= " showpersonalcard ($index) "/>
+						<!--Кнопка удаления сотрудника из списка-->
+						<img class="ico" src="images/close.ico" ng-click= " deleteuser ($index) "/>
+						<!--Кнопка, открывающая форму для изменения данных сотрудника-->
+						<img class="ico" src="images/compose.ico" ng-click= " showchangeform($index) "/>
+					</td></tr>
+				</table>
+			</div>
+		</div>
+		<div id="cont">
+			<!--Форма для добавления нового сотрудника-->
+			<form class="addnewuser" name="addnewuserform" ng-if="newuserform.visible">
+				<img class="closeico" src="images/close.ico" ng-click= " hidenewuserform () "/>
+				<img class="photo" src="http://placehold.it/100x100/" ng-model="newuser.photo"/>
+				<input class="namefield1" type="text" name="firstname" maxlength="10" placeholder="First name*" required ng-model="newuser.firstname"/>
+				<input class="namefield2" type="text" name="lastname" maxlength="18" placeholder="Last name*" required ng-model="newuser.lastname"/><br>
+				<input class="sometext" type="text" name="sometext" maxlength="30" placeholder="some text" ng-model="newuser.sometext"/><br><br>
+				<fieldset class="skillsarea">
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill1"  placeholder="Your skill"  ng-model="newuser.skills[0]"   />
+						<div class="auto" name="auto1" ng-repeat="x in autoskill | filter:newuser.skills[0]" ng-model="temp" ng-click=" addskill1 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill2"  placeholder="Your skill"  ng-model="newuser.skills[1]"   />
+						<div class="auto" name="auto2" ng-repeat="x in autoskill | filter:newuser.skills[1]" ng-model="temp" ng-click=" addskill2 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill3"  placeholder="Your skill"  ng-model="newuser.skills[2]"   />
+						<div class="auto" name="auto3" ng-repeat="x in autoskill | filter:newuser.skills[2]" ng-model="temp" ng-click=" addskill3 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill4" placeholder="Your skill"   ng-model="newuser.skills[3]"   />
+						<div class="auto" name="auto4" ng-repeat="x in autoskill | filter:newuser.skills[3]" ng-model="temp" ng-click=" addskill4 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill5"  placeholder="Your skill"  ng-model="newuser.skills[4]"   />
+						<div class="auto" name="auto5" ng-repeat="x in autoskill | filter:newuser.skills[4]" ng-model="temp" ng-click=" addskill5 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+				</fieldset>
+				<p class="textgender">Gender*</p>
+				<select class="gender" name="gender" required ng-model="newuser.gender">
+					<option value="M">Male</option>
+					<option value="F">Female</option>
+				</select>
+				<p class="textbirthday">Birthday*</p>
+				<input class="birthday" type="date" name="birthday" required ng-model="newuser.birthday"/><br><br>
+				<textarea class="textarea" name="moretext" placeholder="More information..." ng-model="newuser.moretext"></textarea><br><br>
+				<button class="button" ng-click=" addnewuser(addnewuserform) ">Save</button>
+			</form>
+			<!--Карточка с персональными данными сотрудника-->
+			<form id="personalcard" name="personalcard" ng-if="personalcard.visible">
+				<img class="closeico" src="images/close.ico" ng-click= " hidepersonalcard () "/>
+				<img class="photo" src="http://placehold.it/100x100/" />
+				<table id="eldate">
+					<tr><td class="namefield">{{user.firstname}} {{user.lastname}}</td></tr>
+					<tr><td></td></tr>
+					<tr><td>({{user.gender}}, {{user.birthday | date:'dd.MM.yyyy'}})</td></tr>
+					<tr><td></td></tr>
+					<tr><td>{{user.sometext}}</td></tr>
+					<tr><td>Filled profile: {{user.full}} %</td></tr>
+					<tr><td></td></tr>
+					<tr>
+						<td><p class="rect">{{user.skills[0]}}</p><p class="rect">{{user.skills[1]}}</p><p class="rect">{{user.skills[2]}}</p>
+							<p class="rect">{{user.skills[3]}}</p><p class="rect">{{user.skills[4]}}</p></td>
+					</tr>
+					<tr><td></td></tr>
+					<tr><td>{{user.moretext}}</td></tr>
+				</table><br>
+				</form>
+				<!--Форма для изменения данных сотрудника -->
+			<form class="addnewuser" name="changeform" ng-if="changeform.visible">
+				<img class="closeico" src="images/close.ico" ng-click= " hidechangeform () "/>
+				<img class="photo" src="http://placehold.it/100x100/" />
+				<input class="namefield1" type="text" name="firstname2" maxlength="10" placeholder="First name" required ng-model="user.firstname"/>
+				<input class="namefield2" type="text" name="lastname2" maxlength="18" placeholder="Last name" required ng-model="user.lastname"/><br>
+				<input class="sometext" type="text" name="sometext2" maxlength="30" placeholder="some text" ng-model="user.sometext"/><br><br>
+				<p class="status">Filled profile: {{user.full}}%</p>
+				<fieldset class="skillsarea">
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill1"  placeholder="Your skill"  ng-model="user.skills[0]"   />
+						<div class="auto" name="auto1" ng-repeat="x in autoskill | filter:user.skills[0]" ng-model="temp" ng-click=" skillchange1 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill2"  placeholder="Your skill"  ng-model="user.skills[1]"   />
+						<div class="auto" name="auto2" ng-repeat="x in autoskill | filter:user.skills[1]" ng-model="temp" ng-click=" skillchange2 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill3"  placeholder="Your skill"  ng-model="user.skills[2]"   />
+						<div class="auto" name="auto3" ng-repeat="x in autoskill | filter:user.skills[2]" ng-model="temp" ng-click=" skillchange3 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill4" placeholder="Your skill"   ng-model="user.skills[3]"   />
+						<div class="auto" name="auto4" ng-repeat="x in autoskill | filter:user.skills[3]" ng-model="temp" ng-click=" skillchange4 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+					<fieldset class="skillarea">
+						<input  class="skill" type="text" name="skill5"  placeholder="Your skill"  ng-model="user.skills[4]"   />
+						<div class="auto" name="auto5" ng-repeat="x in autoskill | filter:user.skills[4]" ng-model="temp" ng-click=" skillchange5 (x) ">
+							{{x}}
+						</div>
+					</fieldset>
+				</fieldset>
+				<select class="gender" name="select2" required ng-model="user.gender">
+					<option value="M">Male</option>
+					<option value="F">Female</option>
+				</select>
+				<input class="birthday" type="date" name="birthday2" required ng-model="user.birthday"/><br>*<br>
+				<textarea class="textarea" name="moretext2" placeholder="More information..." ng-model="user.moretext"></textarea><br><br>
+				<button class="button" ng-click=" savechangedata () ">Save</button>
+			</form>
+			<!--Поиск-->
+			<fieldset id="search">
+			<legend>Search</legend>
+				<form>
+					 <input class="namefield1" ng-model="searchText">
+				 </form>
+		</fieldset><br><br>
+			<!--Фильтр-->
+			<fieldset id="filter">
+			<legend>Filter</legend>
+				<form>
+					<br>
+					FirstName: <input class="namefield1" ng-model="search.firstname"><br><br>
+					LastName: <input class="namefield1" ng-model="search.lastname"><br><br>
+			   	Status: <input class="namefield1" ng-model="search.sometext"><br><br>
+				  Gender: <input class="namefield1" ng-model="search.gender"><br><br>
+					Birthday: <input class="namefield1" ng-model="search.birthday"><br><br>
+				  Skills: <input class="namefield1" ng-model="search.skills"><br><br>
+			 </form>
+		</fieldset>
+		</div>
+	</body>
+</html>

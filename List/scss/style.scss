@@ -1,0 +1,320 @@
+$grey:#dcdcdc;
+$backgrey:#f5f5f5;
+$deepgrey:#d3d3d3;
+$white:#ffffff;
+$orange:#ff8c00;
+$black:#000000;
+$green:#3cb371;
+$deepgreen:#008000;
+@mixin border {
+  border: 2px solid $grey;
+  box-shadow: 0 0 2px 1px $grey;
+}
+@mixin fonthead {
+  text-indent: 2%;
+  font-family: arial, verdana, sans-serif;
+}
+@mixin textfield {
+  border-radius: 5px;
+  height: 4.8%;
+  padding-left: 1%;
+}
+@mixin button {
+  width: 15%;
+  height: 7%;
+  color: $white;
+}
+body {
+  min-width: 950px;
+  header {
+    @include border;
+     height: 8%;
+     background-color: $backgrey;
+     p {
+       @include fonthead;
+       font-weight: bold;
+     }
+  }
+  #leftcol {
+    @include border;
+  	position: absolute;
+  	float: left;
+  	 width: 25%;
+  	 height: 91%;
+     overflow: auto;
+     min-width: 250px;
+     #plus {
+       height: 5%;
+       border-bottom: 2px solid $grey;
+       min-height: 20px;
+       #addico {
+         height: 65%;
+         display: block;
+         margin: auto;
+         margin-top: 2%;
+       }
+     }
+     .eloflist {
+       height: 16%;
+       border-bottom: 2px solid $grey;
+       min-height: 90px;
+       #ava {
+        float: left;
+        width: 20%;
+        border-radius: 50%;
+        margin-top: 5%;
+        margin-left: 5%;
+       }
+       #data {
+        @include fonthead;
+        font-size: 80%;
+        width: 72%;
+        padding: 0%;
+        padding-left: 1.5%;
+        margin-top: 2%;
+        .namefield {
+          font-weight: bold;
+        }
+        .rect {
+          display: inline;
+          margin-left: 2%;
+          font-size: 90%;
+          background-color: $deepgrey;
+          color: $deepgreen;
+          max-width: 30%;
+        }
+        progress {
+          width: 40%;
+          height: 7px;
+          border-radius: 5px;
+        }
+        .ico {
+          float: right;
+          margin-bottom: 0%;
+          height: 13%;
+        }
+      }
+     }
+  }
+  #cont {
+    @include border;
+  	position: absolute;
+  	margin-left: 25%;
+  	float: left;
+  	width: 73.5%;
+  	height: 91%;
+    background-color: $backgrey;
+    overflow: auto;
+    min-width: 600px;
+    min-height: 500px;
+    #personalcard {
+      width: 95%;
+      height: 100%;
+      background-color: $white;
+      border-right: 2px solid $grey;
+      .closeico {
+        height: 4%;
+        margin-left: 96.5%;
+        margin-top: 1%;
+      }
+      .photo {
+        float: left;
+        margin-left: 5%;
+        width: 100px;
+      }
+      #eldate {
+        @include fonthead;
+        width: 80%;
+        font-size: 100%;
+        .namefield {
+          font-weight: bold;
+        }
+        .rect {
+          display: inline;
+          margin-left: 2%;
+          font-size: 90%;
+          background-color: $deepgrey;
+          color: $green;
+          max-width: 30%;
+        }
+      }
+    }
+    .addnewuser {
+      width: 95%;
+      height: 100%;
+      background-color: $white;
+      border-right: 2px solid $grey;
+      min-width: 500px;
+      .closeico {
+        height: 4%;
+        margin-left: 96.5%;
+        margin-top: 1%;
+      }
+      .photo {
+        display: block;
+        position: absolute;
+        float: left;
+        margin-left: 5%;
+        width: auto;
+        height: 19%;
+      }
+      .namefield1 {
+        float: left;
+        margin-left: 20.5%;
+        @include textfield;
+        width: 30%;
+        }
+      .namefield2 {
+        float: left;
+        margin-left: 5%;
+        @include textfield;
+        width: 30%;
+      }
+      .sometext {
+        margin-left: 20.5%;
+        margin-top: 2%;
+        @include textfield;
+        width: 67%;
+      }
+      .status {
+        position: absolute;
+        margin-left: 4.5%;
+        float: left;
+        width: 13%;
+      }
+      .skillsarea {
+        border: 2px solid $deepgrey;
+        border-radius: 5px;
+        padding-left: 1%;
+        width: 67%;
+        margin-left: 20.5%;
+        padding: 0.5%;
+        height: 7%;
+        .skillarea {
+          float: left;
+          width: 17.5%;
+          border: none;
+          margin-left: 1%;
+          padding: 0.5%;
+          .skill {
+            background-color: $orange;
+            width: 98%;
+            height: 19px;
+            color: $white;
+            text-align: center;
+            border-radius: 5px;
+          }
+          .skill:hover {
+            background-color: $white;
+            color: $black;
+          }
+          .skill:focus + .auto {opacity: 1;}
+          .auto {
+              width: 90%;
+              height: 15px;
+              opacity: 0;
+          }
+          .auto:hover {
+              background-color: $orange;
+              color: $white;
+          }
+        }
+
+      }
+      .textgender {
+        display: block;
+        position: absolute;
+        margin-left: 21%;
+        margin-top: 2.8%;
+        color: $white;
+        font-size: 110%;
+        min-height: 4%;
+        min-width: 1%;
+        background-color: $orange;
+      }
+      .gender {
+        @include button;
+        float: left;
+        margin-left: 20.5%;
+        margin-top: 2%;
+        border-radius: 5px;
+        background-color: $orange;
+        padding: 1%;
+        color: $white;
+      }
+      .textbirthday {
+        display: block;
+        position: absolute;
+        margin-left: 36.8%;
+        padding-left: 1.2%;
+        width:  8%;
+        margin-top: 2.8%;
+        color: $white;
+        font-size: 110%;
+        min-height: 3.5%;
+        min-width: 1%;
+        background-color: $orange;
+      }
+      .birthday {
+          border-radius: 5px;
+          float: left;
+          margin-left: 3%;
+          margin-top: 2%;
+          width: 15%;
+          height: 6.1%;
+          background-color: $orange;
+          color: $white;
+          ::-webkit-inner-spin-button { display: none; }
+        }
+      .textarea {
+        margin-left: 21%;
+        margin-top: 2%;
+        width: 66%;
+        height: 30%;
+        border-radius: 5px;
+        padding: 1%;
+      }
+      .button {
+        @include button;
+        margin-left: 72.7%;
+        background-color: $green;
+        border-radius: 5px;
+      }
+    }
+    #search {
+      legend {
+        border: 2px solid $deepgrey;
+        font-weight: bold;
+      }
+      border: 2px solid $deepgrey;
+      height: 9%;
+      width: 35%;
+      margin-left: 15%;
+      margin-top: 2%;
+      .namefield1 {
+        float: right;
+        margin-right: 20%;
+        border-radius: 5px;
+        height: 20px;
+      }
+    }
+    #filter {
+      border: 2px solid $deepgrey;
+      height: 50%;
+      width: 34%;
+      margin-left: 15%;
+      padding-left: 2%;
+      min-height: 300px;
+      legend {
+        border: 2px solid $deepgrey;
+        font-weight: bold;
+      }
+      .namefield1 {
+          float: right;
+          margin-right:  20%;
+          border-radius: 5px;
+          height: 20px;
+      }
+    }
+  }
+}
