@@ -1,19 +1,18 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
-import App from './app';
-import About from './components/About';
-import Sample from './components/Sample';
+import {BrowserRouter as Router} from 'react-router-dom';
+
 import 'styles/index.scss';
+
+import LeftElement from './components/LeftElement';
+import RightElement from './components/RightElement';
+
 
 const Routes = () => (
   <Router>
     <div>
-      <Route exact path="/" component={App}/>
-      <Route path="/about" component={About}/>
-      <Route path="/sample" component={Sample}/>
+			<div className="topElement">List</div>
+			<LeftElement/>
+			<RightElement/>
     </div>
   </Router>
 );
