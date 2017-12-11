@@ -16,6 +16,7 @@ import {EmployeesService} from './shared/services/employees.service';
 import {SkillsService} from './shared/services/skills.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { WatchComponent } from './watch/watch.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,7 @@ import { WatchComponent } from './watch/watch.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: [AddCardComponent, SystemComponent, SidebarComponent, HeaderComponent, WatchComponent],
+  declarations: [AddCardComponent, SystemComponent, SidebarComponent, HeaderComponent, WatchComponent, EditComponent],
   providers: [EmployeesService, SkillsService],
   exports: [
     ReactiveFormsModule,

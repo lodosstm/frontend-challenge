@@ -1,6 +1,6 @@
 <div class="employee__i">
   <div class="employee_cancel">
-    <a href="" class="employee__link" (click)="deleteCard()">
+    <a class="employee__link" (click)="deleteCard()">
       <mat-icon class="large material-icons">cancel</mat-icon>
     </a>
   </div>
@@ -13,14 +13,14 @@
       <form class="employee__card" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="employee__name">
           <mat-form-field>
-            <input matInput placeholder="First Name" formControlName="firstname" (ngModelChange)="UpdateBase()">
+            <input matInput placeholder="First Name" formControlName="firstname" (blur)="UpdateBase()">
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Last Name" formControlName="lastname" (ngModelChange)="UpdateBase()">
+            <input matInput placeholder="Last Name" formControlName="lastname" (blur)="UpdateBase()">
           </mat-form-field>
         </div>
         <mat-form-field>
-          <input class="employee__position" matInput placeholder="Position" formControlName="position" (ngModelChange)="UpdateBase()">
+          <input class="employee__position" matInput placeholder="Position" formControlName="position" (blur)="UpdateBase()">
         </mat-form-field>
         <div class="employee__skills">
           <mat-form-field>
@@ -34,7 +34,7 @@
                 class="employee__input_skill"
                 formControlName="skill"
                 matInput
-                (ngModelChange)="UpdateBase()"
+                (blur)="UpdateBase()"
                 placeholder="Your skills"
                 [matChipInputFor]="chipList"
                 (matChipInputTokenEnd)="add($event)">
@@ -60,7 +60,7 @@
           </mat-form-field>
         </div>
         <mat-form-field>
-          <textarea matInput formControlName="character" placeholder="Characteristic" class="employee__textarea" (ngModelChange)="UpdateBase()"></textarea>
+          <textarea matInput formControlName="character" placeholder="Characteristic" class="employee__textarea" (blur)="UpdateBase()"></textarea>
         </mat-form-field>
         <button mat-button type="submit" class="employee__btn">Save</button>
       </form>

@@ -5,18 +5,17 @@
       "firstName": "Larisa",
       "lastName": "Gorobets",
       "Sex": "Female",
-      "birthDay": "17.02.1997",
+      "birthDay": "20.2.1997",
       "position": "Junior",
       "idskill": [
-        4,
         1,
+        4,
         6,
-        3,
-        2
+        5
       ],
       "characteristic": "some text",
-      "progress": 85,
-      "id": 1
+      "progress": 60,
+      "id": 2
     }
   ],
   "skills": [

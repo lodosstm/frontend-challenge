@@ -1,0 +1,117 @@
+.demo-chip-list {
+  width: 100%;
+}
+
+mat-form-field{
+  width: 97.5%;
+}
+
+.employee{
+  &__i{
+    height: 100vh;
+    background: #ddd;
+    padding: 20px;
+  }
+
+  &__link{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    color: #5a5a5a;
+  }
+
+  &__photo{
+    margin: 40px 20px;
+    width: 150px;
+    text-align: center;
+  }
+
+  &__form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__description{
+    padding: 40px 0 40px 30px;
+    width: 70%;
+    position: relative;
+
+    &__input{
+      width: 100%;
+    }
+  }
+
+  &__name{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    mat-form-field{
+      width: 45%;
+    }
+
+    input{
+      width: 88%;
+    }
+  }
+
+  &__card{
+    width: 100%;
+  }
+
+  &__sex-and-birthday{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    mat-form-field{
+      width: 100px;
+      margin-right: 30px;
+    }
+  }
+
+  &__textarea{
+    height: 100px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 2px 2px #ccc;
+  }
+
+  &__btn{
+    text-align: center;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    background: #4ec08a;
+    position: absolute;
+    color: #fff;
+    right: 30px;
+    bottom: -50px;
+    border-radius: 6px;
+    box-shadow: inset 0 -2px 2px 0 #077e38;
+
+    &:hover{
+      background: #00C853;
+      transition: all .5s;
+    }
+  }
+
+  &__position{
+    width: 97.5%;
+  }
+}
+
+.search{
+  width: 97%;
+  margin: 3px 3px 0;
+
+  &__list{
+    list-style: none;
+  }
+
+  &__item{
+    cursor: pointer;
+  }
+}

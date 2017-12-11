@@ -1,21 +1,20 @@
-import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {MatChipInputEvent} from '@angular/material/chips';
-
+import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Employee} from '../../shared/models/employee.model';
 import {EmployeesService} from '../shared/services/employees.service';
+import {MatChipInputEvent} from '@angular/material/chips';
 import {SkillsService} from '../shared/services/skills.service';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Skill} from '../../shared/models/skill.module';
-import {Router} from '@angular/router';
 
 @Component({
-  selector: 'task-add-card',
-  templateUrl: './add-card.component.html',
-  styleUrls: ['./add-card.component.less']
+  selector: 'task-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.less']
 })
-export class AddCardComponent implements OnInit {
+export class EditComponent implements OnInit {
 
-  form: FormGroup;
+  myGroup: FormGroup;
   selectable = true;
   removable = true;
 
@@ -24,7 +23,6 @@ export class AddCardComponent implements OnInit {
   result = [];
   id: number;
   birthDay: string;
-  percentsEmployee = 20;
   persents = {
     'photo': 20,
     'firstName': 5,
@@ -35,18 +33,54 @@ export class AddCardComponent implements OnInit {
     'idskill': 5,
     'characteristic': 10
   };
+  employee: Employee;
+  percentsEmployee: number;
+  date: Date;
 
   constructor(private employeeService: EmployeesService,
               private skillsService: SkillsService,
-              private router: Router) {}
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.form = this.employeeService.InitEmployee();
-    this.employeeService.createNewEmployee(this.InitEmployee())
-      .subscribe((employ: Employee) => { this.id = employ.id; });
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = parseInt(params.get('id'), 10);
+      this.employee = this.employeeService.giveEmployee();
+    });
+    this.employeeService.getEmployeeById(this.id).subscribe((data: Employee) => {
+      this.employee = data;
+    });
+    this.date = this.employee.birthDay !== null ? new Date(this.employee.birthDay.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1')) : null;
+    this.myGroup = new FormGroup({
+      'firstname': new FormControl(this.employee.firstName, []),
+      'lastname': new FormControl(this.employee.lastName, []),
+      'position': new FormControl(this.employee.position, []),
+      'sex': new FormControl(this.employee.Sex, []),
+      'birthday': new FormControl(this.date, []),
+      'character': new FormControl(this.employee.characteristic, []),
+      'skill': new FormControl(null, [])
+    });
+    this.birthDay = [this.myGroup.value.birthday.getDate(),
+      this.myGroup.value.birthday.getMonth() + 1,
+      this.myGroup.value.birthday.getFullYear()].join('.');
+    this.idskills = this.employee.idskill;
+    this.searchSkill();
     this.skillsService.Skills();
     this.search();
     this.calculator();
+    this.percentsEmployee = this.employee.progress;
+  }
+
+  searchSkill() {
+    let k = 0;
+    for (const j in this.employee.idskill) {
+      if (this.employee.idskill.hasOwnProperty(j)) {
+        this.skillsService.getSkill(this.employee.idskill[j]).subscribe((skill: Skill) => {
+          this.skills[k] = skill.skillName;
+          k++;
+        });
+      }
+    }
   }
 
   add(event: MatChipInputEvent) {
@@ -90,14 +124,14 @@ export class AddCardComponent implements OnInit {
   }
 
   InitEmployee() {
-    return new Employee('http://dummyimage.com/150',
-      this.form.value.firstname,
-      this.form.value.lastname,
-      this.form.value.sex,
+      return new Employee('http://dummyimage.com/150',
+      this.myGroup.value.firstname,
+      this.myGroup.value.lastname,
+      this.myGroup.value.sex,
       this.birthDay,
-      this.form.value.position,
+      this.myGroup.value.position,
       this.idskills,
-      this.form.value.character,
+      this.myGroup.value.character,
       this.percentsEmployee);
   }
 
@@ -105,41 +139,20 @@ export class AddCardComponent implements OnInit {
     this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
       if (data) {
         this.employeeService.updateEmployees();
-        this.router.navigate(['/system']);
-      }
-    });
-  }
-
-  UpdateBase() {
-    let empl: Employee;
-    empl = this.InitEmployee();
-    this.employeeService.updateNewEmployee(this.id, empl).subscribe(data => {
-      if (data) {
-        this.search();
-        this.calculator();
+        this.router.navigate(['/system/watch', `${this.id}`]);
       }
     });
   }
 
   SelectionChange(event) {
-    this.form.value.birthday = event.value;
-    const day = this.form.value.birthday.getDate() < 10 ? '0' + this.form.value.birthday.getDate() : this.form.value.birthday.getDate();
-    const month = (this.form.value.birthday.getMonth() + 1);
-    const year = this.form.value.birthday.getFullYear();
-    this.birthDay = [day,
-      month < 10 ? '0' + month : month,
-      year].join('.');
-    this.UpdateBase();
+    this.myGroup.value.birthday = event.value;
+    this.birthDay = [this.myGroup.value.birthday.getDate(),
+      this.myGroup.value.birthday.getMonth() + 1,
+      this.myGroup.value.birthday.getFullYear()].join('.');
   }
 
-  deleteCard() {
-    this.employeeService.deleteEmployee(this.id).subscribe(() => {
-      this.employeeService.updateEmployees();
-      this.employeeService.getEmployeeById(this.id).isEmpty();
-      {
-        this.router.navigate(['/system']);
-      }
-    });
+  returnCard() {
+    this.router.navigate(['/system/watch', `${this.id}`]);
   }
 
   itemClick(i) {
@@ -167,7 +180,6 @@ export class AddCardComponent implements OnInit {
     this.result.length = 0;
     const input = document.getElementById('skill');
     this.addItem(input);
-    this.UpdateBase();
   }
 
   addItem(input) {
@@ -180,11 +192,11 @@ export class AddCardComponent implements OnInit {
   search() {
     let k = 0;
     this.result.length = 0;
-    if (this.form.value.skill !== '') {
+    if (this.myGroup.value.skill !== '') {
       for (const j in this.skillsService.skills) {
         if (this.skillsService.skills.hasOwnProperty(j)) {
-            if (this.skillsService.skills[j].skillName.indexOf(this.form.controls.skill.value) === 0
-              && this.form.controls.skill.value.length <= this.skillsService.skills[j].skillName.length) {
+          if (this.skillsService.skills[j].skillName.indexOf(this.myGroup.controls.skill.value) === 0
+            && this.myGroup.controls.skill.value.length <= this.skillsService.skills[j].skillName.length) {
             this.result[k] = this.skillsService.skills[j].skillName;
             k++;
           }

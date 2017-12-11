@@ -16,7 +16,6 @@ export class WatchComponent implements OnInit {
   id: number;
   employee: Employee;
   skills = [];
-  skillsAll: Skill;
 
   constructor(private employeeService: EmployeesService,
               private router: Router,
@@ -60,4 +59,7 @@ export class WatchComponent implements OnInit {
     this.router.navigate(['/system']);
   }
 
+  edit() {
+    this.router.navigate(['/system/edit', `${this.employee.id}`]);
+  }
 }
