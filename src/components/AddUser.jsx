@@ -2,8 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 const AddUser = () => (
-	<div>
-		<Link to="/new">+</Link>
+	<div className="addUserElement">
+		<Link to="/new"><button className="addUserElement__button">+</button></Link>
 	</div>
 );
 

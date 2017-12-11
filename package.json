@@ -18,6 +18,8 @@
   "license": "MIT",
   "homepage": "https://github.com/alicoding/react-webpack-babel#readme",
   "dependencies": {
+    "ajv": "^5.5.1",
+    "ajv-keywords": "^1.5.1",
     "node-sass": "^4.7.2",
     "normalize.css": "^7.0.0",
     "react": "^16.2.0",

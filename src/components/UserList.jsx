@@ -1,26 +1,58 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+
+
+
 class UserList extends React.Component {
 	constructor(props) {
 		super(props);
+		this.getUser = this.getUser.bind(this);
 		this.state = {
-			users: [
-				{id:0, name:'qwe'},
-				{id:1, name:'asd'},
-				{id:22, name:'zxc'},
-				{id:3, name:'bgt'},
-				{id:14, name:'zsd'},
-				{id:5, name:'nij'}
-			]
+			loading: true,
+			users: []
 		};
+
 	}
+
+
+	getUser() {
+		let self = this;
+
+		fetch('http://localhost:3000/users')
+			.then(
+				function(response) {
+					if (response.status !== 200) {
+						console.log('Looks like there was a problem. Status Code: ' +
+							response.status);
+						return;
+					}
+					response.json().then((data)=> (self.setState({
+						users: data,
+						loading: false
+					})));
+				}
+			)
+			.catch(function(err) {
+				console.log('Fetch Error :-S', err);
+			});
+	}
+
+
+
+	componentDidMount () {
+		this.getUser();
+	}
+
+
+
+
 
 	renderUser(i) {
 		const user = this.state.users[i];
 		const path =  "/" +  user.id;
 		return (
-			<div>
+			<div className="userList__user">
 				<Link to={path}>
 					Name: {user.name}, id: {user.id}
 				</Link>
@@ -28,13 +60,24 @@ class UserList extends React.Component {
 		);
 	}
 
+
+
+
 	render() {
 
+		if (this.state.loading) {
+			return (
+				<div>!!Loading!!</div>
+			);
+		}
+
+
+
 		return (
-			<div>
-				<ul>
+			<div className="userList">
+				<ul className="userList__container">
 					{this.state.users.map((user, index)=>(
-						<li key={this.state.users[index].id}>{this.renderUser(index)}</li>
+						<li className="userList__item" key={this.state.users[index].id}>{this.renderUser(index)}</li>
 					))}
 
 				</ul>

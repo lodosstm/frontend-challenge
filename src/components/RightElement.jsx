@@ -11,19 +11,13 @@ class RightElement extends React.Component {
 
 
 		return (
-			<div>
+			<div className="rightElement">
 				<Route path="/new" component={NewUser}/>
 				<Route path="/:userId" component={CurrentUser}/>
 			</div>
 		);
 	}
-
 }
-
-
-
-
-
 
 
 

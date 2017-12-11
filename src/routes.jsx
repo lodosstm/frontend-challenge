@@ -11,8 +11,10 @@ const Routes = () => (
   <Router>
     <div>
 			<div className="topElement">List</div>
-			<LeftElement/>
-			<RightElement/>
+			<div className="containerForUserListAndUserInfo">
+				<LeftElement/>
+				<RightElement/>
+			</div>
     </div>
   </Router>
 );
