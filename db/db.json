@@ -10,47 +10,23 @@
     },
     {
       "id": 2,
-      "name": "cas"
-    },
-    {
-      "id": 3,
-      "name": "nhg"
-    },
-    {
-      "id": 4,
-      "name": "mju"
-    },
-    {
-      "id": 5,
       "name": "oiu"
     },
     {
-      "id": 6,
-      "name": "nhy"
+      "id": 3,
+      "name": "xcv"
+    },
+    {
+      "id": 5,
+      "name": "sdf"
     },
     {
       "id": 7,
-      "name": "cgy"
-    },
-    {
-      "id": 8,
-      "name": "bgt"
-    },
-    {
-      "id": 9,
-      "name": "nhy"
-    },
-    {
-      "id": 10,
       "name": "mju"
     },
     {
-      "id": 11,
-      "name": "nhy"
-    },
-    {
-      "name": "frs",
-      "id": 12
+      "id": 9,
+      "name": "nyt"
     }
   ]
 }

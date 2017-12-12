@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import NewUser from "./NewUser";
-import CurrentUser from "./CurrentUser";
+import UserInfo from "./UserInfo";
 
 
 
@@ -12,8 +11,7 @@ class RightElement extends React.Component {
 
 		return (
 			<div className="rightElement">
-				<Route path="/new" component={NewUser}/>
-				<Route path="/:userId" component={CurrentUser}/>
+				<Route path="/:userId" component={UserInfo}/>
 			</div>
 		);
 	}

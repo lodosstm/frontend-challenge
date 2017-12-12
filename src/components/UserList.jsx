@@ -16,26 +16,19 @@ class UserList extends React.Component {
 	}
 
 
+
+
+
 	getUser() {
 		let self = this;
 
 		fetch('http://localhost:3000/users')
-			.then(
-				function(response) {
-					if (response.status !== 200) {
-						console.log('Looks like there was a problem. Status Code: ' +
-							response.status);
-						return;
-					}
-					response.json().then((data)=> (self.setState({
+			.then(response => response.json())
+				.then(data => self.setState({
 						users: data,
 						loading: false
-					})));
-				}
-			)
-			.catch(function(err) {
-				console.log('Fetch Error :-S', err);
-			});
+					})
+				);
 	}
 
 
@@ -48,13 +41,17 @@ class UserList extends React.Component {
 
 
 
+
+
 	renderUser(i) {
 		const user = this.state.users[i];
 		const path =  "/" +  user.id;
 		return (
-			<div className="userList__user">
+			<div>
 				<Link to={path}>
-					Name: {user.name}, id: {user.id}
+					<div className="userList__user">
+						Name: {user.name}, id: {user.id}
+					</div>
 				</Link>
 			</div>
 		);
@@ -75,6 +72,7 @@ class UserList extends React.Component {
 
 		return (
 			<div className="userList">
+				<div onClick={()=>this.getUser()}>Test</div>
 				<ul className="userList__container">
 					{this.state.users.map((user, index)=>(
 						<li className="userList__item" key={this.state.users[index].id}>{this.renderUser(index)}</li>
