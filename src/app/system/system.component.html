@@ -1,14 +1,14 @@
-<mat-toolbar class="header">
+<mat-toolbar class="header" id="header">
   <task-header></task-header>
 </mat-toolbar>
 <section class="content">
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <div [routerLink]="'/system/add'" class="sidebar__add">
       <a class="sidebar__link"><mat-icon class="large material-icons sidebar__icon">add_circle_outline</mat-icon></a>
     </div>
     <task-sidebar *ngFor="let item of employeeService.employees" [item]="item"></task-sidebar>
   </div>
-  <div class="employee">
+  <div class="employee" id="employee">
     <router-outlet></router-outlet>
   </div>
 </section>

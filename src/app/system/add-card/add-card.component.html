@@ -1,4 +1,4 @@
-<div class="employee__i">
+<div class="employee__i" id="js-employee">
   <div class="employee_cancel">
     <a class="employee__link" (click)="deleteCard()">
       <mat-icon class="large material-icons employee__cancel">&#xE888;</mat-icon>
@@ -33,25 +33,26 @@
                 id="skill"
                 class="employee__input_skill"
                 formControlName="skill"
-                (ngModelChange)="search()"
+                (ngModelChange)="search($event)"
                 matInput
+                (keyup)="keydown($event)"
                 (blur)="UpdateBase()"
                 placeholder="Your skills"
                 [matChipInputFor]="chipList"
-                (matChipInputTokenEnd)="add($event)">
+                (matChipInputTokenEnd)="addEvent($event)">
             </mat-chip-list>
           </mat-form-field>
-          <div class="search" *ngFor="let item of result, let i=index">
-            <ul class="search__list" *ngIf="form.value.skill.length>0 || result.length==0">
-              <li class="search__item" (click)="itemClick(i)">{{item}}</li>
+          <div class="search">
+            <ul class="search__list" *ngIf="this.result.length > 0">
+              <li class="search__item" *ngFor="let item of result, let i=index" [ngClass]="{'active-item': index === i}">{{item}}</li>
             </ul>
           </div>
         </div>
         <div class="employee__sex-and-birthday">
           <mat-form-field>
             <mat-select class="employee__sex" (selectionChange)="UpdateBase()" placeholder="Select Gender" formControlName="sex">
-              <mat-option value="Male">Male</mat-option>
-              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Male" (click)="item1()">Male</mat-option>
+              <mat-option value="Female" (click)="item2()">Female</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field class="employee__birthday">

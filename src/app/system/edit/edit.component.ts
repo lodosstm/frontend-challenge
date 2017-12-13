@@ -21,6 +21,8 @@ export class EditComponent implements OnInit {
   skills = [];
   idskills = [];
   result = [];
+  index = -1;
+  event: MatChipInputEvent;
   id: number;
   birthDay: string;
   persents = {
@@ -65,12 +67,42 @@ export class EditComponent implements OnInit {
         this.myGroup.value.birthday.getMonth() + 1,
         this.myGroup.value.birthday.getFullYear()].join('.');
     }
+
     this.idskills = this.employee.idskill;
     this.searchSkill();
     this.skillsService.Skills();
-    this.search();
     this.calculator();
     this.percentsEmployee = this.employee.progress;
+
+  }
+
+  item1() {
+    const el = document.getElementsByClassName('mat-option');
+    for (const i in el) {
+      if (el.hasOwnProperty(i)) {
+        el[i].classList.remove('active-select-two');
+      }
+    }
+  }
+
+  item2() {
+    const el = document.getElementsByClassName('mat-option');
+    for (const i in el) {
+      if (el.hasOwnProperty(i)) {
+        el[i].classList.add('active-select-two');
+      }
+    }
+  }
+
+  clickSelect() {
+    if (this.employee.Sex === 'Female') {
+      const el = document.getElementsByClassName('mat-option');
+      for (const i in el) {
+        if (el.hasOwnProperty(i)) {
+          el[i].classList.add('active-select-two');
+        }
+      }
+    }
   }
 
   searchSkill() {
@@ -113,7 +145,6 @@ export class EditComponent implements OnInit {
       this.result.length = 0;
     }
     if (input && this.skills.length <= 5) {
-      console.log(input);
       input.value = '';
     }
   }
@@ -180,31 +211,58 @@ export class EditComponent implements OnInit {
       });
     }
     this.result.length = 0;
-    const input = document.getElementById('skill');
+    const input = this.event.input;
     this.addItem(input);
   }
 
   addItem(input) {
     if (input && this.skills.length <= 5) {
-      console.log(input);
       input.value = '';
     }
   }
 
-  search() {
+  search(event) {
     let k = 0;
     this.result.length = 0;
-    if (this.myGroup.value.skill !== '') {
+    if (event !== undefined) {
       for (const j in this.skillsService.skills) {
         if (this.skillsService.skills.hasOwnProperty(j)) {
-          if (this.skillsService.skills[j].skillName.indexOf(this.myGroup.controls.skill.value) === 0
-            && this.myGroup.controls.skill.value.length <= this.skillsService.skills[j].skillName.length) {
+          if (this.skillsService.skills[j].skillName.indexOf(event) === 0
+            && event.length <= this.skillsService.skills[j].skillName.length) {
             this.result[k] = this.skillsService.skills[j].skillName;
             k++;
           }
         }
       }
     }
+  }
+
+  keydown(event) {
+    if (event.key === 'ArrowDown') {
+      if (this.result !== null && this.index < this.result.length - 1) {
+        this.index++;
+      } else {
+        this.index = 0;
+      }
+    } else if (event.key === 'ArrowUp') {
+      if (this.index > 0) {
+        this.index--;
+      } else {
+        this.index = this.result.length - 1;
+      }
+    } else if (event.key === 'Enter') {
+      if (this.index === -1) {
+        this.add(this.event);
+      } else {
+        this.itemClick(this.index);
+      }
+    } else {
+      this.index = -1;
+    }
+  }
+
+  addEvent(event) {
+    this.event = event;
   }
 
   calculator() {

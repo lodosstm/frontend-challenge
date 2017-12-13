@@ -13,5 +13,9 @@ export class SystemComponent implements OnInit {
 
   ngOnInit() {
     this.employeeService.updateEmployees();
+    const menu = 83;
+    const windowClient = document.body.clientHeight;
+    document.getElementById('sidebar').style.height = (windowClient - menu) + 'px';
+    document.getElementById('employee').style.height = (windowClient - menu) + 'px';
   }
 }

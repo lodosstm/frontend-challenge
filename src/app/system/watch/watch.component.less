@@ -1,22 +1,27 @@
 .employee{
   &__i{
-    height: 100vh;
-    background: #ddd;
-    padding: 20px;
-    box-shadow: inset 0px 7px 8px -7px rgba(0, 0, 0, 0.5), 5px 0px 3px -5px rgba(0, 0, 0, 0.5);
+    width: 92%;
+    min-width: 1328px;
+    height: 100%;
+    background: #fafafa;
+    padding: 0 20px;
+    position: relative;
+    box-shadow: inset 0px 7px 8px -4px #c8c8c8, 5px 0px 8px -2px #ddd;
   }
 
   &__link{
     position: absolute;
     right: 30px;
     top: 30px;
-    color: #5a5a5a;
   }
 
   &__photo{
-    margin: 40px 20px;
-    width: 150px;
+    margin: 50px 26px;
     text-align: center;
+  }
+
+  &__img{
+    width: 165px;
   }
 
   &__form{
@@ -26,35 +31,32 @@
   }
 
   &__description{
-    padding: 20px 30px;
-    width: 70%;
+    padding: 45px 0 40px 15px;
+    min-width: 1007px;
     position: relative;
-    color: #8d6e63;
-
-    &__input{
-      width: 100%;
-    }
   }
 
   &__name{
-    padding-right: 20px;
+    padding: 8px 13px 8px 0;
+    margin: 0;
+    font-size: 30px;
+    color: #6c4553;
   }
 
   &__card{
     width: 100%;
   }
 
-  &__textarea{
-    height: 100px;
-  }
-
-  &__sex-and-birthday{
-    clear: both;
-    margin-top: 20px;
+  &__sex-birthday{
+    color: #91737d;
   }
 
   &__data{
-    padding: 12px 0;
+    font-size: 21px;
+
+    p{
+      margin: 16px 0 0 9px;
+    }
   }
 
   &__all-skills{
@@ -64,24 +66,40 @@
   }
 
   &__skill-item{
-    background: #ccc;
-    color: #00a5a1;
-    border-radius: 6px;
-    padding: 10px;
-    font-size: 12px;
-    margin-right: 5px;
+    background: #e7e7e7;
+    color: #09a5a1;
+    border-radius: 4px;
+    padding: 8px 0px;
+    font-size: 16px;
+    margin-right: 6px;
+    min-width: 121px;
+    text-align: center;
+  }
+
+  &__character{
+    width: 1007px;
+    font-size: 22px;
+    margin: 48px 2px;
+    line-height: 26px;
+    color: #6c4553;
   }
 
   &__btn{
     text-align: center;
-    padding: 10px 30px;
-    text-transform: uppercase;
-    background: #0f9d58;
+    padding: 21px 0;
+    background: #4ec08a;
     position: absolute;
     color: #fff;
-    right: 30px;
-    bottom: -350px;
+    width: 248px;
+    right: 36px;
+    bottom: -58px;
     border-radius: 6px;
+    font-size: 21px;
+    box-shadow: inset 0 -2px 2px 0 #077e38;
+
+    &_edit{
+      left: 15px;
+    }
 
     &:hover{
       background: #00C853;
@@ -95,11 +113,18 @@
     flex-wrap: wrap;
   }
 
-  &__position{
-    margin-bottom: 20px;
+  &__cancel{
+    position: relative;
+    top: -13px;
+    left: -9px;
+    font-size: 50px;
+    cursor: pointer;
+    color: #aa979e;
   }
-}
 
-mat-icon{
-  cursor: pointer;
+  &__position{
+    margin: 18px 0 44px 2px;
+    font-size: 21px;
+    color: #6c4553;
+  }
 }

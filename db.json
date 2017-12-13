@@ -11,28 +11,30 @@
         1,
         4,
         6,
-        5
+        5,
+        8
       ],
-      "characteristic": "some text",
+      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis deleniti dicta excepturi explicabo hic incidunt laudantium modi nesciunt odio officiis placeat provident quaerat recusandae sequi similique ut vel, vitae?",
       "progress": 60,
       "id": 1
     },
     {
-      "photo": "http://dummyimage.com/300",
+      "photo": "http://dummyimage.com/150",
       "firstName": "F.Name",
       "lastName": "L.Name",
       "Sex": "Female",
       "position": "some text",
       "idskill": [
         1,
-        8
+        8,
+        5
       ],
-      "characteristic": null,
-      "progress": 20,
+      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis deleniti dicta excepturi explicabo hic incidunt laudantium modi nesciunt odio officiis placeat provident quaerat recusandae sequi similique ut vel, vitae?",
+      "progress": 70,
       "id": 2
     },
     {
-      "photo": "http://dummyimage.com/300",
+      "photo": "http://dummyimage.com/150",
       "firstName": "F.Name",
       "lastName": "L.Name",
       "Sex": "Female",
@@ -40,9 +42,23 @@
       "idskill": [
         1
       ],
-      "characteristic": null,
-      "progress": 20,
+      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis deleniti dicta excepturi explicabo hic incidunt laudantium modi nesciunt odio officiis placeat provident quaerat recusandae sequi similique ut vel, vitae?",
+      "progress": 65,
       "id": 3
+    },
+    {
+      "photo": "http://dummyimage.com/150",
+      "firstName": "First",
+      "lastName": "Last",
+      "Sex": "Female",
+      "birthDay": "21.12.2017",
+      "position": "some text",
+      "idskill": [
+        1
+      ],
+      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis deleniti dicta excepturi explicabo hic incidunt laudantium modi nesciunt odio officiis placeat provident quaerat recusandae sequi similique ut vel, vitae?",
+      "progress": 70,
+      "id": 4
     }
   ],
   "skills": [
@@ -77,6 +93,18 @@
     {
       "skillName": "react",
       "id": 8
+    },
+    {
+      "skillName": "reac",
+      "id": 9
+    },
+    {
+      "skillName": "re",
+      "id": 10
+    },
+    {
+      "skillName": "r",
+      "id": 11
     }
   ],
   "users": [

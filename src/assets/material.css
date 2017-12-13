@@ -217,10 +217,10 @@
   top: -19px;
 }
 
-.employee__birthday .mat-icon{
+.employee__birthday .mat-input-suffix{
   position: relative;
-  top: -8px;
-  left: -34px;
+  top: -30px;
+  left: -30px;
   font-size: 21px !important;
 }
 
@@ -302,12 +302,12 @@ input.mat-input-element {
   /*margin-top: -.0625em;*/
   background: #fff;
   border-radius: 7px;
-  border: 1px solid #ccc;
+  border: 2px solid #e6e1e3;
   text-decoration: none;
   width: 100%;
   padding: 8px;
   margin: 3px;
-  box-shadow: inset 0px 2px 2px #ccc;
+  box-shadow: inset 0px 2px 2px #e6e1e3;
   height: 17px;
 }
 
@@ -384,14 +384,14 @@ input.mat-input-element.employee__input_skill {
 .mat-chip-list-wrapper{
   background: #fff;
   border-radius: 7px;
-  border: 1px solid #ccc;
+  border: 2px solid #e6e1e3;
   text-decoration: none;
   width: 97.3%;
   padding: 7px;
   margin: 3px 5px 0;
   font-size: 21px;
   height: 65px;
-  box-shadow: inset 0px 2px 2px #ccc;
+  box-shadow: inset 0px 2px 2px #e6e1e3;
 }
 
 .mat-menu-item {
@@ -422,7 +422,7 @@ input.mat-input-element.employee__input_skill {
 .mat-select-trigger {
   height: 1.125em;
   position: relative;
-  top: 78px;
+  top: 76px;
 }
 
 .mat-slide-toggle-content {
@@ -821,7 +821,7 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-option.mat-active {
-  background: #000;
+  background: #323232 !important;
   color: #fff
 }
 
@@ -1244,12 +1244,12 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-form-field-placeholder {
-  color: rgba(0, 0, 0, .54);
+  color: #c1a1a8;
   /*margin: 12px;*/
 }
 
 .employee__name .mat-form-field-placeholder {
-  color: rgba(0, 0, 0, .54);
+  color: #c1a1a8;
   font-size: 21px;
   margin: 12px 0 12px 25px;
 }
@@ -1266,7 +1266,7 @@ input.mat-input-element.employee__input_skill {
 }
 
 .employee__skills .mat-form-field-placeholder {
-  color: rgba(0, 0, 0, .54);
+  color: #c1a1a8;
 }
 
 .employee__sex-and-birthday .mat-form-field-placeholder {
@@ -1546,27 +1546,35 @@ input.mat-input-element.employee__input_skill {
 
 .mat-select-content, .mat-select-panel-done-animating {
   background: transparent;
+  height: 170px;
 }
 
 .employee__sex-and-birthday .mat-select-value-text span{
   position: relative;
-  top: -10px;
+  top: 6px;
 }
 
-.employee__sex-and-birthday mat-select[aria-activedescendant] .mat-select-value::after{
+.active-select-two{
+  position: relative;
+  top: 42px;
+}
+
+.employee__sex-and-birthday mat-select[aria-activedescendant] .mat-select-arrow-wrapper::after{
   font-family: 'Material Icons';
   content: "\E316";
   position: relative;
-  right: -172px;
+  right: 25px;
+  top: -70px;
   font-size: 35px !important;
   cursor: pointer;
 }
 
-.employee__sex-and-birthday .mat-select-value::after{
+.employee__sex-and-birthday .mat-select-arrow-wrapper::after{
   font-family: 'Material Icons';
   content: "\E313";
   position: relative;
-  right: -172px;
+  right: 25px;
+  top: -70px;
   font-size: 35px !important;
 }
 

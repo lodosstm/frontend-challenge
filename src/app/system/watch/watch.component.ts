@@ -26,11 +26,11 @@ export class WatchComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'), 10);
       this.employee = this.employeeService.giveEmployee();
+      this.searchSkill();
     });
     this.employeeService.getEmployeeById(this.id).subscribe((data: Employee) => {
       this.employee = data;
     });
-    this.searchSkill();
   }
 
   deleteEmployee() {
@@ -44,6 +44,7 @@ export class WatchComponent implements OnInit {
   }
 
   searchSkill() {
+    this.skills.length = 0;
     let k = 0;
     for (const j in this.employee.idskill) {
       if (this.employee.idskill.hasOwnProperty(j)) {

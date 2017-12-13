@@ -7,6 +7,7 @@ import {EmployeesService} from '../shared/services/employees.service';
 import {SkillsService} from '../shared/services/skills.service';
 import {Skill} from '../../shared/models/skill.module';
 import {Router} from '@angular/router';
+import {log} from 'util';
 
 @Component({
   selector: 'task-add-card',
@@ -21,8 +22,10 @@ export class AddCardComponent implements OnInit {
 
   skills = [];
   idskills = [];
+  event: MatChipInputEvent;
   result = [];
   id: number;
+  index = -1;
   birthDay: string;
   percentsEmployee = 20;
   persents = {
@@ -45,7 +48,6 @@ export class AddCardComponent implements OnInit {
     this.employeeService.createNewEmployee(this.InitEmployee())
       .subscribe((employ: Employee) => { this.id = employ.id; });
     this.skillsService.Skills();
-    this.search();
     this.calculator();
   }
 
@@ -77,7 +79,6 @@ export class AddCardComponent implements OnInit {
       this.result.length = 0;
     }
     if (input && this.skills.length <= 5) {
-      console.log(input);
       input.value = '';
     }
   }
@@ -111,14 +112,33 @@ export class AddCardComponent implements OnInit {
   }
 
   UpdateBase() {
+    this.result.length = 0;
+    this.index = -1;
     let empl: Employee;
     empl = this.InitEmployee();
     this.employeeService.updateNewEmployee(this.id, empl).subscribe(data => {
       if (data) {
-        this.search();
         this.calculator();
       }
     });
+  }
+
+  item1() {
+    const el = document.getElementsByClassName('mat-option');
+    for (const i in el) {
+      if (el.hasOwnProperty(i)) {
+        el[i].classList.remove('active-select-two');
+      }
+    }
+  }
+
+  item2() {
+    const el = document.getElementsByClassName('mat-option');
+    for (const i in el) {
+      if (el.hasOwnProperty(i)) {
+        el[i].classList.add('active-select-two');
+      }
+    }
   }
 
   SelectionChange(event) {
@@ -165,26 +185,53 @@ export class AddCardComponent implements OnInit {
       });
     }
     this.result.length = 0;
-    const input = document.getElementById('skill');
+    const input = this.event.input;
     this.addItem(input);
     this.UpdateBase();
   }
 
   addItem(input) {
     if (input && this.skills.length <= 5) {
-      console.log(input);
       input.value = '';
     }
   }
 
-  search() {
+  addEvent(event) {
+    this.event = event;
+  }
+
+  keydown(event) {
+    if (event.key === 'ArrowDown') {
+      if (this.result !== null && this.index < this.result.length - 1) {
+        this.index++;
+      } else {
+        this.index = 0;
+      }
+    } else if (event.key === 'ArrowUp') {
+      if (this.index > 0) {
+        this.index--;
+      } else {
+        this.index = this.result.length - 1;
+      }
+    } else if (event.key === 'Enter') {
+        if (this.index === -1) {
+          this.add(this.event);
+        } else {
+          this.itemClick(this.index);
+        }
+    } else {
+        this.index = -1;
+      }
+  }
+
+  search(event) {
     let k = 0;
     this.result.length = 0;
-    if (this.form.value.skill !== '') {
+    if (event !== undefined) {
       for (const j in this.skillsService.skills) {
         if (this.skillsService.skills.hasOwnProperty(j)) {
-            if (this.skillsService.skills[j].skillName.indexOf(this.form.controls.skill.value) === 0
-              && this.form.controls.skill.value.length <= this.skillsService.skills[j].skillName.length) {
+          if (this.skillsService.skills[j].skillName.indexOf(event) === 0
+            && event.length <= this.skillsService.skills[j].skillName.length) {
             this.result[k] = this.skillsService.skills[j].skillName;
             k++;
           }
