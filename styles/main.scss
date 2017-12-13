@@ -13,45 +13,18 @@ body {
   border-bottom: 1px solid black;
 }
 
-.containerForUserListAndUserInfo {
-  display: flex;
+.containerForUserListAndInfo {
+  display:flex;
 }
 
-
-.leftElement {
-  background-color: azure;
-  width: 30%;
-  border-right:1px solid black;
-}
-.rightElement {
-  background-color: white;
-  width: 70%;
-}
-.addUserElement {
-  margin-top: 5px;
-}
-
-.addUserElement__button {
-  width: 30px;
-  height: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  position: relative;
-}
 .userList {
-  margin-top: 0px;
+  width:30%;
+  border-right: 1px solid black;
 }
-.userList__container {
-  margin: 0;
-  padding: 0;
 
-}
-.userList__item {
-  list-style-type: none
-}
 .userList__user {
   border: 1px solid black;
-  padding: 3px 0;
-  margin-top: 5px;
+  padding: 3px 0 3px 3px;
   margin-right: -1px;
+  margin-top: 5px;
 }
