@@ -50,19 +50,21 @@ export class EditComponent implements OnInit {
     this.employeeService.getEmployeeById(this.id).subscribe((data: Employee) => {
       this.employee = data;
     });
-    this.date = this.employee.birthDay !== null ? new Date(this.employee.birthDay.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1')) : null;
+    this.date = this.employee.birthDay !== undefined ? new Date(this.employee.birthDay.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1')) : null;
     this.myGroup = new FormGroup({
-      'firstname': new FormControl(this.employee.firstName, []),
-      'lastname': new FormControl(this.employee.lastName, []),
-      'position': new FormControl(this.employee.position, []),
-      'sex': new FormControl(this.employee.Sex, []),
+      'firstname': new FormControl(this.employee.firstName !== undefined ? this.employee.firstName : null, []),
+      'lastname': new FormControl(this.employee.lastName !== undefined ? this.employee.lastName : null, []),
+      'position': new FormControl(this.employee.position !== undefined ? this.employee.position : null, []),
+      'sex': new FormControl(this.employee.Sex !== undefined ? this.employee.Sex : null, []),
       'birthday': new FormControl(this.date, []),
-      'character': new FormControl(this.employee.characteristic, []),
+      'character': new FormControl(this.employee.characteristic !== undefined ? this.employee.characteristic : null, []),
       'skill': new FormControl(null, [])
     });
-    this.birthDay = [this.myGroup.value.birthday.getDate(),
-      this.myGroup.value.birthday.getMonth() + 1,
-      this.myGroup.value.birthday.getFullYear()].join('.');
+    if (this.employee.birthDay !== undefined) {
+      this.birthDay = [this.myGroup.value.birthday.getDate(),
+        this.myGroup.value.birthday.getMonth() + 1,
+        this.myGroup.value.birthday.getFullYear()].join('.');
+    }
     this.idskills = this.employee.idskill;
     this.searchSkill();
     this.skillsService.Skills();

@@ -1,19 +1,14 @@
 .sidebar{
   &__card{
     box-shadow: 5px 0px 8px -10px rgba(0,0,0,0.5);
-    padding: 10px 0;
-    min-height: 150px;
-    border-bottom: 1px solid #ddd;
+    min-height: 160px;
+    border-bottom: 3px solid #ddd;
     display: flex;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     cursor: pointer;
     position: relative;
-
-    &:first-child{
-      border-top: 1px solid #ddd;
-    }
 
     @media only screen and (max-width: 1200px){
       justify-content: center;
@@ -29,14 +24,17 @@
   }
 
   &__photo{
-    width: 20%;
-    margin-left: 10px;
+    width: 92px;
+    margin-left: 13px;
     border-radius: 50%;
   }
 
   &__description{
-    padding: 0 20px;
-    width: 68%;
+    padding: 0 0 0 22px;
+    width: 375px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
     @media only screen and (max-width: 1200px){
       display: none;
@@ -55,9 +53,14 @@
     background: #ccc;
     color: #00a5a1;
     border-radius: 6px;
-    padding: 10px;
+    width: 120px;
+    //padding: 10px;
     margin: 0 5px 5px 0;
-    font-size: 12px;
+    font-size: 16px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__skills{
@@ -65,9 +68,20 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 13px;
   }
 
   &__name {
     text-align: left;
+    width: 100%;
+    margin: 11px 0 0;
+    font-size: 21px;
+    position: relative;
+    top: -2px;
+  }
+
+  &__characteristic{
+    margin: 5px 0;
+    font-size: 18px;
   }
 }

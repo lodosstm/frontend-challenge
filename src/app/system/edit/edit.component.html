@@ -1,7 +1,7 @@
 <div class="employee__i">
   <div class="employee_cancel">
-    <a class="employee__link">
-      <mat-icon class="large material-icons" (click)="returnCard()">cancel</mat-icon>
+    <a class="employee__link" (click)="returnCard()">
+      <mat-icon class="large material-icons employee__cancel">&#xE888;</mat-icon>
     </a>
   </div>
   <div class="employee__form">
@@ -19,8 +19,8 @@
             <input matInput placeholder="Last Name" formControlName="lastname" (blur)="calculator()">
           </mat-form-field>
         </div>
-        <mat-form-field>
-          <input class="employee__position" matInput placeholder="Position" formControlName="position" (blur)="calculator()">
+        <mat-form-field class="employee__position">
+          <input matInput placeholder="Position" formControlName="position" (blur)="calculator()">
         </mat-form-field>
         <div class="employee__skills">
           <mat-form-field>
@@ -59,7 +59,7 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
-        <mat-form-field>
+        <mat-form-field class="employee__character">
           <textarea matInput formControlName="character" placeholder="Characteristic" class="employee__textarea" (blur)="calculator()"></textarea>
         </mat-form-field>
         <button mat-button type="submit" class="employee__btn">Save</button>

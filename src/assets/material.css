@@ -3,6 +3,22 @@
   margin: 0 0 16px
 }
 
+.mat-input-placeholder.mat-form-field-placeholder.ng-tns-c7-4.mat-empty.mat-form-field-empty.ng-star-inserted{
+  display: block;
+}
+
+.mat-select-panel:not([class*=mat-elevation-z]){
+  box-shadow: none !important;
+}
+
+.employee__sex-and-birthday .mat-focused .mat-form-field-placeholder{
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 21px;
+  margin: 18px 25px;
+  padding-left: 5px;
+}
+
 .mat-h2, .mat-title, .mat-typography h2 {
   font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
   margin: 0 0 16px
@@ -165,6 +181,10 @@
   line-height: 1.125
 }
 
+.employee__position .mat-form-field-wrapper {
+  padding-bottom: 10px
+}
+
 .mat-form-field-wrapper {
   padding-bottom: 1.25em
 }
@@ -186,9 +206,8 @@
 
 .employee__birthday .mat-form-field-infix{
   padding: 0 !important;
-  height: 30px;
+  height: 78px;
   position: relative;
-  top: -16px;
 }
 
 .employee__birthday .mat-form-field-suffix{
@@ -198,13 +217,30 @@
   top: -19px;
 }
 
+.employee__birthday .mat-icon{
+  position: relative;
+  top: -8px;
+  left: -34px;
+  font-size: 21px !important;
+}
+
 .employee__birthday .mat-form-field-suffix .mat-icon-button{
   color: #fff;
 }
 
 .mat-form-field-infix {
   padding: .4375em 0;
-  border-top: .84375em solid transparent
+}
+
+.employee__sex-and-birthday mat-select[aria-activedescendant]{
+  background: #000;
+  box-shadow: none;
+  transition: all .5s;
+  border-radius: 7px 7px 0 0;
+}
+
+.employee__sex-and-birthday .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder{
+  transform: none;
 }
 
 .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
@@ -265,7 +301,7 @@
 input.mat-input-element {
   /*margin-top: -.0625em;*/
   background: #fff;
-  border-radius: 4px;
+  border-radius: 7px;
   border: 1px solid #ccc;
   text-decoration: none;
   width: 100%;
@@ -282,15 +318,19 @@ input.mat-input-element.employee__input_skill {
   border: none;
   text-decoration: none;
   width: 100%;
-  padding: 8px;
+  padding: 20px 10px;
   margin: 3px;
-  font-size: 14px;
+  font-size: 21px;
   box-shadow: none;
   height: 17px;
 }
 
 .employee__name .mat-form-field-infix.mat-input-infix{
   border: none;
+}
+
+.employee__skills .mat-form-field-infix.mat-input-infix{
+  padding: 0;
 }
 
 .employee__birthday .mat-input-element.ng-valid.ng-touched.ng-dirty{
@@ -303,6 +343,9 @@ input.mat-input-element.employee__input_skill {
   padding: 0 !important;
 }
 
+.employee__name .mat-input-wrapper{
+  padding-bottom: 2px !important;
+}
 .employee__skills .mat-form-field-infix{
   padding-bottom: 0 !important;
 }
@@ -313,14 +356,14 @@ input.mat-input-element.employee__input_skill {
 
 .employee__birthday .mat-form-field-flex{
   background: #f4ae50;
-  height: 30px;
-  width: 100px;
-  margin-top: 17px;
-  border-radius: 4px;
+  height: 78px;
+  width: 255px;
+  margin-top: 7px;
+  border-radius: 7px;
   box-shadow: inset 0px -2px 2px 0 #dd850e;
 }
 
-.employee__sex-and-birthday .mat-input-element{
+.employee__sex .mat-input-element{
   margin: 0 !important;
   height: 30px;
   padding: 0 !important;
@@ -330,15 +373,24 @@ input.mat-input-element.employee__input_skill {
   box-shadow: none;
 }
 
+.employee__birthday .mat-input-element{
+  height: 78px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 .mat-chip-list-wrapper{
   background: #fff;
-  border-radius: 4px;
+  border-radius: 7px;
   border: 1px solid #ccc;
   text-decoration: none;
   width: 97.3%;
   padding: 7px;
-  margin: 3px 3px 0;
-  font-size: 14px;
+  margin: 3px 5px 0;
+  font-size: 21px;
+  height: 65px;
   box-shadow: inset 0px 2px 2px #ccc;
 }
 
@@ -359,8 +411,8 @@ input.mat-input-element.employee__input_skill {
 
 .mat-select {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  height: 30px;
-  border-radius: 4px;
+  height: 78px;
+  border-radius: 7px;
   color: white;
   margin-left: 3px;
   background: #f4ae50;
@@ -368,7 +420,9 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-select-trigger {
-  height: 1.125em
+  height: 1.125em;
+  position: relative;
+  top: 78px;
 }
 
 .mat-slide-toggle-content {
@@ -405,7 +459,7 @@ input.mat-input-element.employee__input_skill {
   font-weight: 500
 }
 
-.mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6 {
+.mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6 {
   font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
   margin: 0
 }
@@ -550,14 +604,28 @@ input.mat-input-element.employee__input_skill {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+  width: 255px;
+  margin: 0 auto;
   line-height: 48px;
-  height: 48px;
-  padding: 0 16px;
+  height: 62px !important;
+  padding: 0;
   text-align: left;
   text-decoration: none;
   position: relative;
   cursor: pointer;
-  outline: 0
+  outline: 0;
+  background: #000;
+}
+
+.mat-option-text{
+  font-size: 21px;
+  position: relative;
+  left: 28px;
+  top: 7px;
+}
+
+.mat-option:last-child{
+  border-radius: 0 0 7px 7px;
 }
 
 .mat-option[disabled] {
@@ -749,11 +817,11 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
-  background: rgba(0, 0, 0, .04)
+  background: #000
 }
 
 .mat-option.mat-active {
-  background: rgba(0, 0, 0, .04);
+  background: #000;
   color: #fff
 }
 
@@ -1008,8 +1076,11 @@ input.mat-input-element.employee__input_skill {
 
 .mat-chip:not(.mat-basic-chip) {
   background: #f4ae50;
-  border-radius: 2px !important;
+  border-radius: 5px !important;
   color: #fff;
+  padding: 0 50px !important;
+  font-size: 21px;
+  height: 60px;
 }
 
 .mat-chip:not(.mat-basic-chip) .mat-chip-remove {
@@ -1174,21 +1245,45 @@ input.mat-input-element.employee__input_skill {
 
 .mat-form-field-placeholder {
   color: rgba(0, 0, 0, .54);
-  margin: 12px;
+  /*margin: 12px;*/
+}
+
+.employee__name .mat-form-field-placeholder {
+  color: rgba(0, 0, 0, .54);
+  font-size: 21px;
+  margin: 12px 0 12px 25px;
+}
+
+.employee__position .mat-form-field-placeholder,
+.employee__character .mat-form-field-placeholder{
+  font-size: 21px;
+  margin: 12px 0 12px 25px;
+}
+
+.employee__skills .mat-form-field-placeholder {
+  font-size: 21px;
+  margin: 17px 0 12px 25px;
 }
 
 .employee__skills .mat-form-field-placeholder {
   color: rgba(0, 0, 0, .54);
-  margin: 21px;
 }
 
 .employee__sex-and-birthday .mat-form-field-placeholder {
   color: #fff;
   font-weight: 700;
-  margin: 7px;
+  font-size: 21px;
+  margin: 18px 25px;
   padding-left: 5px;
 }
 
+.employee__birthday .mat-form-field-placeholder {
+  color: #fff;
+  font-weight: 700;
+  font-size: 21px;
+  margin: 12px 0 !important;
+  padding-left: 26px !important;
+}
 
 
 .mat-hint {
@@ -1445,28 +1540,53 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-select-arrow, .mat-select-disabled .mat-select-value {
-  color: #fff;
-  margin-top: 5px;
+  color: transparent;
 }
 
+
 .mat-select-content, .mat-select-panel-done-animating {
-  background: #000
+  background: transparent;
+}
+
+.employee__sex-and-birthday .mat-select-value-text span{
+  position: relative;
+  top: -10px;
+}
+
+.employee__sex-and-birthday mat-select[aria-activedescendant] .mat-select-value::after{
+  font-family: 'Material Icons';
+  content: "\E316";
+  position: relative;
+  right: -172px;
+  font-size: 35px !important;
+  cursor: pointer;
+}
+
+.employee__sex-and-birthday .mat-select-value::after{
+  font-family: 'Material Icons';
+  content: "\E313";
+  position: relative;
+  right: -172px;
+  font-size: 35px !important;
 }
 
 .mat-select-value {
   color: #fff;
   position: relative;
-  bottom: -6px;
-  left: 3px;
+  top: -58px;
+  font-size: 21px;
+  bottom: -25px;
+  left: 17px;
   font-weight: 700;
 }
 
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-  background: rgba(0, 0, 0, .12)
+  background: #000;
+  color: #fff;
 }
 
 .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-  color: #fff
+  color: transparent;
 }
 
 .mat-form-field.mat-focused.mat-accent .mat-select-arrow {

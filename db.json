@@ -15,7 +15,34 @@
       ],
       "characteristic": "some text",
       "progress": 60,
+      "id": 1
+    },
+    {
+      "photo": "http://dummyimage.com/300",
+      "firstName": "F.Name",
+      "lastName": "L.Name",
+      "Sex": "Female",
+      "position": "some text",
+      "idskill": [
+        1,
+        8
+      ],
+      "characteristic": null,
+      "progress": 20,
       "id": 2
+    },
+    {
+      "photo": "http://dummyimage.com/300",
+      "firstName": "F.Name",
+      "lastName": "L.Name",
+      "Sex": "Female",
+      "position": "some text",
+      "idskill": [
+        1
+      ],
+      "characteristic": null,
+      "progress": 20,
+      "id": 3
     }
   ],
   "skills": [
@@ -46,6 +73,10 @@
     {
       "skillName": "Git",
       "id": 7
+    },
+    {
+      "skillName": "react",
+      "id": 8
     }
   ],
   "users": [
