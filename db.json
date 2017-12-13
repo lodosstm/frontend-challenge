@@ -45,6 +45,17 @@
       "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut beatae dolorem ducimus eveniet hic id impedit in ipsam molestiae nostrum nulla provident qui quis reprehenderit, sed sequi, temporibus voluptas!",
       "progress": 70,
       "id": 3
+    },
+    {
+      "photo": "http://dummyimage.com/150",
+      "firstName": null,
+      "lastName": null,
+      "Sex": null,
+      "position": null,
+      "idskill": [],
+      "characteristic": null,
+      "progress": 20,
+      "id": 4
     }
   ],
   "skills": [
