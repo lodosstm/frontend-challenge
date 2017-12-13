@@ -1,0 +1,13 @@
+<div class="sidebar__card" [ngClass]="{'sidebar__card_active': employeesService.flag && employeesService.giveEmployee().id == item.id}" (click)="onClick(item)">
+  <mat-progress-bar *ngIf="item.progress<=30" class="sidebar__progress" mode="determinate" value="{{item.progress}}" color="warn"></mat-progress-bar>
+  <mat-progress-bar *ngIf="item.progress<60 && item.progress>30" class="sidebar__progress" mode="determinate" color="accent" value="{{item.progress}}"></mat-progress-bar>
+  <mat-progress-bar *ngIf="item.progress>=60" class="sidebar__progress" mode="determinate" value="{{item.progress}}" color="primary"></mat-progress-bar>
+  <img src="{{item.photo}}" alt="" class="sidebar__photo">
+  <div class="sidebar__description">
+    <h1 class="sidebar__name">{{item.firstName}} {{item.lastName}}</h1>
+    <p class="sidebar__characteristic">{{item.position}}</p>
+    <div class="sidebar__skills">
+      <span class="sidebar__skill" *ngFor="let skill of skills">{{skill}} </span>
+    </div>
+  </div>
+</div>

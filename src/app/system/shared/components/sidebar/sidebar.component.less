@@ -1,0 +1,87 @@
+.sidebar{
+  &__card{
+    box-shadow: 5px 0px 8px -10px rgba(0,0,0,0.5);
+    min-height: 160px;
+    border-bottom: 3px solid #ddd;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+    position: relative;
+
+    @media only screen and (max-width: 1200px){
+      justify-content: center;
+    }
+
+    &_active{
+      box-shadow: none!important;
+    }
+  }
+
+  &__end{
+    height: 100%;
+  }
+
+  &__photo{
+    width: 92px;
+    margin-left: 13px;
+    border-radius: 50%;
+  }
+
+  &__description{
+    padding: 0 0 0 22px;
+    width: 375px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    @media only screen and (max-width: 1200px){
+      display: none;
+    }
+  }
+
+  &__progress{
+    transform: rotate(300grad);
+    width: 160px;
+    position: absolute;
+    left: -77px;
+    top: 78px;
+  }
+
+  &__skill{
+    background: #ccc;
+    color: #00a5a1;
+    border-radius: 6px;
+    width: 120px;
+    //padding: 10px;
+    margin: 0 5px 5px 0;
+    font-size: 16px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__skills{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 13px;
+  }
+
+  &__name {
+    text-align: left;
+    width: 100%;
+    margin: 11px 0 0;
+    font-size: 21px;
+    position: relative;
+    top: -2px;
+  }
+
+  &__characteristic{
+    margin: 5px 0;
+    font-size: 18px;
+  }
+}
