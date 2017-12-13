@@ -35,6 +35,7 @@
                 formControlName="skill"
                 matInput
                 (keyup)="keydown($event)"
+                (blur)="result.length=0"
                 placeholder="Your skills"
                 [matChipInputFor]="chipList"
                 (matChipInputTokenEnd)="addEvent($event)">

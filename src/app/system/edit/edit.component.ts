@@ -24,6 +24,7 @@ export class EditComponent implements OnInit {
   index = -1;
   event: MatChipInputEvent;
   id: number;
+  fl: 0;
   birthDay: string;
   persents = {
     'photo': 20,
@@ -154,6 +155,9 @@ export class EditComponent implements OnInit {
     if (index >= 0) {
       this.skills.splice(index, 1);
     }
+    this.skillsService.getSkillByName(fruit).subscribe(data => {
+      this.idskills.splice(this.idskills.indexOf(data.id), 1);
+    });
   }
 
   InitEmployee() {
@@ -172,7 +176,7 @@ export class EditComponent implements OnInit {
     this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
       if (data) {
         this.employeeService.updateEmployees();
-        this.router.navigate(['/system/watch', `${this.id}`]);
+        this.router.navigate(['/system']);
       }
     });
   }
@@ -185,7 +189,7 @@ export class EditComponent implements OnInit {
   }
 
   returnCard() {
-    this.router.navigate(['/system/watch', `${this.id}`]);
+    this.router.navigate(['/system']);
   }
 
   itemClick(i) {

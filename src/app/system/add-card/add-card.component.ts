@@ -88,6 +88,9 @@ export class AddCardComponent implements OnInit {
     if (index >= 0) {
       this.skills.splice(index, 1);
     }
+    this.skillsService.getSkillByName(fruit).subscribe(data => {
+      this.idskills.splice(this.idskills.indexOf(data.id), 1);
+    });
   }
 
   InitEmployee() {

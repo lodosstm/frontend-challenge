@@ -5,17 +5,16 @@
       "firstName": "Larisa",
       "lastName": "Gorobets",
       "Sex": "Female",
-      "birthDay": "20.2.1997",
+      "birthDay": "17.2.1997",
       "position": "Junior",
       "idskill": [
-        1,
         4,
-        6,
+        1,
         5,
-        8
+        6
       ],
-      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis deleniti dicta excepturi explicabo hic incidunt laudantium modi nesciunt odio officiis placeat provident quaerat recusandae sequi similique ut vel, vitae?",
-      "progress": 60,
+      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut beatae dolorem ducimus eveniet hic id impedit in ipsam molestiae nostrum nulla provident qui quis reprehenderit, sed sequi, temporibus voluptas!",
+      "progress": 85,
       "id": 1
     },
     {
@@ -23,42 +22,29 @@
       "firstName": "F.Name",
       "lastName": "L.Name",
       "Sex": "Female",
+      "birthDay": "3.12.2017",
       "position": "some text",
       "idskill": [
         1,
-        8,
-        5
+        8
       ],
-      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis deleniti dicta excepturi explicabo hic incidunt laudantium modi nesciunt odio officiis placeat provident quaerat recusandae sequi similique ut vel, vitae?",
-      "progress": 70,
+      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut beatae dolorem ducimus eveniet hic id impedit in ipsam molestiae nostrum nulla provident qui quis reprehenderit, sed sequi, temporibus voluptas!",
+      "progress": 75,
       "id": 2
-    },
-    {
-      "photo": "http://dummyimage.com/150",
-      "firstName": "F.Name",
-      "lastName": "L.Name",
-      "Sex": "Female",
-      "position": "some text",
-      "idskill": [
-        1
-      ],
-      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis deleniti dicta excepturi explicabo hic incidunt laudantium modi nesciunt odio officiis placeat provident quaerat recusandae sequi similique ut vel, vitae?",
-      "progress": 65,
-      "id": 3
     },
     {
       "photo": "http://dummyimage.com/150",
       "firstName": "First",
       "lastName": "Last",
       "Sex": "Female",
-      "birthDay": "21.12.2017",
+      "birthDay": "29.12.2017",
       "position": "some text",
       "idskill": [
         1
       ],
-      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis deleniti dicta excepturi explicabo hic incidunt laudantium modi nesciunt odio officiis placeat provident quaerat recusandae sequi similique ut vel, vitae?",
+      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut beatae dolorem ducimus eveniet hic id impedit in ipsam molestiae nostrum nulla provident qui quis reprehenderit, sed sequi, temporibus voluptas!",
       "progress": 70,
-      "id": 4
+      "id": 3
     }
   ],
   "skills": [
@@ -93,18 +79,6 @@
     {
       "skillName": "react",
       "id": 8
-    },
-    {
-      "skillName": "reac",
-      "id": 9
-    },
-    {
-      "skillName": "re",
-      "id": 10
-    },
-    {
-      "skillName": "r",
-      "id": 11
     }
   ],
   "users": [
