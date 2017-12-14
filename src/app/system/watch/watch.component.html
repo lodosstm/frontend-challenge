@@ -2,7 +2,7 @@
   <a class="employee__link" (click)="deleteCard()">
     <mat-icon class="large material-icons employee__cancel">&#xE888;</mat-icon>
   </a>
-  <div class="employee__form">
+  <div class="employee__form" *ngIf="employee">
     <div class="employee__photo">
       <img src="{{ employee.photo }}" alt="" class="employee__img">
     </div>

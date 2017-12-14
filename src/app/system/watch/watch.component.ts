@@ -14,7 +14,8 @@ import {Skill} from '../../shared/models/skill.module';
 export class WatchComponent implements OnInit {
 
   id: number;
-  employee: Employee;
+  employee;
+  subscribtion: object;
   skills = [];
   step = 30;
   constructor(private employeeService: EmployeesService,
@@ -26,10 +27,12 @@ export class WatchComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'), 10);
       this.employee = this.employeeService.giveEmployee();
-      this.searchSkill();
     });
-    this.employeeService.getEmployeeById(this.id).subscribe((data: Employee) => {
-      this.employee = data;
+    this.employeeService.getEmployeeById(this.id).subscribe(data => {
+      if (this.employee === undefined && data) {
+        this.employee = data;
+        this.searchSkill();
+      }
     });
     document.getElementById('js-employee').addEventListener('wheel', (event) => {
       const $sidebar = document.getElementById('js-employee');

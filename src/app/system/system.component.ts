@@ -16,7 +16,6 @@ export class SystemComponent implements OnInit {
               public router: Router) {}
   step = 30;
   ngOnInit() {
-    if (this.authService.isAuthorated) {
       this.employeeService.updateEmployees();
       const menu = 83;
       let windowClient = document.body.clientHeight;
@@ -43,8 +42,5 @@ export class SystemComponent implements OnInit {
           }
         }
       });
-    } else {
-      this.router.navigate(['/login']);
-    }
   }
 }
