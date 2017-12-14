@@ -8,9 +8,6 @@ import {Link} from 'react-router-dom';
 class UserInfo extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			user: {}
-		};
 	}
 
 
@@ -18,15 +15,26 @@ class UserInfo extends React.Component {
 
 
 	render() {
-		const active = this.props.activeUser;
+
+		const user = this.props.user;
+
+
+		if (isNaN(this.props.match.params.userId)) {
+			return (
+				<div></div>
+			);
+		}
+
+
+
 		return(
 			<div>
-				{String(active) && <div>
+				<div>
 					<div>User info</div>
-					<div>Name: {this.props.user.name}, Surname: {this.props.user.surname}, id:{this.props.user.id}</div>
+					<div>Name: {user.name}, surname: {user.surname}, id: {user.id}</div>
 					<Link to={"/"}><div>Return</div></Link>
-					<Link to={"/"}><div onClick={()=> this.props.deleteUser(active)}>!!Delete!!</div></Link>
-				</div>}
+					<Link to={"/"}><div onClick={() => this.props.deleteUser(this.props.activeUser)}>!!Delete!!</div></Link>
+				</div>
 			</div>
 		);
 	}

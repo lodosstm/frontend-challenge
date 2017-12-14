@@ -2,60 +2,96 @@ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import 'styles/index.scss';
+
+
+
 import UserList from './userList';
 import UserInfo from './userInfo';
-
-
+import CreateUser from './createUser';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.getUserList = this.getUserList.bind(this);
-		this.changeUser = this.changeUser.bind(this);
-		this.deleteUser = this.deleteUser.bind(this);
 		this.state = {
+			users: [],
 			loading: true,
 			activeUser: '',
-			users: []
+			editingUser: false
 		};
+		this.getUserList = this.getUserList.bind(this);
+		this.changeActiveUser = this.changeActiveUser.bind(this);
+		this.createEmptyUser = this.createEmptyUser.bind(this);
+		this.saveUser = this.saveUser.bind(this);
+		this.deleteUser = this.deleteUser.bind(this);
 	}
+
+
 
 	getUserList() {
-		fetch('http://localhost:3000/users')
+		fetch('http://localhost:3000/users/')
 			.then(response => response.json())
 			.then(data => this.setState({
-					users: data,
-					loading: false
-				})
-			);
+				users: data,
+				loading: false
+			}));
 	}
 
-	changeUser(i) {
-		this.setState({activeUser: i});
+	changeActiveUser(i) {
+		this.setState({
+			activeUser: i
+		});
 	}
 
+	createEmptyUser() {
+		if (this.state.editingUser) return;
 
+		fetch('http://localhost:3000/users/', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				firstParam: '',
+				secondParam: '',
+			}),
+		})
+			.then(() => this.setState({
+				editingUser: true,
+				activeUser: (this.state.users[this.state.users.length -1].id + 1)
+			}));
+	}
 
+	saveUser() {
+		this.getUserList();
+		this.setState({
+			editingUser: false,
+			activeUser: ''
+		});
+	}
 
 	deleteUser(i) {
-		const id = this.state.users[i].id;
+
+		let id = null;
+
+		if (i > this.state.users.length) {
+			id = i;
+
+		} else id = this.state.users[i].id;
+
+
 		fetch('http://localhost:3000/users/' + id, {
 			method: 'delete'
 		})
 			.then(response => response.json())
-			.then(() => (fetch('http://localhost:3000/users')
-					.then(response => response.json())
-					.then(data => this.setState({users: data}))
-			));
-
-
+			.then(() => fetch('http://localhost:3000/users/'))
+			.then(response => response.json())
+			.then(data => this.setState({
+				users: data,
+				loading: false,
+				activeUser: ''
+			}));
 	}
-
-
-
-
-
-
 
 
 
@@ -67,8 +103,10 @@ class App extends React.Component {
 
 
 
+
+
+
 	render() {
-		const users = this.state.users;
 		const activeUser = this.state.activeUser;
 
 
@@ -77,10 +115,17 @@ class App extends React.Component {
 				<div>
 					<div className="topElement">List</div>
 					<div className="containerForUserListAndInfo">
-						<UserList users={users} loading={this.state.loading} changeUser={this.changeUser}/>
-						<Route path="/:userId" render={() => (
-							<UserInfo  activeUser={activeUser} user={users[activeUser]} deleteUser={this.deleteUser}/>
-							)}/>
+						<UserList users={this.state.users} loading={this.state.loading}
+											changeActiveUser={this.changeActiveUser} editingUser={this.state.editingUser}
+											createEmptyUser={this.createEmptyUser}/>
+						<Route path="/:userId" render={({match}) =>
+							<UserInfo  match={match} user={this.state.users[activeUser]} activeUser={activeUser}
+												 deleteUser={this.deleteUser}/>
+						}/>
+						<Route path="/new" render={() =>
+							<CreateUser saveUser={this.saveUser} deleteUser={this.deleteUser}
+													activeUser={activeUser}/>
+						}/>
 					</div>
 				</div>
 			</Router>

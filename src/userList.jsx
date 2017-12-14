@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-
+import AddUserButton from './components/addUserButton';
 
 
 
@@ -14,13 +14,22 @@ class UserList extends React.Component {
 
 	renderUser(i) {
 		const user = this.props.users[i];
+		const editingUser = this.props.editingUser;
+
+		if (editingUser) {
+			return (
+				<div className='userList__user'>
+					Name: {user.name}, id: {user.id}
+				</div>
+			);
+		}
+
 		return (
-			<Link to={"/" + user.id}>
+			<Link to={'/' + user.id}>
 				<div className='userList__user'>
 					Name: {user.name}, id: {user.id}
 				</div>
 			</Link>
-
 		);
 	}
 
@@ -28,13 +37,17 @@ class UserList extends React.Component {
 
 
 	render() {
+
+
+
+
 		return(
 			<div className="userList">
-				<div>Add button</div>
+				<AddUserButton createEmptyUser={this.props.createEmptyUser}/>
 				{this.props.loading && <div>Loading user list</div>}
 				<ul>
 					{this.props.users.map((user, index)=> (
-						<li key={index} onClick={() => this.props.changeUser(index)}>
+						<li key={index} onClick={() => this.props.changeActiveUser(index)}>
 							{this.renderUser(index)}
 						</li>
 					))}
