@@ -26,6 +26,7 @@ export class AddCardComponent implements OnInit {
   id: number;
   index = -1;
   birthDay: string;
+  step = 30;
   percentsEmployee = 20;
   persents = {
     'photo': 20,
@@ -48,6 +49,22 @@ export class AddCardComponent implements OnInit {
       .subscribe((employ: Employee) => { this.id = employ.id; });
     this.skillsService.Skills();
     this.calculator();
+    document.getElementById('js-employee').addEventListener('wheel', (event) => {
+      const $sidebar = document.getElementById('js-employee');
+      if (0 < event.deltaY) {
+        if ($sidebar.scrollTop + this.step <= $sidebar.scrollHeight) {
+          $sidebar.scrollTop += this.step;
+        } else {
+          $sidebar.scrollTop = $sidebar.scrollHeight;
+        }
+      } else {
+        if ($sidebar.scrollTop - this.step >= 0) {
+          $sidebar.scrollTop -= this.step;
+        } else {
+          $sidebar.scrollTop = 0;
+        }
+      }
+    });
   }
 
   add(event: MatChipInputEvent) {

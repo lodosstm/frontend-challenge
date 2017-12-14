@@ -16,7 +16,7 @@ export class WatchComponent implements OnInit {
   id: number;
   employee: Employee;
   skills = [];
-
+  step = 30;
   constructor(private employeeService: EmployeesService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -30,6 +30,22 @@ export class WatchComponent implements OnInit {
     });
     this.employeeService.getEmployeeById(this.id).subscribe((data: Employee) => {
       this.employee = data;
+    });
+    document.getElementById('js-employee').addEventListener('wheel', (event) => {
+      const $sidebar = document.getElementById('js-employee');
+      if (0 < event.deltaY) {
+        if ($sidebar.scrollTop + this.step <= $sidebar.scrollHeight) {
+          $sidebar.scrollTop += this.step;
+        } else {
+          $sidebar.scrollTop = $sidebar.scrollHeight;
+        }
+      } else {
+        if ($sidebar.scrollTop - this.step >= 0) {
+          $sidebar.scrollTop -= this.step;
+        } else {
+          $sidebar.scrollTop = 0;
+        }
+      }
     });
   }
 

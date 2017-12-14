@@ -38,6 +38,7 @@ export class EditComponent implements OnInit {
   employee: Employee;
   percentsEmployee: number;
   date: Date;
+  step = 30;
 
   constructor(private employeeService: EmployeesService,
               private skillsService: SkillsService,
@@ -71,6 +72,22 @@ export class EditComponent implements OnInit {
     this.skillsService.Skills();
     this.calculator();
     this.percentsEmployee = this.employee.progress;
+    document.getElementById('js-employee').addEventListener('wheel', (event) => {
+      const $sidebar = document.getElementById('js-employee');
+      if (0 < event.deltaY) {
+        if ($sidebar.scrollTop + this.step <= $sidebar.scrollHeight) {
+          $sidebar.scrollTop += this.step;
+        } else {
+          $sidebar.scrollTop = $sidebar.scrollHeight;
+        }
+      } else {
+        if ($sidebar.scrollTop - this.step >= 0) {
+          $sidebar.scrollTop -= this.step;
+        } else {
+          $sidebar.scrollTop = 0;
+        }
+      }
+    });
   }
 
   item1() {
