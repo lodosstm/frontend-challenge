@@ -53,7 +53,7 @@ describe('AddCardComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AddCardComponent);
-    component = fixture.componentInstance;
+    component = fixture.debugElement.componentInstance;
     fixture.detectChanges();
   });
 

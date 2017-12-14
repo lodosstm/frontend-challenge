@@ -24,7 +24,6 @@ export class EditComponent implements OnInit {
   index = -1;
   event: MatChipInputEvent;
   id: number;
-  fl: 0;
   birthDay: string;
   persents = {
     'photo': 20,
@@ -50,10 +49,8 @@ export class EditComponent implements OnInit {
       this.id = parseInt(params.get('id'), 10);
       this.employee = this.employeeService.giveEmployee();
     });
-    this.employeeService.getEmployeeById(this.id).subscribe((data: Employee) => {
-      this.employee = data;
-    });
-    this.date = this.employee.birthDay !== undefined ? new Date(this.employee.birthDay.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1')) : null;
+    this.date = this.employee.birthDay !== undefined && this.employee.birthDay !== null ?
+      new Date(this.employee.birthDay.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1')) : null;
     this.myGroup = new FormGroup({
       'firstname': new FormControl(this.employee.firstName !== undefined ? this.employee.firstName : null, []),
       'lastname': new FormControl(this.employee.lastName !== undefined ? this.employee.lastName : null, []),
@@ -63,18 +60,17 @@ export class EditComponent implements OnInit {
       'character': new FormControl(this.employee.characteristic !== undefined ? this.employee.characteristic : null, []),
       'skill': new FormControl(null, [])
     });
-    if (this.employee.birthDay !== undefined) {
+    if (this.employee.birthDay !== undefined && this.employee.birthDay !== null) {
       this.birthDay = [this.myGroup.value.birthday.getDate(),
         this.myGroup.value.birthday.getMonth() + 1,
         this.myGroup.value.birthday.getFullYear()].join('.');
     }
-
     this.idskills = this.employee.idskill;
+    console.log(this.employee);
     this.searchSkill();
     this.skillsService.Skills();
     this.calculator();
     this.percentsEmployee = this.employee.progress;
-
   }
 
   item1() {
@@ -183,9 +179,13 @@ export class EditComponent implements OnInit {
 
   SelectionChange(event) {
     this.myGroup.value.birthday = event.value;
-    this.birthDay = [this.myGroup.value.birthday.getDate(),
-      this.myGroup.value.birthday.getMonth() + 1,
-      this.myGroup.value.birthday.getFullYear()].join('.');
+    if (event.value !== null && event.value !== '') {
+      this.birthDay = [this.myGroup.value.birthday.getDate(),
+        this.myGroup.value.birthday.getMonth() + 1,
+        this.myGroup.value.birthday.getFullYear()].join('.');
+    } else {
+      this.birthDay = null;
+    }
   }
 
   returnCard() {
@@ -272,12 +272,12 @@ export class EditComponent implements OnInit {
   calculator() {
     const employee = this.InitEmployee();
     this.percentsEmployee = 20 + (employee.firstName != null ? this.persents.firstName : 0)
-      + (employee.firstName != null ? this.persents.firstName : 0)
-      + (employee.lastName != null ? this.persents.lastName : 0)
-      + (employee.position != null ? this.persents.position : 0)
-      + (employee.characteristic != null ? this.persents.characteristic : 0)
-      + (employee.Sex != null ? this.persents.Sex : 0)
-      + (employee.birthDay != null ? this.persents.birthDay : 0)
+      + (employee.firstName !== null && employee.firstName !== '' ? this.persents.firstName : 0)
+      + (employee.lastName !== null && employee.lastName !== '' ? this.persents.lastName : 0)
+      + (employee.position !== null && employee.position !== '' ? this.persents.position : 0)
+      + (employee.characteristic !== null && employee.characteristic !== '' ? this.persents.characteristic : 0)
+      + (employee.Sex !== null && employee.Sex !== '' ? this.persents.Sex : 0)
+      + (employee.birthDay !== null && employee.birthDay !== '' ? this.persents.birthDay : 0)
       + (employee.idskill.length > 0 ? this.persents.idskill * employee.idskill.length : 0);
   }
 }

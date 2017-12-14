@@ -50,10 +50,6 @@ export class EmployeesService extends BaseApi {
     return this.givenemployee;
   }
 
-  public ChangeFlag() {
-    this.flag = false;
-  }
-
   InitEmployee() {
     return new FormGroup({
       'firstname': new FormControl(null, []),

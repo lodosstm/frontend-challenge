@@ -13,8 +13,8 @@
         5,
         6
       ],
-      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut beatae dolorem ducimus eveniet hic id impedit in ipsam molestiae nostrum nulla provident qui quis reprehenderit, sed sequi, temporibus voluptas!",
-      "progress": 85,
+      "characteristic": null,
+      "progress": 75,
       "id": 1
     },
     {
@@ -37,25 +37,14 @@
       "firstName": "First",
       "lastName": "Last",
       "Sex": "Female",
-      "birthDay": "29.12.2017",
+      "birthDay": "3.12.2017",
       "position": "some text",
       "idskill": [
         1
       ],
-      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut beatae dolorem ducimus eveniet hic id impedit in ipsam molestiae nostrum nulla provident qui quis reprehenderit, sed sequi, temporibus voluptas!",
-      "progress": 70,
+      "characteristic": "",
+      "progress": 60,
       "id": 3
-    },
-    {
-      "photo": "http://dummyimage.com/150",
-      "firstName": null,
-      "lastName": null,
-      "Sex": null,
-      "position": null,
-      "idskill": [],
-      "characteristic": null,
-      "progress": 20,
-      "id": 4
     }
   ],
   "skills": [

@@ -7,7 +7,6 @@ import {EmployeesService} from '../shared/services/employees.service';
 import {SkillsService} from '../shared/services/skills.service';
 import {Skill} from '../../shared/models/skill.module';
 import {Router} from '@angular/router';
-import {log} from 'util';
 
 @Component({
   selector: 'task-add-card',

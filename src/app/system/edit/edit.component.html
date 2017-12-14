@@ -7,7 +7,7 @@
   <div class="employee__form">
     <div class="employee__photo">
       <img src="http://dummyimage.com/150" alt="" class="employee__img">
-      <p class="employee__percents">Filled profile: {{percentsEmployee}}%</p>
+      <p class="employee__percents">Filled profile: {{ percentsEmployee }}%</p>
     </div>
     <div class="employee__description">
       <form class="employee__card" [formGroup]="myGroup" (ngSubmit)="onSubmit()">
@@ -27,7 +27,7 @@
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
                         [removable]="removable" (remove)="remove(skill)">
-                {{skill}}
+                {{ skill }}
               </mat-chip>
               <input
                 (ngModelChange)="search($event)"
@@ -43,7 +43,7 @@
           </mat-form-field>
           <div class="search">
             <ul class="search__list" *ngIf="this.result.length > 0">
-              <li class="search__item" *ngFor="let item of result, let i=index" [ngClass]="{'active-item': index === i}">{{item}}</li>
+              <li class="search__item" *ngFor="let item of result, let i=index" [ngClass]="{'active-item': index === i}">{{ item }}</li>
             </ul>
           </div>
         </div>

@@ -4,26 +4,26 @@
   </a>
   <div class="employee__form">
     <div class="employee__photo">
-      <img src="{{employee.photo}}" alt="" class="employee__img">
+      <img src="{{ employee.photo }}" alt="" class="employee__img">
     </div>
     <div class="employee__description">
       <div class="employee__caption">
-        <h1 class="employee__name">{{employee.firstName}}</h1>
-        <h1 class="employee__name">{{employee.lastName}}</h1>
+        <h1 class="employee__name">{{ employee.firstName }}</h1>
+        <h1 class="employee__name">{{ employee.lastName }}</h1>
         <span class="employee__data">
           <p class="employee__sex-birthday">
-            ({{employee.Sex}}, {{employee.birthDay}})
+            ({{ employee.Sex }}, {{ employee.birthDay }})
           </p>
         </span>
       </div>
-      <p class="employee__position">{{employee.position}}</p>
+      <p class="employee__position">{{ employee.position }}</p>
       <div class="employee__all-skills">
         <span class="employee__skill-item" *ngFor="let item of skills">
-          {{item}}
+          {{ item }}
         </span>
       </div>
       <div class="employee__character">
-        <p class="employee__text">{{employee.characteristic}}</p>
+        <p class="employee__text">{{ employee.characteristic }}</p>
       </div>
       <button mat-button class="employee__btn" (click)="deleteEmployee()">Delete user</button>
       <button mat-button class="employee__btn_edit employee__btn" (click)="edit()">Edit user</button>
