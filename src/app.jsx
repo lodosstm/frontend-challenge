@@ -76,6 +76,7 @@ class App extends React.Component {
 
 		if (i > this.state.users.length) {
 			id = i;
+			this.setState({editingUser: false});
 
 		} else id = this.state.users[i].id;
 
