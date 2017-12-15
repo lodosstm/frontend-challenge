@@ -39,6 +39,7 @@ export class WatchComponent implements OnInit {
         if (data) {
           this.employee = data;
           this.searchSkill();
+          this.employeeService.bringEmployee(this.employee);
         }
       });
     }
@@ -84,6 +85,7 @@ export class WatchComponent implements OnInit {
   }
 
   deleteCard() {
+    this.employeeService.flag = false;
     this.router.navigate(['/system']);
   }
 

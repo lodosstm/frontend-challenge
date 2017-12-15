@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 
 import {Employee} from '../../../shared/models/employee.model';
 import {BaseApi} from '../../../shared/core/base-api';
-import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
@@ -16,8 +15,7 @@ export class EmployeesService extends BaseApi {
   public employees: Employee;
   public flag = false;
 
-  constructor (public http: Http,
-               private router: Router) {
+  constructor (public http: Http) {
     super(http);
   }
 

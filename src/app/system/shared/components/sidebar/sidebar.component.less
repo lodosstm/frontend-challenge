@@ -1,4 +1,13 @@
 .sidebar{
+  &-shadow {
+    width: 7px;
+    position: absolute;
+    top: 0;
+    right: -7px;
+    height: 100%;
+    background: transparent;
+  }
+
   &__card{
     min-height: 160px;
     border-bottom: 2px solid #e0d9dc;
@@ -15,7 +24,7 @@
     }
 
     &_active{
-      box-shadow: none!important;
+      background: #fafafa;
     }
   }
 
@@ -84,9 +93,5 @@
     margin: 5px 0;
     font-size: 18px;
     color: #727272;
-  }
-
-  &__shadow {
-
   }
 }

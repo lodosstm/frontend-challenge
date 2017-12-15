@@ -6,7 +6,7 @@ import {Employee} from '../../shared/models/employee.model';
 import {EmployeesService} from '../shared/services/employees.service';
 import {SkillsService} from '../shared/services/skills.service';
 import {Skill} from '../../shared/models/skill.module';
-import {Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 
 @Component({
   selector: 'task-add-card',
@@ -41,10 +41,13 @@ export class AddCardComponent implements OnInit{
 
   constructor(private employeeService: EmployeesService,
               private skillsService: SkillsService,
-              private router: Router) {}
+              private router: RouterModule) {}
 
   ngOnInit() {
     this.form = this.employeeService.InitEmployee();
+    if (this.employeeService.flag) {
+      this.employeeService.flag = false;
+    }
     this.employeeService.createNewEmployee(this.InitEmployee())
       .subscribe((employ: Employee) => { this.id = employ.id; });
     this.skillsService.Skills();

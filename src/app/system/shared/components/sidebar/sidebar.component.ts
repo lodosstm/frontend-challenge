@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
   skills = [];
 
   constructor(
-    private employeesService: EmployeesService,
+    private employeeService: EmployeesService,
     private skillsService: SkillsService,
     private router: Router
   ) { }
@@ -35,8 +35,8 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  onClick(employee) {
-    this.employeesService.bringEmployee(employee);
+  onClick(event, employee) {
+    this.employeeService.bringEmployee(employee);
     this.router.navigate(['/system/watch', `${employee.id}`]);
   }
 }

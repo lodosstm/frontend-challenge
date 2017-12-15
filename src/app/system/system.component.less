@@ -13,10 +13,16 @@
 
 .sidebar{
   width: 30%;
-  z-index: 10;
-  background: #fafafa;
-  overflow: hidden;
+  background: #f2f1f1;
+  overflow-y: hidden;
   position: relative;
+  padding-right: 7px;
+
+  &__i {
+    background: #fafafa;
+    height: 100%;
+    box-shadow: 8px 0 8px -5px #c8c8c8, inset 0px 7px 8px -4px #c8c8c8;
+  }
 
   @media only screen and (max-width: 992px) {
     display: none;
@@ -44,6 +50,11 @@
     color: #aa979e;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  &-end {
+    height: 100%;
+    box-shadow: 7px 0 8px -4px #c8c8c8;
   }
 
   box-shadow: inset 0px 7px 8px -4px #c8c8c8;
