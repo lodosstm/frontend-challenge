@@ -6,12 +6,13 @@ import 'rxjs/add/operator/map';
 import {Employee} from '../../../shared/models/employee.model';
 import {BaseApi} from '../../../shared/core/base-api';
 import {Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Injectable()
 export class EmployeesService extends BaseApi {
   givenemployee: Employee;
+  public open = false;
   public employees: Employee;
   public flag = false;
 
@@ -52,11 +53,11 @@ export class EmployeesService extends BaseApi {
 
   InitEmployee() {
     return new FormGroup({
-      'firstname': new FormControl(null, []),
-      'lastname': new FormControl(null, []),
-      'position': new FormControl(null, []),
-      'sex': new FormControl(null, []),
-      'birthday': new FormControl(null, []),
+      'firstname': new FormControl(null, [Validators.required]),
+      'lastname': new FormControl(null, [Validators.required]),
+      'position': new FormControl(null, [Validators.required]),
+      'sex': new FormControl(null, [Validators.required]),
+      'birthday': new FormControl(null, [Validators.required]),
       'character': new FormControl(null, []),
       'skill': new FormControl(null, [])
     });

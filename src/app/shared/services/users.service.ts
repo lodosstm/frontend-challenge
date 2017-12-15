@@ -55,7 +55,7 @@ export class UsersService extends BaseApi {
       this.getUserByUsername(window.localStorage.getItem('username')).subscribe((user: User) => {
         if (user) {
           if (user.password === window.localStorage.getItem('password')) {
-            this.authService.logIn();
+            this.authService.isAuthorated = true;
             this.router.navigate(['/system']);
           }
         }

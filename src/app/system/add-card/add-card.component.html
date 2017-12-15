@@ -13,14 +13,14 @@
       <form class="employee__card" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="employee__name">
           <mat-form-field>
-            <input matInput placeholder="First Name" formControlName="firstname" (blur)="UpdateBase()">
+            <input matInput placeholder="First Name" formControlName="firstname" required (blur)="UpdateBase()">
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Last Name" formControlName="lastname" (blur)="UpdateBase()">
+            <input matInput placeholder="Last Name" formControlName="lastname" required (blur)="UpdateBase()">
           </mat-form-field>
         </div>
         <mat-form-field class="employee__position">
-          <input matInput placeholder="Position" formControlName="position" (blur)="UpdateBase()">
+          <input matInput placeholder="Position" formControlName="position" required (blur)="UpdateBase()">
         </mat-form-field>
         <div class="employee__skills">
           <mat-form-field>
@@ -50,13 +50,13 @@
         </div>
         <div class="employee__sex-and-birthday">
           <mat-form-field>
-            <mat-select class="employee__sex" (selectionChange)="UpdateBase()" placeholder="Select Gender" formControlName="sex">
+            <mat-select class="employee__sex" (selectionChange)="UpdateBase()" required placeholder="Select Gender" formControlName="sex">
               <mat-option value="Male" (click)="item1()">Male</mat-option>
               <mat-option value="Female" (click)="item2()">Female</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field class="employee__birthday">
-            <input  matInput [matDatepicker]="picker" placeholder="Birth Day" formControlName="birthday" (dateChange)="SelectionChange($event)">
+            <input  matInput [matDatepicker]="picker" placeholder="Birth Day" required formControlName="birthday" (dateChange)="SelectionChange($event)">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -64,7 +64,8 @@
         <mat-form-field class="employee__character">
           <textarea matInput formControlName="character" placeholder="Characteristic" class="employee__textarea" (blur)="UpdateBase()"></textarea>
         </mat-form-field>
-        <button mat-button type="submit" class="employee__btn">Save</button>
+        <button mat-button type="submit" class="employee__btn" *ngIf="!this.form.invalid">Save</button>
+        <button mat-button type="submit" class="employee__btn" disabled *ngIf="this.form.invalid">Save</button>
       </form>
     </div>
   </div>

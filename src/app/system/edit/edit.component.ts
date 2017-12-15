@@ -4,8 +4,9 @@ import {Employee} from '../../shared/models/employee.model';
 import {EmployeesService} from '../shared/services/employees.service';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {SkillsService} from '../shared/services/skills.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Skill} from '../../shared/models/skill.module';
+import {_document} from '@angular/platform-browser/src/browser';
 
 @Component({
   selector: 'task-edit',
@@ -35,7 +36,7 @@ export class EditComponent implements OnInit {
     'idskill': 5,
     'characteristic': 10
   };
-  employee: Employee;
+  employee = new Employee('', '', '', '', '', '', [], '', 0);
   percentsEmployee: number;
   date: Date;
   step = 30;
@@ -48,30 +49,37 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'), 10);
-      this.employee = this.employeeService.giveEmployee();
     });
-    this.date = this.employee.birthDay !== undefined && this.employee.birthDay !== null ?
-      new Date(this.employee.birthDay.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1')) : null;
     this.myGroup = new FormGroup({
-      'firstname': new FormControl(this.employee.firstName !== undefined ? this.employee.firstName : null, []),
-      'lastname': new FormControl(this.employee.lastName !== undefined ? this.employee.lastName : null, []),
-      'position': new FormControl(this.employee.position !== undefined ? this.employee.position : null, []),
-      'sex': new FormControl(this.employee.Sex !== undefined ? this.employee.Sex : null, []),
-      'birthday': new FormControl(this.date, []),
-      'character': new FormControl(this.employee.characteristic !== undefined ? this.employee.characteristic : null, []),
+      'firstname': new FormControl(null, [Validators.required]),
+      'lastname': new FormControl(null, [Validators.required]),
+      'position': new FormControl(null, [Validators.required]),
+      'sex': new FormControl(null, [Validators.required]),
+      'birthday': new FormControl(null, [Validators.required]),
+      'character': new FormControl(null, []),
       'skill': new FormControl(null, [])
     });
-    if (this.employee.birthDay !== undefined && this.employee.birthDay !== null) {
-      this.birthDay = [this.myGroup.value.birthday.getDate(),
-        this.myGroup.value.birthday.getMonth() + 1,
-        this.myGroup.value.birthday.getFullYear()].join('.');
-    }
-    this.idskills = this.employee.idskill;
-    console.log(this.employee);
-    this.searchSkill();
-    this.skillsService.Skills();
-    this.calculator();
-    this.percentsEmployee = this.employee.progress;
+    this.employeeService.getEmployeeById(this.id).subscribe(data => {
+      this.employee = data;
+      this.date = this.employee.birthDay !== undefined && this.employee.birthDay !== null ?
+          new Date(this.employee.birthDay.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1')) : null;
+      this.myGroup.value.firstname = this.employee.firstName;
+      this.myGroup.value.lastname = this.employee.lastName;
+      this.myGroup.value.position = this.employee.position;
+      this.myGroup.value.sex = this.employee.Sex;
+      this.myGroup.value.birthday = this.date;
+      this.myGroup.value.character = this.employee.characteristic;
+      if (this.employee.birthDay !== undefined && this.employee.birthDay !== null) {
+          this.birthDay = [this.myGroup.value.birthday.getDate(),
+            this.myGroup.value.birthday.getMonth() + 1,
+            this.myGroup.value.birthday.getFullYear()].join('.');
+        }
+      this.idskills = this.employee.idskill;
+      this.searchSkill();
+      this.skillsService.Skills();
+      this.calculator();
+      this.percentsEmployee = this.employee.progress;
+    });
     document.getElementById('js-employee').addEventListener('wheel', (event) => {
       const $sidebar = document.getElementById('js-employee');
       if (0 < event.deltaY) {
@@ -95,6 +103,7 @@ export class EditComponent implements OnInit {
     for (const i in el) {
       if (el.hasOwnProperty(i)) {
         el[i].classList.remove('active-select-two');
+        console.log(el[i].classList);
       }
     }
   }
@@ -104,6 +113,7 @@ export class EditComponent implements OnInit {
     for (const i in el) {
       if (el.hasOwnProperty(i)) {
         el[i].classList.add('active-select-two');
+        console.log(el[i].classList);
       }
     }
   }
@@ -126,8 +136,17 @@ export class EditComponent implements OnInit {
         this.skillsService.getSkill(this.employee.idskill[j]).subscribe((skill: Skill) => {
           this.skills[k] = skill.skillName;
           k++;
+          this.proverka();
         });
       }
+    }
+  }
+
+  proverka () {
+    if (this.skills.length === 5) {
+      document.getElementById('skill').setAttribute('disabled', 'disabled');
+    } else {
+      document.getElementById('skill').removeAttribute('disabled');
     }
   }
 
@@ -161,6 +180,7 @@ export class EditComponent implements OnInit {
     if (input && this.skills.length <= 5) {
       input.value = '';
     }
+    this.proverka();
   }
 
   remove(fruit) {
@@ -171,6 +191,7 @@ export class EditComponent implements OnInit {
     this.skillsService.getSkillByName(fruit).subscribe(data => {
       this.idskills.splice(this.idskills.indexOf(data.id), 1);
     });
+    this.proverka();
   }
 
   InitEmployee() {
@@ -233,6 +254,7 @@ export class EditComponent implements OnInit {
     }
     this.result.length = 0;
     const input = this.event.input;
+    this.proverka();
     this.addItem(input);
   }
 

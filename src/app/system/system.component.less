@@ -12,10 +12,17 @@
 }
 
 .sidebar{
-  min-width: 550px;
+  width: 30%;
   z-index: 10;
   background: #fafafa;
   overflow: hidden;
+  position: relative;
+
+  @media only screen and (max-width: 992px) {
+    display: none;
+    position: absolute;
+    width: 230px;
+  }
 
   &__add{
     display: flex;
@@ -44,5 +51,9 @@
 
 .employee{
   box-shadow: inset 0px 7px 8px -4px #c8c8c8;
-  width: 100%;
+  width: 70%;
+
+  @media only screen and (max-width: 992px){
+    width: 100%;
+  }
 }

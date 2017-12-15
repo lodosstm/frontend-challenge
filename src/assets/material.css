@@ -1,3 +1,7 @@
+.mat-chip-list{
+  outline: none;
+}
+
 .mat-h1, .mat-headline, .mat-typography h1 {
   font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
   margin: 0 0 16px
@@ -318,11 +322,11 @@ input.mat-input-element.employee__input_skill {
   border: none;
   text-decoration: none;
   width: 100%;
-  padding: 20px 10px;
+  padding: 0;
   margin: 3px;
   font-size: 21px;
   box-shadow: none;
-  height: 17px;
+  height: 100%;
 }
 
 .employee__name .mat-form-field-infix.mat-input-infix{
@@ -1606,7 +1610,7 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
-  color: #f44336
+  color: transparent;
 }
 
 .mat-form-field .mat-select.mat-select-disabled .mat-select-arrow {

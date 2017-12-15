@@ -16,12 +16,15 @@ input {
   &__i{
     width: 92%;
     height: 100%;
-    min-width: 1328px;
     background: #fafafa;
     padding: 0 20px;
     position: relative;
     overflow: hidden;
     box-shadow: inset 0px 7px 8px -4px #c8c8c8, 5px 0px 8px -2px #ddd;
+
+    @media only screen and (max-width: 992px){
+      width: auto;
+    }
   }
 
   &__link{
@@ -31,8 +34,14 @@ input {
   }
 
   &__photo{
-    margin: 50px 26px;
+    margin: 65px 26px 0;
+    width: 14%;
     text-align: center;
+
+    @media only screen and (max-width: 992px){
+      margin: 20px 0;
+      width: 100%;
+    }
   }
 
   &__cancel{
@@ -48,11 +57,13 @@ input {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__description{
-    padding: 45px 0 40px 15px;
-    min-width: 1007px;
+    padding: 0 0 40px 15px;
+    margin-top: 60px;
+    width: 80%;
     position: relative;
 
     &__input{
@@ -61,16 +72,22 @@ input {
   }
 
   &__name{
+    width: 94.8%;
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
 
-    mat-form-field{
-      &:first-child{
-        margin-right: 17px;
-      }
+    @media only screen and (max-width: 992px){
+      width: 97.8%;
+    }
 
-      width: 490px;
+    mat-form-field{
+      width: 48%;
+
+      @media only screen and (max-width: 992px){
+        width: 100%;
+      }
     }
 
     input{
@@ -88,10 +105,20 @@ input {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 95.8%;
+    justify-content: left;
+
+    @media only screen and (max-width: 992px){
+      justify-content: space-between;
+    }
 
     mat-form-field{
       width: 255px;
       margin: 15px 22px 0 4px;
+
+      @media only screen and (max-width: 992px){
+        margin-right: 0;
+      }
     }
   }
 
@@ -110,7 +137,7 @@ input {
     border-radius: 7px;
     border: 2px solid #e6e1e3;
     box-shadow: inset 0 2px 2px #e6e1e3;
-    width: 97%;
+    width: 92.8%;
     font-size: 21px;
     padding: 20px 10px;
     margin: 10px 0 0 7px;
@@ -139,14 +166,22 @@ input {
     width: 100%;
 
     input {
-      width: 96.8%;
+      width: 92.8%;
       height: 40px;
       color: #c1a1a8;
     }
   }
 
+  &__skills {
+    width: 95.8%;
+  }
+
   &__img{
-    width: 165px;
+    width: 100%;
+
+    @media only screen and (max-width: 992px){
+      width: 150px;
+    }
   }
 
   &__percents{

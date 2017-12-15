@@ -15,7 +15,6 @@ export class WatchComponent implements OnInit {
 
   id: number;
   employee;
-  subscribtion: object;
   skills = [];
   step = 30;
   constructor(private employeeService: EmployeesService,
@@ -27,13 +26,22 @@ export class WatchComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'), 10);
       this.employee = this.employeeService.giveEmployee();
-    });
-    this.employeeService.getEmployeeById(this.id).subscribe(data => {
-      if (this.employee === undefined && data) {
-        this.employee = data;
+      if (this.employee !== undefined) {
         this.searchSkill();
       }
+      if (this.employeeService.open) {
+        document.getElementById('sidebar').style.display = 'none';
+        this.employeeService.open = false;
+      }
     });
+    if (this.employee === undefined) {
+      this.employeeService.getEmployeeById(this.id).subscribe(data => {
+        if (data) {
+          this.employee = data;
+          this.searchSkill();
+        }
+      });
+    }
     document.getElementById('js-employee').addEventListener('wheel', (event) => {
       const $sidebar = document.getElementById('js-employee');
       if (0 < event.deltaY) {

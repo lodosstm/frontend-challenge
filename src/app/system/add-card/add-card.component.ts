@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
   templateUrl: './add-card.component.html',
   styleUrls: ['./add-card.component.less']
 })
-export class AddCardComponent implements OnInit {
+export class AddCardComponent implements OnInit{
 
   form: FormGroup;
   selectable = true;
@@ -97,6 +97,7 @@ export class AddCardComponent implements OnInit {
     if (input && this.skills.length <= 5) {
       input.value = '';
     }
+    this.proverka();
   }
 
   remove(fruit) {
@@ -107,6 +108,15 @@ export class AddCardComponent implements OnInit {
     this.skillsService.getSkillByName(fruit).subscribe(data => {
       this.idskills.splice(this.idskills.indexOf(data.id), 1);
     });
+    this.proverka();
+  }
+
+  proverka () {
+    if (this.skills.length === 5) {
+      document.getElementById('skill').setAttribute('disabled', 'disabled');
+    } else {
+      document.getElementById('skill').removeAttribute('disabled');
+    }
   }
 
   InitEmployee() {
@@ -205,6 +215,7 @@ export class AddCardComponent implements OnInit {
     }
     this.result.length = 0;
     const input = this.event.input;
+    this.proverka();
     this.addItem(input);
     this.UpdateBase();
   }
