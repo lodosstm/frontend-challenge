@@ -394,8 +394,9 @@ input.mat-input-element.employee__input_skill {
   padding: 7px;
   margin: 3px 5px 0;
   font-size: 21px;
-  height: 65px;
+  min-height: 65px;
   box-shadow: inset 0px 2px 2px #e6e1e3;
+  justify-content: space-between;
 }
 
 .mat-menu-item {
@@ -1082,8 +1083,9 @@ input.mat-input-element.employee__input_skill {
   background: #f4ae50;
   border-radius: 5px !important;
   color: #fff;
-  padding: 0 50px !important;
+  padding: 0 35px !important;
   font-size: 21px;
+  margin-top: 2px !important;
   height: 60px;
 }
 
