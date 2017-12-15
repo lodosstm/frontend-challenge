@@ -11,7 +11,11 @@ class AddUserButton extends React.Component {
 	render() {
 		return (
 			<div>
-				<Link to="/new"><button onClick={()=>this.props.createEmptyUser()}>create new user</button></Link>
+				<Link to="/new">
+					<button onClick={()=>this.props.createEmptyUser()} className="addUserButton">
+						create new user
+					</button>
+				</Link>
 			</div>
 		);
 	}

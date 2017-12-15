@@ -1,59 +1,28 @@
 {
   "users": [
     {
-      "id": 0,
+      "name": "user",
+      "surname": "user",
+      "gender": "m",
+      "id": 1
+    },
+    {
       "name": "qwe",
-      "surname": "qwe"
+      "surname": "qwe",
+      "gender": "m",
+      "id": 2
     },
     {
-      "id": 1,
       "name": "asd",
-      "surname": "asd"
+      "surname": "asd",
+      "gender": "f",
+      "id": 3
     },
     {
-      "name": "",
-      "surname": "",
-      "id": 13
-    },
-    {
-      "name": "",
-      "surname": "",
-      "id": 14
-    },
-    {
-      "name": "",
-      "surname": "",
-      "id": 15
-    },
-    {
-      "name": "",
-      "surname": "",
-      "id": 20
-    },
-    {
-      "name": "",
-      "surname": "",
-      "id": 23
-    },
-    {
-      "name": "",
-      "surname": "",
-      "id": 24
-    },
-    {
-      "firstParam": "",
-      "secondParam": "",
-      "id": 26
-    },
-    {
-      "firstParam": "",
-      "secondParam": "",
-      "id": 27
-    },
-    {
-      "firstParam": "",
-      "secondParam": "",
-      "id": 28
+      "name": "dce",
+      "surname": "cde",
+      "gender": "f",
+      "id": 4
     }
   ]
 }

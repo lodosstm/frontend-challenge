@@ -25,13 +25,19 @@ class UserInfo extends React.Component {
 			);
 		}
 
+		if (!String(this.props.activeUser)) {
+			return (
+				<div></div>
+			);
+		}
+
 
 
 		return(
 			<div>
-				<div>
+				<div className="userInfo">
 					<div>User info</div>
-					<div>Name: {user.name}, surname: {user.surname}, id: {user.id}</div>
+					<div>Name: {user.name}, surname: {user.surname}, gender: {user.gender}, id: {user.id}</div>
 					<Link to={"/"}><div>Return</div></Link>
 					<Link to={"/"}><div onClick={() => this.props.deleteUser(this.props.activeUser)}>!!Delete!!</div></Link>
 				</div>

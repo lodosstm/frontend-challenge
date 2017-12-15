@@ -45,6 +45,12 @@ class App extends React.Component {
 	createEmptyUser() {
 		if (this.state.editingUser) return;
 
+		let id = null;
+		if (this.state.users.length > 0) {
+			id = this.state.users[this.state.users.length - 1].id + 1;
+		} else id = 1;
+
+
 		fetch('http://localhost:3000/users/', {
 			method: 'POST',
 			headers: {
@@ -52,22 +58,53 @@ class App extends React.Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				firstParam: '',
-				secondParam: '',
+				name: '',
+				surname: '',
+				gender: '',
+				id: this.state.activeUser
 			}),
 		})
 			.then(() => this.setState({
 				editingUser: true,
-				activeUser: (this.state.users[this.state.users.length -1].id + 1)
+				activeUser: id
 			}));
 	}
 
-	saveUser() {
-		this.getUserList();
-		this.setState({
-			editingUser: false,
-			activeUser: ''
-		});
+	saveUser(name, surname, gender) {
+
+
+		let id = null;
+
+		if (this.state.activeUser > this.state.users.length) {
+			id = this.state.activeUser;
+
+		} else id = this.state.users[this.state.activeUser].id;
+
+
+
+
+		fetch('http://localhost:3000/users/' + id, {
+			method: 'PUT',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				name: name,
+				surname: surname,
+				gender: gender
+			}),
+		})
+			.then(response => response.json())
+			.then(() => fetch('http://localhost:3000/users/'))
+			.then(response => response.json())
+			.then(data => this.setState({
+				users: data,
+				loading: false,
+				activeUser: '',
+				editingUser: false
+			}));
+
 	}
 
 	deleteUser(i) {

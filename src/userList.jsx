@@ -9,7 +9,11 @@ class UserList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
+
 	}
+
+
+
 
 
 	renderUser(i) {
@@ -45,7 +49,7 @@ class UserList extends React.Component {
 			<div className="userList">
 				<AddUserButton createEmptyUser={this.props.createEmptyUser}/>
 				{this.props.loading && <div>Loading user list</div>}
-				<ul>
+				<ul className="userList__items">
 					{this.props.users.map((user, index)=> (
 						<li key={index} onClick={() => this.props.changeActiveUser(index)}>
 							{this.renderUser(index)}

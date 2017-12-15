@@ -28,3 +28,27 @@ body {
   margin-right: -1px;
   margin-top: 5px;
 }
+
+.userList__items {
+  padding: 0;
+  margin: 30px 0 0 0;
+}
+
+.addUserButton {
+  position: fixed;
+  left:15%;
+  transform: translateX(-50%);
+}
+
+
+
+.userInfo {
+  position: fixed;
+  padding: 10px;
+}
+
+.createUser {
+  position: fixed;
+  padding: 10px;
+}
+
