@@ -23,7 +23,7 @@
           <input matInput placeholder="Position" formControlName="position" required (blur)="UpdateBase()">
         </mat-form-field>
         <div class="employee__skills">
-          <mat-form-field>
+          <mat-form-field [ngClass]="{'error': skills.length < 1 && form.get('skill').touched}">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
                         [removable]="removable" (remove)="remove(skill)">
@@ -37,7 +37,7 @@
                 matInput
                 (keyup)="keydown($event)"
                 (blur)="UpdateBase()"
-                placeholder="Your skills"
+                placeholder="Your skills *"
                 [matChipInputFor]="chipList"
                 (matChipInputTokenEnd)="addEvent($event)">
             </mat-chip-list>
@@ -62,7 +62,7 @@
           </mat-form-field>
         </div>
         <mat-form-field class="employee__character">
-          <textarea matInput formControlName="character" placeholder="Characteristic" class="employee__textarea" (blur)="UpdateBase()"></textarea>
+          <textarea required  matInput formControlName="character" placeholder="Characteristic" class="employee__textarea" (blur)="UpdateBase()"></textarea>
         </mat-form-field>
         <button mat-button type="submit" class="employee__btn" *ngIf="!this.form.invalid">Save</button>
         <button mat-button type="submit" class="employee__btn" disabled *ngIf="this.form.invalid">Save</button>

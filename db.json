@@ -19,32 +19,20 @@
     },
     {
       "photo": "http://dummyimage.com/150",
-      "firstName": "F.Name",
-      "lastName": "L.Name",
-      "Sex": "Female",
-      "birthDay": "3.12.2017",
-      "position": "some text",
+      "firstName": "Ivan",
+      "lastName": "Ivanov",
+      "Sex": "Male",
+      "birthDay": "09.12.2017",
+      "position": "Front-end developer",
       "idskill": [
-        1,
-        8
+        4,
+        5,
+        6,
+        2
       ],
-      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut beatae dolorem ducimus eveniet hic id impedit in ipsam molestiae nostrum nulla provident qui quis reprehenderit, sed sequi, temporibus voluptas!",
-      "progress": 75,
+      "characteristic": "Good employee!",
+      "progress": 85,
       "id": 2
-    },
-    {
-      "photo": "http://dummyimage.com/150",
-      "firstName": "First",
-      "lastName": "Last",
-      "Sex": "Female",
-      "birthDay": "3.12.2017",
-      "position": "some text",
-      "idskill": [
-        1
-      ],
-      "characteristic": "",
-      "progress": 60,
-      "id": 3
     }
   ],
   "skills": [
@@ -83,6 +71,34 @@
     {
       "skillName": "dsvgdaresvg",
       "id": 9
+    },
+    {
+      "skillName": "hsrtehrst",
+      "id": 10
+    },
+    {
+      "skillName": "egsver",
+      "id": 11
+    },
+    {
+      "skillName": "tdyrhyr",
+      "id": 12
+    },
+    {
+      "skillName": "tdjyfrty",
+      "id": 13
+    },
+    {
+      "skillName": "rtehd",
+      "id": 14
+    },
+    {
+      "skillName": "rtdhrd",
+      "id": 15
+    },
+    {
+      "skillName": "ndj",
+      "id": 16
     }
   ],
   "users": [

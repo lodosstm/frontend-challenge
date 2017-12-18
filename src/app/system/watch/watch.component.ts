@@ -23,6 +23,7 @@ export class WatchComponent implements OnInit {
               private skillService: SkillsService) { }
 
   ngOnInit() {
+    document.getElementById('sidebar').classList.add('sidebar_opened');
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'), 10);
       this.employee = this.employeeService.giveEmployee();
@@ -66,6 +67,8 @@ export class WatchComponent implements OnInit {
       this.employeeService.updateEmployees();
       this.employeeService.getEmployeeById(this.id).isEmpty();
       {
+        document.getElementById('sidebar').classList.remove('sidebar_opened');
+        this.employeeService.flag = false;
         this.router.navigate(['/system']);
       }
     });
@@ -86,6 +89,7 @@ export class WatchComponent implements OnInit {
 
   deleteCard() {
     this.employeeService.flag = false;
+    document.getElementById('sidebar').classList.remove('sidebar_opened');
     this.router.navigate(['/system']);
   }
 

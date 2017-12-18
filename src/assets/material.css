@@ -826,7 +826,7 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-option.mat-active {
-  background: #323232 !important;
+  background: #000;
   color: #fff
 }
 
@@ -877,6 +877,10 @@ input.mat-input-element.employee__input_skill {
 .mat-autocomplete-panel {
   background: #fff;
   color: rgba(0, 0, 0, .87)
+}
+
+.mat-option.mat-active.mat-selected {
+  background: #323232;
 }
 
 .mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover) {
@@ -1338,12 +1342,16 @@ input.mat-input-element.employee__input_skill {
   color: #f44336
 }
 
+.employee__skills .error .mat-form-field-placeholder {
+  color: #f44336
+}
+
 .mat-form-field-invalid .mat-form-field-placeholder .mat-form-field-required-marker, .mat-form-field-invalid .mat-form-field-placeholder.mat-accent {
   color: #f44336
 }
 
 .mat-form-field-invalid .mat-form-field-ripple {
-  background-color: #f44336
+  background-color: transparent;
 }
 
 .mat-error {
@@ -1595,7 +1603,7 @@ input.mat-input-element.employee__input_skill {
 }
 
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-  background: #000;
+  background: #323232;
   color: #fff;
 }
 

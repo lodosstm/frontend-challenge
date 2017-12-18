@@ -23,7 +23,7 @@
           <input matInput placeholder="Position" [(ngModel)]="employee.position" required formControlName="position" (blur)="calculator()">
         </mat-form-field>
         <div class="employee__skills">
-          <mat-form-field>
+          <mat-form-field [ngClass]="{'error': skills.length < 1 && form.get('skill').touched}">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
                         [removable]="removable" (remove)="remove(skill)">
@@ -62,7 +62,7 @@
           </mat-form-field>
         </div>
         <mat-form-field class="employee__character">
-          <textarea matInput formControlName="character" [(ngModel)]="employee.characteristic" placeholder="Characteristic" class="employee__textarea" (blur)="calculator()"></textarea>
+          <textarea required matInput formControlName="character" [(ngModel)]="employee.characteristic" placeholder="Characteristic" class="employee__textarea" (blur)="calculator()"></textarea>
         </mat-form-field>
         <button mat-button type="submit" class="employee__btn" *ngIf="!this.myGroup.invalid">Save</button>
         <button mat-button type="submit" class="employee__btn" disabled *ngIf="this.myGroup.invalid">Save</button>

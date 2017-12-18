@@ -5,6 +5,7 @@ import {AuthService} from '../shared/services/auth.service';
 import {Router} from '@angular/router';
 import {UsersService} from '../shared/services/users.service';
 import {User} from '../shared/models/user.model';
+import {subscribeOn} from 'rxjs/operators/subscribeOn';
 
 @Component({
   selector: 'task-system',
@@ -35,15 +36,6 @@ export class SystemComponent implements OnInit {
       this.router.navigate(['/login']);
     }
       this.employeeService.updateEmployees();
-      const menu = 83;
-      let windowClient = document.body.clientHeight;
-      document.getElementById('sidebar').style.height = (windowClient - menu) + 'px';
-      document.getElementById('employee').style.height = (windowClient - menu) + 'px';
-      window.onresize = () => {
-        windowClient = document.body.clientHeight;
-        document.getElementById('sidebar').style.height = (windowClient - menu) + 'px';
-        document.getElementById('employee').style.height = (windowClient - menu) + 'px';
-      };
       document.getElementById('sidebar').addEventListener('wheel', (event) => {
         const $sidebar = document.getElementById('sidebar');
         if (0 < event.deltaY) {

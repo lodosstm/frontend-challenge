@@ -209,6 +209,8 @@ export class EditComponent implements OnInit {
   onSubmit() {
     this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
       if (data) {
+        document.getElementById('sidebar').classList.remove('sidebar_opened');
+        this.employeeService.flag = false;
         this.employeeService.updateEmployees();
         this.router.navigate(['/system']);
       }
@@ -227,6 +229,8 @@ export class EditComponent implements OnInit {
   }
 
   returnCard() {
+    document.getElementById('sidebar').classList.remove('sidebar_opened');
+    this.employeeService.flag = false;
     this.router.navigate(['/system']);
   }
 

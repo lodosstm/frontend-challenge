@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {MatChipInputEvent} from '@angular/material/chips';
 
@@ -6,18 +6,19 @@ import {Employee} from '../../shared/models/employee.model';
 import {EmployeesService} from '../shared/services/employees.service';
 import {SkillsService} from '../shared/services/skills.service';
 import {Skill} from '../../shared/models/skill.module';
-import {Router, RouterModule} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'task-add-card',
   templateUrl: './add-card.component.html',
   styleUrls: ['./add-card.component.less']
 })
-export class AddCardComponent implements OnInit{
+export class AddCardComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   selectable = true;
   removable = true;
+  save = false;
 
   skills = [];
   idskills = [];
@@ -41,10 +42,11 @@ export class AddCardComponent implements OnInit{
 
   constructor(private employeeService: EmployeesService,
               private skillsService: SkillsService,
-              private router: RouterModule) {}
+              private router: Router) {}
 
   ngOnInit() {
     this.form = this.employeeService.InitEmployee();
+    document.getElementById('sidebar').classList.add('sidebar_opened');
     if (this.employeeService.flag) {
       this.employeeService.flag = false;
     }
@@ -68,6 +70,19 @@ export class AddCardComponent implements OnInit{
         }
       }
     });
+  }
+
+  ngOnDestroy() {
+    if (this.save === false) {
+      this.employeeService.deleteEmployee(this.id).subscribe(() => {
+        this.employeeService.updateEmployees();
+        this.employeeService.getEmployeeById(this.id).isEmpty();
+        {
+          this.employeeService.flag = false;
+          document.getElementById('sidebar').classList.remove('sidebar_opened');
+        }
+      });
+    }
   }
 
   add(event: MatChipInputEvent) {
@@ -135,9 +150,12 @@ export class AddCardComponent implements OnInit{
   }
 
   onSubmit() {
+    this.save = true;
     this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
       if (data) {
         this.employeeService.updateEmployees();
+        this.employeeService.flag = false;
+        document.getElementById('sidebar').classList.remove('sidebar_opened');
         this.router.navigate(['/system']);
       }
     });
@@ -185,13 +203,7 @@ export class AddCardComponent implements OnInit{
   }
 
   deleteCard() {
-    this.employeeService.deleteEmployee(this.id).subscribe(() => {
-      this.employeeService.updateEmployees();
-      this.employeeService.getEmployeeById(this.id).isEmpty();
-      {
-        this.router.navigate(['/system']);
-      }
-    });
+    this.router.navigate(['/system']);
   }
 
   itemClick(i) {
