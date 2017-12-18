@@ -26,6 +26,7 @@ export class WatchComponent implements OnInit {
     document.getElementById('sidebar').classList.add('sidebar_opened');
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'), 10);
+      this.employeeService.flag = true;
       this.employee = this.employeeService.giveEmployee();
       if (this.employee !== undefined) {
         this.searchSkill();

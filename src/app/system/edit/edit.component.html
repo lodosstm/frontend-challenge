@@ -23,7 +23,7 @@
           <input matInput placeholder="Position" [(ngModel)]="employee.position" required formControlName="position" (blur)="calculator()">
         </mat-form-field>
         <div class="employee__skills">
-          <mat-form-field [ngClass]="{'error': skills.length < 1 && form.get('skill').touched}">
+          <mat-form-field [ngClass]="{'error': skills.length < 1 && myGroup.get('skill').touched}">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
                         [removable]="removable" (remove)="remove(skill)">

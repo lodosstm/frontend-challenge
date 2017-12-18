@@ -50,6 +50,10 @@ export class AddCardComponent implements OnInit, OnDestroy {
     if (this.employeeService.flag) {
       this.employeeService.flag = false;
     }
+    if (this.employeeService.open) {
+      document.getElementById('sidebar').style.display = 'none';
+      this.employeeService.open = false;
+    }
     this.employeeService.createNewEmployee(this.InitEmployee())
       .subscribe((employ: Employee) => { this.id = employ.id; });
     this.skillsService.Skills();
@@ -78,10 +82,10 @@ export class AddCardComponent implements OnInit, OnDestroy {
         this.employeeService.updateEmployees();
         this.employeeService.getEmployeeById(this.id).isEmpty();
         {
-          this.employeeService.flag = false;
-          document.getElementById('sidebar').classList.remove('sidebar_opened');
         }
       });
+      this.employeeService.flag = false;
+      document.getElementById('sidebar').classList.remove('sidebar_opened');
     }
   }
 

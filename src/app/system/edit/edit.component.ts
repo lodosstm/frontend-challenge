@@ -50,6 +50,10 @@ export class EditComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'), 10);
     });
+    if (this.employeeService.open) {
+      document.getElementById('sidebar').style.display = 'none';
+      this.employeeService.open = false;
+    }
     this.myGroup = new FormGroup({
       'firstname': new FormControl(null, [Validators.required]),
       'lastname': new FormControl(null, [Validators.required]),
