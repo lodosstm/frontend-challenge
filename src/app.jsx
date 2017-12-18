@@ -1,169 +1,53 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import 'styles/index.scss';
 
 
 
-import UserList from './userList';
-import UserInfo from './userInfo';
-import CreateUser from './createUser';
+import UserList from './UserList';
+import UserInfo from './UserInfo';
+import CreateUser from './CreateUser';
+import EditUser from './EditUser';
+
+
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			users: [],
-			loading: true,
-			activeUser: '',
-			editingUser: false
-		};
-		this.getUserList = this.getUserList.bind(this);
-		this.changeActiveUser = this.changeActiveUser.bind(this);
-		this.createEmptyUser = this.createEmptyUser.bind(this);
-		this.saveUser = this.saveUser.bind(this);
-		this.deleteUser = this.deleteUser.bind(this);
+		this.state = {};
+		this.refreshList = this.refreshList.bind(this);
 	}
 
 
-
-	getUserList() {
-		fetch('http://localhost:3000/users/')
-			.then(response => response.json())
-			.then(data => this.setState({
-				users: data,
-				loading: false
-			}));
+	refreshList(){
+		this.setState({refreshList:new Date()});
 	}
-
-	changeActiveUser(i) {
-		this.setState({
-			activeUser: i
-		});
-	}
-
-	createEmptyUser() {
-		if (this.state.editingUser) return;
-
-		let id = null;
-		if (this.state.users.length > 0) {
-			id = this.state.users[this.state.users.length - 1].id + 1;
-		} else id = 1;
-
-
-		fetch('http://localhost:3000/users/', {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				name: '',
-				surname: '',
-				gender: '',
-				id: this.state.activeUser
-			}),
-		})
-			.then(() => this.setState({
-				editingUser: true,
-				activeUser: id
-			}));
-	}
-
-	saveUser(name, surname, gender) {
-
-
-		let id = null;
-
-		if (this.state.activeUser > this.state.users.length) {
-			id = this.state.activeUser;
-
-		} else id = this.state.users[this.state.activeUser].id;
-
-
-
-
-		fetch('http://localhost:3000/users/' + id, {
-			method: 'PUT',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				name: name,
-				surname: surname,
-				gender: gender
-			}),
-		})
-			.then(response => response.json())
-			.then(() => fetch('http://localhost:3000/users/'))
-			.then(response => response.json())
-			.then(data => this.setState({
-				users: data,
-				loading: false,
-				activeUser: '',
-				editingUser: false
-			}));
-
-	}
-
-	deleteUser(i) {
-
-		let id = null;
-
-		if (i > this.state.users.length) {
-			id = i;
-			this.setState({editingUser: false});
-
-		} else id = this.state.users[i].id;
-
-
-		fetch('http://localhost:3000/users/' + id, {
-			method: 'delete'
-		})
-			.then(response => response.json())
-			.then(() => fetch('http://localhost:3000/users/'))
-			.then(response => response.json())
-			.then(data => this.setState({
-				users: data,
-				loading: false,
-				activeUser: ''
-			}));
-	}
-
-
-
-
-
-	componentDidMount() {
-		this.getUserList();
-	}
-
-
 
 
 
 
 	render() {
-		const activeUser = this.state.activeUser;
-
-
 		return (
 			<Router>
 				<div>
 					<div className="topElement">List</div>
 					<div className="containerForUserListAndInfo">
-						<UserList users={this.state.users} loading={this.state.loading}
-											changeActiveUser={this.changeActiveUser} editingUser={this.state.editingUser}
-											createEmptyUser={this.createEmptyUser}/>
-						<Route path="/:userId" render={({match}) =>
-							<UserInfo  match={match} user={this.state.users[activeUser]} activeUser={activeUser}
-												 deleteUser={this.deleteUser}/>
-						}/>
-						<Route path="/new" render={() =>
-							<CreateUser saveUser={this.saveUser} deleteUser={this.deleteUser}
-													activeUser={activeUser}/>
-						}/>
+						<UserList refreshList={this.state.refreshList}/>
+						<Switch>
+							<Route path="/new" exact component={({history}) =>
+								<CreateUser refreshList={this.refreshList} history={history}/>
+							}/>
+
+							<Route path="/edit/:userId?" component={({match})=>
+									!isNaN(match.params.userId)?<EditUser userId={match.params.userId} refreshList={this.refreshList}/>:''
+							}/>
+
+							<Route path="/:userId?" component={({match})=>
+									!isNaN(match.params.userId)?<UserInfo userId={match.params.userId} refreshList={this.refreshList}/>:''
+							}/>
+
+						</Switch>
 					</div>
 				</div>
 			</Router>

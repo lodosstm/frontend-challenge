@@ -17,39 +17,167 @@ body {
   display:flex;
 }
 
-.userList {
-  width:30%;
+.UserList {
+  height: calc(100vh - 70px);
+  width:400px;
+  overflow-y: auto;
+  //overflow-x: hidden;
+
+  background: white;
+}
+
+
+.UserList__addNewUserButton {
   border-right: 1px solid black;
-}
-
-.userList__user {
-  border: 1px solid black;
-  padding: 3px 0 3px 3px;
-  margin-right: -1px;
   margin-top: 5px;
-}
-
-.userList__items {
-  padding: 0;
-  margin: 30px 0 0 0;
-}
-
-.addUserButton {
-  position: fixed;
-  left:15%;
+  position: relative;
+  left: 50%;
   transform: translateX(-50%);
 }
 
-
-
-.userInfo {
-  position: fixed;
-  padding: 10px;
+.UserList__addNewUserButtonContainer{
+  width:100%;
+  border-right: 1px solid black;
+  padding: 5px 0 5px 0;
 }
 
 
-.createUser {
-  position: fixed;
-  padding: 10px;
+.UserList__items {
+  border-right: 1px solid black;
+  height:calc(100% - 53px);
+  list-style-type: none;
+  margin:0;
+  padding: 0;
 }
 
+.User {
+  padding-left: 2%;
+  border: 1px solid black;
+  margin-right: -1px;
+  margin-bottom: -1px;
+  height:100px;
+  line-height: 100px;
+  font-size: 0.6em;
+  position: relative;
+
+
+}
+
+
+.User__userFilled {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  //height: 100%;
+  width: 4px;
+  //background: green;
+
+
+  &_20{
+    height:20%;
+    background:linear-gradient(to top, #FF0000, #FF7F00);
+  }
+  &_25{
+    height:25%;
+    background:linear-gradient(to top, #FF0000, #FF7F00);
+  }
+  &_30{
+    height:30%;
+    background:linear-gradient(to top, #FF0000, #FF7F00);
+  }
+  &_35{
+    height:35%;
+    background:linear-gradient(to top, #FF0000, #FF7F00);
+  }
+  &_40{
+    height:40%;
+    background:linear-gradient(to top, #FF7F00, #FFFF00);
+  }
+  &_45{
+    height:45%;
+    background:linear-gradient(to top, #FF7F00, #FFFF00);
+  }
+  &_50{
+    height:50%;
+    background:linear-gradient(to top, #FF7F00, #FFFF00);
+  }
+  &_55{
+    height:55%;
+    background:linear-gradient(to top, #FF7F00, #FFFF00);
+  }
+  &_60{
+    height:60%;
+    background:linear-gradient(to top, #FFFF00, #7FFF00);
+  }
+  &_65{
+    height:65%;
+    background:linear-gradient(to top, #FFFF00, #7FFF00);
+  }
+  &_70{
+    height:70%;
+    background:linear-gradient(to top, #FFFF00, #7FFF00);
+  }
+  &_75{
+    height:75%;
+    background:linear-gradient(to top, #FFFF00, #7FFF00);
+  }
+  &_80{
+    height:80%;
+    background:linear-gradient(to top, #7FFF00, #00FF00);
+  }
+  &_85{
+    height:85%;
+    background:linear-gradient(to top, #7FFF00, #00FF00);
+  }
+  &_90{
+    height:90%;
+    background:linear-gradient(to top, #7FFF00, #00FF00);
+  }
+  &_95{
+    height:95%;
+    background:linear-gradient(to top, #7FFF00, #00FF00);
+  }
+  &_100{
+    height:100%;
+    background:linear-gradient(to top, #00FF00, #00FF00);
+  }
+
+
+}
+
+.User__userFilled_ {}
+
+
+
+
+.User_active .User{
+  border-right: 1px solid white;
+}
+
+
+.User__info {
+  padding: 10px 0 0 50px;
+  width: calc(100% - 430px);
+
+  background: white;
+
+}
+.CreateUser {
+
+  padding: 10px 0 0 50px;
+
+}
+.EditUser {
+
+  padding: 10px 0 0 50px;
+
+}
+
+#scroll{
+  direction:rtl;
+ }
+
+#scroll>div{
+  direction:ltr;
+  height:100%;
+}
