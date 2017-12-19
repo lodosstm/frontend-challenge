@@ -53,4 +53,11 @@ export class SystemComponent implements OnInit {
         }
       });
   }
+
+  clickAdd() {
+    if (this.employeeService.flag === true) {
+      this.employeeService.flag = false;
+    }
+    this.router.navigate(['/system/add']);
+  }
 }

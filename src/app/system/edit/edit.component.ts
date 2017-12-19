@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Employee} from '../../shared/models/employee.model';
 import {EmployeesService} from '../shared/services/employees.service';
@@ -155,36 +155,38 @@ export class EditComponent implements OnInit {
   }
 
   add(event: MatChipInputEvent) {
-    const input = event.input;
     const value = event.value;
-    if ((value || '').trim() && this.skills.length < 5) {
-      this.skills.push(value.trim());
-      const index = this.skills.length - 1;
-      if (index + 1 !== 0) {
-        this.skillsService.getSkillByName(this.skills[index]).subscribe((skill: Skill) => {
-          if (skill) {
-            this.idskills[index] = skill.id;
-          } else {
-            const skills = new Skill(this.skills[index]);
-            this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
-              if (skillsi === undefined) {
-                alert('Error of creating skill!');
-              }
-            });
-            this.skillsService.getSkillByName(this.skills[index]).subscribe((skilli: Skill) => {
-              if (skilli) {
-                this.idskills[index] = skilli.id;
-              }
-            });
-          }
-        });
+    const input = event.input;
+    if (this.checkSkill(value)) {
+      if ((value || '').trim() && this.skills.length < 5) {
+        this.skills.push(value.trim());
+        const index = this.skills.length - 1;
+        if (index + 1 !== 0) {
+          this.skillsService.getSkillByName(this.skills[index]).subscribe((skill: Skill) => {
+            if (skill) {
+              this.idskills[index] = skill.id;
+            } else {
+              const skills = new Skill(this.skills[index]);
+              this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
+                if (skillsi === undefined) {
+                  alert('Error of creating skill!');
+                }
+              });
+              this.skillsService.getSkillByName(this.skills[index]).subscribe((skilli: Skill) => {
+                if (skilli) {
+                  this.idskills[index] = skilli.id;
+                }
+              });
+            }
+          });
+        }
+        this.result.length = 0;
       }
-      this.result.length = 0;
+      if (input && this.skills.length <= 5) {
+        input.value = '';
+      }
+      this.proverka();
     }
-    if (input && this.skills.length <= 5) {
-      input.value = '';
-    }
-    this.proverka();
   }
 
   remove(fruit) {
@@ -208,6 +210,13 @@ export class EditComponent implements OnInit {
       this.idskills,
       this.myGroup.value.character,
       this.percentsEmployee);
+  }
+
+  checkSkill(skill: string) {
+    if (this.skills.indexOf(skill) === -1) {
+      return true;
+    }
+    return false;
   }
 
   onSubmit() {
@@ -239,31 +248,33 @@ export class EditComponent implements OnInit {
   }
 
   itemClick(i) {
-    this.skills.push(this.result[i].trim());
-    const index = this.skills.length - 1;
-    if (index + 1 !== 0) {
-      this.skillsService.getSkillByName(this.skills[index]).subscribe((skill: Skill) => {
-        if (skill) {
-          this.idskills[index] = skill.id;
-        } else {
-          const skills = new Skill(this.skills[index]);
-          this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
-            if (skillsi === undefined) {
-              alert('Error of creating skill!');
-            }
-          });
-          this.skillsService.getSkillByName(this.skills[index]).subscribe((skilli: Skill) => {
-            if (skilli) {
-              this.idskills[index] = skilli.id;
-            }
-          });
-        }
-      });
+    if (this.checkSkill(this.result[i])) {
+      this.skills.push(this.result[i].trim());
+      const index = this.skills.length - 1;
+      if (index + 1 !== 0) {
+        this.skillsService.getSkillByName(this.skills[index]).subscribe((skill: Skill) => {
+          if (skill) {
+            this.idskills[index] = skill.id;
+          } else {
+            const skills = new Skill(this.skills[index]);
+            this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
+              if (skillsi === undefined) {
+                alert('Error of creating skill!');
+              }
+            });
+            this.skillsService.getSkillByName(this.skills[index]).subscribe((skilli: Skill) => {
+              if (skilli) {
+                this.idskills[index] = skilli.id;
+              }
+            });
+          }
+        });
+      }
+      this.result.length = 0;
+      const input = this.event.input;
+      this.proverka();
+      this.addItem(input);
     }
-    this.result.length = 0;
-    const input = this.event.input;
-    this.proverka();
-    this.addItem(input);
   }
 
   addItem(input) {

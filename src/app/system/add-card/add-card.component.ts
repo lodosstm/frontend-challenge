@@ -46,11 +46,10 @@ export class AddCardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = this.employeeService.InitEmployee();
-    document.getElementById('sidebar').classList.add('sidebar_opened');
-    if (this.employeeService.flag) {
-      this.employeeService.flag = false;
+    if (document.getElementById('sidebar') !== null) {
+      document.getElementById('sidebar').classList.add('sidebar_opened');
     }
-    if (this.employeeService.open) {
+    if (this.employeeService.open === true && document.getElementById('sidebar') !== null) {
       document.getElementById('sidebar').style.display = 'none';
       this.employeeService.open = false;
     }
@@ -80,41 +79,48 @@ export class AddCardComponent implements OnInit, OnDestroy {
     if (this.save === false) {
       this.employeeService.deleteEmployee(this.id).subscribe(() => {
         this.employeeService.updateEmployees();
-        this.employeeService.getEmployeeById(this.id).isEmpty();
-        {
-        }
       });
-      this.employeeService.flag = false;
-      document.getElementById('sidebar').classList.remove('sidebar_opened');
+      if (document.getElementById('sidebar') !== null) {
+        document.getElementById('sidebar').classList.remove('sidebar_opened');
+      }
     }
+  }
+
+  checkSkill(skill: string) {
+    if (this.skills.indexOf(skill) === -1) {
+      return true;
+    }
+    return false;
   }
 
   add(event: MatChipInputEvent) {
     const input = event.input;
     const value = event.value;
-    if ((value || '').trim() && this.skills.length < 5) {
-      this.skills.push(value.trim());
-      const index = this.skills.length - 1;
-      if (index + 1 !== 0) {
-        this.skillsService.getSkillByName(this.skills[index]).subscribe((skill: Skill) => {
-          if (skill) {
-            this.idskills[index] = skill.id;
-          } else {
-            const skills = new Skill(this.skills[index]);
-            this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
-              if (skillsi === undefined) {
-                alert('Error of creating skill!');
-              }
-            });
-            this.skillsService.getSkillByName(this.skills[index]).subscribe((skilli: Skill) => {
-              if (skilli) {
-                this.idskills[index] = skilli.id;
-              }
-            });
-          }
-        });
+    if (this.checkSkill(event.value)) {
+      if ((value || '').trim() && this.skills.length < 5) {
+        this.skills.push(value.trim());
+        const index = this.skills.length - 1;
+        if (index + 1 !== 0) {
+          this.skillsService.getSkillByName(this.skills[index]).subscribe((skill: Skill) => {
+            if (skill) {
+              this.idskills[index] = skill.id;
+            } else {
+              const skills = new Skill(this.skills[index]);
+              this.skillsService.createNewSkill(skills).subscribe((data: Skill) => {
+                if (data) {
+                  this.skillsService.getSkillByName(this.skills[index]).subscribe((skilli: Skill) => {
+                    if (skilli) {
+                      this.idskills[index] = skilli.id;
+                    }
+                  });
+                  // alert('Error of creating skill!');
+                }
+              });
+            }
+          });
+        }
+        this.result.length = 0;
       }
-      this.result.length = 0;
     }
     if (input && this.skills.length <= 5) {
       input.value = '';
@@ -158,8 +164,9 @@ export class AddCardComponent implements OnInit, OnDestroy {
     this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
       if (data) {
         this.employeeService.updateEmployees();
-        this.employeeService.flag = false;
-        document.getElementById('sidebar').classList.remove('sidebar_opened');
+        if (document.getElementById('sidebar') !== null) {
+          document.getElementById('sidebar').classList.remove('sidebar_opened');
+        }
         this.router.navigate(['/system']);
       }
     });
@@ -211,32 +218,34 @@ export class AddCardComponent implements OnInit, OnDestroy {
   }
 
   itemClick(i) {
-    this.skills.push(this.result[i].trim());
-    const index = this.skills.length - 1;
-    if (index + 1 !== 0) {
-      this.skillsService.getSkillByName(this.skills[index]).subscribe((skill: Skill) => {
-        if (skill) {
-          this.idskills[index] = skill.id;
-        } else {
-          const skills = new Skill(this.skills[index]);
-          this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
-            if (skillsi === undefined) {
-              alert('Error of creating skill!');
-            }
-          });
-          this.skillsService.getSkillByName(this.skills[index]).subscribe((skilli: Skill) => {
-            if (skilli) {
-              this.idskills[index] = skilli.id;
-            }
-          });
-        }
-      });
+    if (this.checkSkill(this.result[i])) {
+      this.skills.push(this.result[i].trim());
+      const index = this.skills.length - 1;
+      if (index + 1 !== 0) {
+        this.skillsService.getSkillByName(this.skills[index]).subscribe((skill: Skill) => {
+          if (skill) {
+            this.idskills[index] = skill.id;
+          } else {
+            const skills = new Skill(this.skills[index]);
+            this.skillsService.createNewSkill(skills).subscribe((skillsi: Skill) => {
+              if (skillsi === undefined) {
+                alert('Error of creating skill!');
+              }
+            });
+            this.skillsService.getSkillByName(this.skills[index]).subscribe((skilli: Skill) => {
+              if (skilli) {
+                this.idskills[index] = skilli.id;
+              }
+            });
+          }
+        });
+      }
+      this.result.length = 0;
+      const input = this.event.input;
+      this.proverka();
+      this.addItem(input);
+      this.UpdateBase();
     }
-    this.result.length = 0;
-    const input = this.event.input;
-    this.proverka();
-    this.addItem(input);
-    this.UpdateBase();
   }
 
   addItem(input) {

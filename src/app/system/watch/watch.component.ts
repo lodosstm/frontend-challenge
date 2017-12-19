@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Employee} from '../../shared/models/employee.model';
 import {EmployeesService} from '../shared/services/employees.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -23,15 +23,16 @@ export class WatchComponent implements OnInit {
               private skillService: SkillsService) { }
 
   ngOnInit() {
-    document.getElementById('sidebar').classList.add('sidebar_opened');
+    if (document.getElementById('sidebar') !== null) {
+      document.getElementById('sidebar').classList.add('sidebar_opened');
+    }
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'), 10);
-      this.employeeService.flag = true;
       this.employee = this.employeeService.giveEmployee();
       if (this.employee !== undefined) {
         this.searchSkill();
       }
-      if (this.employeeService.open) {
+      if (this.employeeService.open && document) {
         document.getElementById('sidebar').style.display = 'none';
         this.employeeService.open = false;
       }
@@ -64,12 +65,13 @@ export class WatchComponent implements OnInit {
   }
 
   deleteEmployee() {
+    if (this.employeeService.flag === true) {
+      this.employeeService.flag = false;
+    }
     this.employeeService.deleteEmployee(this.id).subscribe((data: Employee) => {
       this.employeeService.updateEmployees();
-      this.employeeService.getEmployeeById(this.id).isEmpty();
-      {
+      if (this.employeeService.getEmployeeById(this.id).isEmpty() && document.getElementById('sidebar') !== null) {
         document.getElementById('sidebar').classList.remove('sidebar_opened');
-        this.employeeService.flag = false;
         this.router.navigate(['/system']);
       }
     });
@@ -89,7 +91,9 @@ export class WatchComponent implements OnInit {
   }
 
   deleteCard() {
-    this.employeeService.flag = false;
+    if (this.employeeService.flag === true) {
+      this.employeeService.flag = false;
+    }
     document.getElementById('sidebar').classList.remove('sidebar_opened');
     this.router.navigate(['/system']);
   }

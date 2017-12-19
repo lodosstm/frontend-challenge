@@ -19,20 +19,37 @@
     },
     {
       "photo": "http://dummyimage.com/150",
-      "firstName": "Ivan",
-      "lastName": "Ivanov",
+      "firstName": "Ivanov",
+      "lastName": "Ivan",
       "Sex": "Male",
-      "birthDay": "09.12.2017",
+      "birthDay": "9.12.2017",
       "position": "Front-end developer",
       "idskill": [
-        4,
-        5,
         6,
-        2
+        4,
+        5
       ],
-      "characteristic": "Good employee!",
-      "progress": 85,
+      "characteristic": "Good employee!!!",
+      "progress": 80,
       "id": 2
+    },
+    {
+      "photo": "http://dummyimage.com/150",
+      "firstName": "Sidorov",
+      "lastName": "Sergey",
+      "Sex": "Male",
+      "birthDay": "20.6.1991",
+      "position": "Back-end developer",
+      "idskill": [
+        6,
+        8,
+        9,
+        10,
+        7
+      ],
+      "characteristic": "Good middle back-end developer, but knows not enough for senior developer.",
+      "progress": 90,
+      "id": 3
     }
   ],
   "skills": [
@@ -65,40 +82,28 @@
       "id": 7
     },
     {
-      "skillName": "react",
+      "skillName": "PHP",
       "id": 8
     },
     {
-      "skillName": "dsvgdaresvg",
+      "skillName": "Laravel",
       "id": 9
     },
     {
-      "skillName": "hsrtehrst",
+      "skillName": "Yii",
       "id": 10
     },
     {
-      "skillName": "egsver",
+      "skillName": "rsehyrsth",
       "id": 11
     },
     {
-      "skillName": "tdyrhyr",
+      "skillName": "cgfngcfn",
       "id": 12
     },
     {
-      "skillName": "tdjyfrty",
+      "skillName": "hgdrgyre",
       "id": 13
-    },
-    {
-      "skillName": "rtehd",
-      "id": 14
-    },
-    {
-      "skillName": "rtdhrd",
-      "id": 15
-    },
-    {
-      "skillName": "ndj",
-      "id": 16
     }
   ],
   "users": [

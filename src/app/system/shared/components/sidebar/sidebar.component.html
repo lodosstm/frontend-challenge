@@ -13,5 +13,5 @@
         <span class="sidebar__skill" *ngFor="let skill of skills">{{ skill }} </span>
       </div>
     </div>
-  <div class="sidebar-shadow"  [ngClass]="{'sidebar__card_active': employeeService.flag && employeeService.giveEmployee() && employeeService.giveEmployee().id == item.id}"></div>
+  <div class="sidebar-shadow"  [ngClass]="{'sidebar__card_active': employeeService.giveEmployee() && employeeService.giveEmployee().id == item.id && employeeService.flag}"></div>
 </div>
