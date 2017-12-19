@@ -7,7 +7,7 @@ import userService from './services/user.service';
 
 import { Form, FormGroup, Label, Input, FormFeedback, FormText,Button,
 	Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-
+import Chips from 'react-chips';
 
 
 
@@ -23,6 +23,8 @@ class EditUser extends React.Component {
 		this.editingUser = this.editingUser.bind(this);
 		this.toggle = this.toggle.bind(this);
 		this.saveChange = this.saveChange.bind(this);
+		this.editPhoto = this.editPhoto.bind(this);
+		this.editSkills = this.editSkills.bind(this);
 	}
 
 	deleteUser(){
@@ -47,8 +49,23 @@ class EditUser extends React.Component {
 		if (!this.state.user.surname) return;
 		if (!this.state.user.gender) return;
 		if (!this.state.user.birthday) return;
-		userService.saveUser(this.state.user);
+		userService.saveUser(this.state.user).then(()=>{
+			this.props.refreshList();
+		});
 	}
+
+	editPhoto() {
+		if (!this.state.user.photo) {
+			this.setState({
+				user: Object.assign({}, this.state.user,{photo: "http://dummyimage.com/120x120/00dd00/000000.png&text=Avatar!"})
+			});
+		} else this.setState({user: Object.assign({}, this.state.user, {photo: ""})});
+	}
+
+	editSkills (skills) {
+		this.setState({user: Object.assign({}, this.state.user, { skills })});
+	}
+
 
 
 
@@ -78,6 +95,14 @@ class EditUser extends React.Component {
 		return(
 			<div className="EditUser">
 				<div>Edit User</div>
+				<div>
+					<div>Skills:</div>
+					<Chips
+						value={this.state.user.skills}
+						onChange={this.editSkills}
+						suggestions={["React", "Angular.js", "Node.js", "JQuery"]}
+					/>
+				</div>
 				<Form>
 					<FormGroup>
 						<Label for="name">Name</Label>
@@ -121,12 +146,10 @@ class EditUser extends React.Component {
 						/>
 						<FormFeedback>Birthday is required.</FormFeedback>
 					</FormGroup>
-					<FormGroup>
-						<Label for="photo">Photo</Label>
-						<Input name="photo" value={this.state.user.photo}
-									 onChange={this.editingUser}
-						/>
-					</FormGroup>
+					<div onClick={this.editPhoto}>
+						{this.state.user.photo&&<img src="http://dummyimage.com/120x120/00dd00/000000.png&text=Avatar!" />}
+						{!this.state.user.photo&&<img src="http://dummyimage.com/120x120/c0c0c0/ffffff.png&text=add+photo!" />}
+					</div>
 				</Form>
 				<Link to={"/"}><Button>return</Button></Link>
 				<Button onClick={this.saveChange}>save</Button>

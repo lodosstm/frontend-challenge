@@ -40,7 +40,10 @@ class UserInfo extends React.Component {
 
 	render() {
 
-		let skillList = this.state.user.skills.length?true:false;
+		let skillList = false;
+		if (this.state.user.id) {
+			skillList = this.state.user.skills.length?true:false;
+		}
 
 
 
@@ -54,7 +57,7 @@ class UserInfo extends React.Component {
 				{skillList && <div>Skills: {this.state.user.skills.map((skill, index)=>
 					<span key={index}>{skill} </span>)}
 				</div>}
-
+				<div>{this.state.user.photo&&<img src={this.state.user.photo}/>}</div>
 				<Link to="/"><Button>return</Button></Link>
 				<Link to={"/edit/" + this.state.user.id}><Button>edit</Button></Link>
 				<Link to="/"><Button onClick={this.deleteUser}>delete</Button></Link>

@@ -6,7 +6,7 @@ import userService from './services/user.service';
 import { Form, FormGroup, Label, Input, FormFeedback, FormText,Button,
 	Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
-
+import Chips from 'react-chips';
 
 
 
@@ -28,7 +28,8 @@ class CreateUser extends React.Component {
 		this.changeUserData = this.changeUserData.bind(this);
 		this.editingGender = this.editingGender.bind(this);
 		this.confirmChangeDate = this.confirmChangeDate.bind(this);
-
+		this.editPhoto = this.editPhoto.bind(this);
+		this.editSkills = this.editSkills.bind(this);
 	}
 
 	deleteNewUser() {
@@ -83,6 +84,24 @@ class CreateUser extends React.Component {
 		this.setState({
 			dropdownOpenDate: !this.state.dropdownOpenDate
 		});
+		userService.saveUser(this.state.user);
+	}
+
+
+	editPhoto() {
+		if (!this.state.user.photo) {
+			this.setState({
+				user: Object.assign({}, this.state.user,{photo: "http://dummyimage.com/120x120/00dd00/000000.png&text=Avatar!"})
+			}, function() {
+				userService.saveUser(this.state.user);
+			});
+		} else this.setState({user: Object.assign({}, this.state.user, {photo: ""})}, function() {
+			userService.saveUser(this.state.user);
+		});
+	}
+
+	editSkills (skills) {
+		this.setState({user: Object.assign({}, this.state.user, { skills })});
 	}
 
 
@@ -106,6 +125,18 @@ class CreateUser extends React.Component {
 			<div className="CreateUser">
 				<div>Create User</div>
 				<Form onBlur={this.changeUserData}>
+					<div>
+						<div>Skills:</div>
+						<Chips
+							value={this.state.user.skills}
+							onChange={this.editSkills}
+							suggestions={["React", "Angular.js", "Node.js", "JQuery"]}
+						/>
+					</div>
+					<div onClick={this.editPhoto}>
+						{this.state.user.photo&&<img src="http://dummyimage.com/120x120/00dd00/000000.png&text=Avatar!" />}
+						{!this.state.user.photo&&<img src="http://dummyimage.com/120x120/c0c0c0/ffffff.png&text=add+photo!" />}
+					</div>
 					<FormGroup>
 						<Label for="name">Name</Label>
 						<Input name="name" value={this.state.user.name}
@@ -155,12 +186,6 @@ class CreateUser extends React.Component {
 						</DropdownMenu>
 						<div className="invalid-feedback">Birthday is required.</div>
 					</Dropdown>
-					<FormGroup>
-						<Label for="photo">Photo</Label>
-						<Input name="photo" value={this.state.user.photo}
-									 onChange={this.editingUser}
-						/>
-					</FormGroup>
 				</Form>
 				<Button onClick={this.saveNewUser}>save</Button>
 				<Link to={"/"}><Button>return</Button></Link>
