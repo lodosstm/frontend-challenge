@@ -1,12 +1,11 @@
-language: node_js # Для сборки нужен будет NodeJS
+language: node_js
 node_js:
-  - stable # Выбираем последню стабильную версию NodeJS
+- stable
+before_install:
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 script:
-  - npm run testlint
-deploy:
-  provider: pages # Используем возможности GithubPages
-  skip_cleanup: true # Не чистим рабочую директорию
-  # GITHUB_TOKEN — код, обеспечивающий интеграцию Тревиса и Гитхаба.
-  # Нужно сгенерировать тут: https://github.com/settings/tokens и добавить в настройки репозитория в Тревисе
-  github_token: $GITHUB_TOKEN
-  local_dir: dist # название директории, из которой будут отдаваться файлы на сервере
+- npm install
+- npm run test
+- npm run lint
