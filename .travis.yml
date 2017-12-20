@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- stable
+  - 0.8
 addons:
   chrome: stable
 before_install:
@@ -9,5 +9,5 @@ before_install:
 — sh -e /etc/init.d/xvfb start
 - sleep 3
 script:
-- npm run test
+- ./node_modules/.bin/karma start --browsers Firefox --single-run
 - npm run lint
