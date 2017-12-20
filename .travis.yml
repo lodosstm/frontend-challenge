@@ -12,3 +12,4 @@ deploy:
   # GITHUB_TOKEN — код, обеспечивающий интеграцию Тревиса и Гитхаба.
   # Нужно сгенерировать тут: https://github.com/settings/tokens и добавить в настройки репозитория в Тревисе
   github_token: $GITHUB_TOKEN
+
