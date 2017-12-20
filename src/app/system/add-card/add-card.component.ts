@@ -288,7 +288,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
     if (event !== undefined) {
       for (const j in this.skillsService.skills) {
         if (this.skillsService.skills.hasOwnProperty(j)) {
-          if (this.skillsService.skills[j].skillName.indexOf(event) === 0
+          if ( this.skillsService.skills[j].skillName.toLowerCase().indexOf(event) !== -1
             && event.length <= this.skillsService.skills[j].skillName.length) {
             this.result[k] = this.skillsService.skills[j].skillName;
             k++;

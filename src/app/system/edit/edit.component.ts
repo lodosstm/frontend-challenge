@@ -65,6 +65,9 @@ export class EditComponent implements OnInit {
     });
     this.employeeService.getEmployeeById(this.id).subscribe(data => {
       this.employee = data;
+      if (this.employeeService.givenemployee === undefined) {
+        this.employeeService.bringEmployee(this.employee);
+      }
       this.date = this.employee.birthDay !== undefined && this.employee.birthDay !== null ?
           new Date(this.employee.birthDay.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1')) : null;
       this.myGroup.value.firstname = this.employee.firstName;
@@ -289,7 +292,7 @@ export class EditComponent implements OnInit {
     if (event !== undefined) {
       for (const j in this.skillsService.skills) {
         if (this.skillsService.skills.hasOwnProperty(j)) {
-          if (this.skillsService.skills[j].skillName.indexOf(event) === 0
+          if ( this.skillsService.skills[j].skillName.toLowerCase().indexOf(event) !== -1
             && event.length <= this.skillsService.skills[j].skillName.length) {
             this.result[k] = this.skillsService.skills[j].skillName;
             k++;
