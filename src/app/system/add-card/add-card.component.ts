@@ -39,6 +39,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
     'idskill': 5,
     'characteristic': 10
   };
+  subscribe: Subscription;
 
   constructor(private employeeService: EmployeesService,
               private skillsService: SkillsService,
@@ -54,7 +55,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
       document.getElementById('sidebar').style.display = 'none';
       this.employeeService.open = false;
     }
-    this.employeeService.createNewEmployee(this.InitEmployee())
+    this.subscribe = this.employeeService.createNewEmployee(this.InitEmployee())
       .subscribe((employ: Employee) => { this.id = employ.id; });
     this.skillsService.Skills();
     this.calculator();
@@ -77,6 +78,9 @@ export class AddCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.subscribe) {
+      this.subscribe.unsubscribe();
+    }
     if (this.employeeService.save === false) {
       this.employeeService.HardDelete(this.id);
     }
