@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {User} from '../models/user.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/Observable/of';
+import '../../../../node_modules/rxjs/add/Observable/of';
 
 
 @Injectable()
