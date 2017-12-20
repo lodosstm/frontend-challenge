@@ -81,14 +81,14 @@ export class AddCardComponent implements OnInit, OnDestroy {
     if (this.subscribe) {
       this.subscribe.unsubscribe();
     }
-    if (this.save === false) {
-      this.employeeService.deleteEmployee(this.id).subscribe(() => {
-        this.employeeService.updateEmployees();
-      });
-      if (document.getElementById('sidebar') !== null) {
-        document.getElementById('sidebar').classList.remove('sidebar_opened');
-      }
-    }
+    // if (this.save === false) {
+    //   this.employeeService.deleteEmployee(this.id).subscribe(() => {
+    //     this.employeeService.updateEmployees();
+    //   });
+    //   if (document.getElementById('sidebar') !== null) {
+    //     document.getElementById('sidebar').classList.remove('sidebar_opened');
+    //   }
+    // }
   }
 
   checkSkill(skill: string) {
