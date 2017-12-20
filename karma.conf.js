@@ -1,5 +1,5 @@
 module.exports = function (config) {
-  var configuration = {
+  config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
@@ -24,7 +24,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'ChromeCanary'],
+    browsers: ['Chrome'],
     customLaunchers: {
       Chrome_travis_ci: {
         base: 'Chrome',
@@ -32,9 +32,9 @@ module.exports = function (config) {
       }
     },
     singleRun: false
-  };
+  });
   if (process.env.TRAVIS) {
-    configuration.browsers = ['Chrome_travis_ci'];
+    config.browsers = ['Chrome_travis_ci'];
+    config.nyanReporter.renderOnRunCompleteOnly = true;
   }
-  config.set(configuration);
 };

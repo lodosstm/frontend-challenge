@@ -7,6 +7,8 @@ import {EmployeesService} from '../shared/services/employees.service';
 import {SkillsService} from '../shared/services/skills.service';
 import {Skill} from '../../shared/models/skill.module';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'task-add-card',
@@ -19,6 +21,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
   selectable = true;
   removable = true;
   save = false;
+  subscribtion: Subscription;
 
   skills = [];
   idskills = [];
@@ -53,7 +56,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
       document.getElementById('sidebar').style.display = 'none';
       this.employeeService.open = false;
     }
-    this.employeeService.createNewEmployee(this.InitEmployee())
+    this.subscribtion = this.employeeService.createNewEmployee(this.InitEmployee())
       .subscribe((employ: Employee) => { this.id = employ.id; });
     this.skillsService.Skills();
     this.calculator();
@@ -76,6 +79,9 @@ export class AddCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.subscribtion) {
+      this.subscribtion.unsubscribe();
+    }
     if (this.save === false) {
       this.employeeService.deleteEmployee(this.id).subscribe(() => {
         this.employeeService.updateEmployees();
