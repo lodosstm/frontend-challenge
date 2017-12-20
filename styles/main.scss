@@ -5,12 +5,19 @@ body {
   font-size: 20px;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .topElement {
   background-color: white;
   height: 70px;
-  line-height: 70px;
-  padding-left: 2%;
-  border-bottom: 1px solid black;
+  font-size: 1.2em;
+  padding-top: 0.8%;
+  padding-left: 1.5%;
+  box-shadow: 0 1px 20px 0px grey;
+  position: relative;
+  z-index: 2;
 }
 
 .containerForUserListAndInfo {
@@ -20,16 +27,15 @@ body {
 .UserList {
   height: calc(100vh - 70px);
   width:400px;
+  min-width:400px;
   overflow-y: auto;
   //overflow-x: hidden;
-
+  box-shadow: 1px 0px 20px 0 grey;
   background: white;
 }
 
 
 .UserList__addNewUserButton {
-  border-right: 1px solid black;
-  margin-top: 5px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -37,13 +43,13 @@ body {
 
 .UserList__addNewUserButtonContainer{
   width:100%;
-  border-right: 1px solid black;
-  padding: 5px 0 5px 0;
+  border-right: 2px solid #ddd;
+  padding: 10px 0 5px 0;
 }
 
 
 .UserList__items {
-  border-right: 1px solid black;
+  border-right: 2px solid #ddd;
   height:calc(100% - 53px);
   list-style-type: none;
   margin:0;
@@ -51,26 +57,32 @@ body {
 }
 
 .User {
-  border: 1px solid black;
-  margin-right: -1px;
+  border: 2px solid #ddd;
+  margin-right: -2px;
   margin-bottom: -1px;
-  height:100px;
+  height: 130px;
   font-size: 1em;
   position: relative;
   padding-left: 13px;
-
-
+  color:black;
 }
+
+
+
 
 .User__photo {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   position: absolute;
-  left: 10px;
+  left: 11px;
   top:50%;
   transform: translateY(-50%);
+  border: 1px solid #ddd;
+  border-radius: 34px;
 
 }
+
+
 
 
 .User__userFilled {
@@ -151,40 +163,166 @@ body {
 
 }
 .User__fullName {
-  padding-left: 60px;
-  padding-top: 10px;
+  padding-left: 86px;
+  padding-top: 28px;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 .User__job {
-  padding-left: 60px;
+  padding-left: 85px;
+  color: grey;
+  font-size: 0.7em;
 }
 
 
 
 .User__skills {
-  padding-left: 60px;
-  font-size: 0.8em;
+  padding-left: 85px;
+  padding-top: 5px;
+  font-size: 0.5em;
+  display: inline;
+  position: absolute;
 }
 
+li.User__skill {
+  float:left;
+}
+li.User__skill:nth-child(3n+1) {
+  clear:both;
+}
+li.User__skill:nth-child(n+7) {
+  display: none;
+}
+
+
 .User__skill {
-  background: #FFFF00;
-  padding: 3px;
+  background: #ddd;
+  display: inline;
   margin-right: 7px;
+  margin-top: 5px;
+  width: 92px;
+  text-align: center;
+  color:lightseagreen;
+  border-radius: 3px;
 }
 
 
 
 .User_active .User{
-  border-right: 1px solid white;
+  border-right: 2px solid white;
 }
 
 
-.User__info {
-  padding: 10px 0 0 50px;
-  width: calc(100% - 430px);
-
+.UserInfo {
+  width: calc(100% - 450px);
   background: white;
+  padding: calc(3%) 0 0 calc(1.8%);
+  position: relative;
+  min-width: 600px;
+}
+.UserInfo__photoContainer {
+  float:left;
 
 }
+.UserInfo__photo {
+  border: 1px solid grey;
+  width: 132px;
+  height: 132px;
+}
+.UserInfo__filledInfo {
+  font-size: 0.8em;
+  text-align: center;
+}
+
+
+.UserInfo__container {
+ overflow: hidden;
+  padding-left: calc(2.6%);
+  min-width: 400px;
+}
+.UserInfo__requiredInfoContainer{
+  margin-top: -3px;
+  display: inline-flex;
+}
+
+.UserInfo__fullName {
+ color:#84131d;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.UserInfo__genderBirthday {
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 9px;
+  font-size: 0.8em;
+  color: #af5961;
+
+}
+
+.UserInfo__job{
+  font-size: 0.8em;
+  margin-top: 11px;
+  font-weight: bold;
+  color: #694145 ;
+}
+
+.UserInfo__skillsContainer {
+  margin-top: 28px;
+}
+
+.UserInfo__skillsList{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 0.6em;
+}
+.UserInfo__skill {
+  display: inline-block;
+  background:  #ddd;
+  min-width: 90px;
+  border-radius: 3px;
+  text-align: center;
+  padding: 6px 0 6px 0;
+  margin-right: 7px;
+  color: lightseagreen;
+}
+
+.UserInfo__info {
+  margin-top: 32px;
+  width: 90%;
+  line-height: 30px;
+  color: #694145 ;
+}
+
+
+.UserInfo__returnButton {
+  position: absolute;
+
+  top:10px;
+  right: 10px;
+}
+.UserInfo__buttonContainer {
+  position: absolute;
+  bottom: calc(7%);
+  right: calc(5%);
+}
+
+.UserInfo__editButton {
+  width: 200px;
+  height: 60px;
+  margin-right: 30px;
+  background-color: #22c32d;
+}
+.UserInfo__deleteButton{
+  width: 200px;
+  height: 60px;
+  background-color: #b70000;
+}
+
+
+
+
+
 .CreateUser {
 
   padding: 10px 0 0 50px;
@@ -200,7 +338,7 @@ body {
   direction:rtl;
  }
 
-#scroll>div{
+#scroll>div {
   direction:ltr;
   height:100%;
 }

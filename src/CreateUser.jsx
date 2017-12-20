@@ -91,7 +91,7 @@ class CreateUser extends React.Component {
 	editPhoto() {
 		if (!this.state.user.photo) {
 			this.setState({
-				user: Object.assign({}, this.state.user,{photo: "http://dummyimage.com/120x120/00dd00/000000.png&text=Avatar!"})
+				user: Object.assign({}, this.state.user,{photo: "http://dummyimage.com/130x130/00dd00/000000.png&text=Avatar!"})
 			}, function() {
 				userService.saveUser(this.state.user);
 			});
@@ -134,8 +134,8 @@ class CreateUser extends React.Component {
 						/>
 					</div>
 					<div onClick={this.editPhoto}>
-						{this.state.user.photo&&<img src="http://dummyimage.com/120x120/00dd00/000000.png&text=Avatar!" />}
-						{!this.state.user.photo&&<img src="http://dummyimage.com/120x120/c0c0c0/ffffff.png&text=add+photo!" />}
+						{this.state.user.photo&&<img src="http://dummyimage.com/130x130/00dd00/000000.png&text=Avatar!" />}
+						{!this.state.user.photo&&<img src="http://dummyimage.com/130x130/c0c0c0/ffffff.png&text=add+photo!" />}
 					</div>
 					<FormGroup>
 						<Label for="name">Name</Label>

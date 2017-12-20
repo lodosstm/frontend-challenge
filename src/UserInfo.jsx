@@ -6,6 +6,20 @@ import calculateUserFilled from "./components/calulateUserFilled";
 import {Button} from 'reactstrap';
 
 
+function convertDate(str) {
+	let date = new Date (str);
+
+	const opt = {
+		year: 'numeric',
+		month: '2-digit',
+		day: 'numeric'
+	};
+
+	return date.toLocaleString("ru", opt);
+}
+
+
+
 
 class UserInfo extends React.Component {
 	constructor(props) {
@@ -49,18 +63,31 @@ class UserInfo extends React.Component {
 
 
 		return(
-			<div className="User__info">
-				<div>User info, %filled: {calculateUserFilled(this.state.user)}</div>
-				<div>name: {this.state.user.name}, surname: {this.state.user.surname}</div>
-				<div>gender: {this.state.user.gender}, birthday: {this.state.user.birthday}</div>
-				{this.state.user.job&&<div>Job: {this.state.user.job}</div>}
-				{skillList && <div>Skills: {this.state.user.skills.map((skill, index)=>
-					<span key={index}>{skill} </span>)}
-				</div>}
-				<div>{this.state.user.photo&&<img src={this.state.user.photo}/>}</div>
-				<Link to="/"><Button>return</Button></Link>
-				<Link to={"/edit/" + this.state.user.id}><Button>edit</Button></Link>
-				<Link to="/"><Button onClick={this.deleteUser}>delete</Button></Link>
+			<div className="UserInfo">
+				<div className="UserInfo__photoContainer">
+					<div className="UserInfo__photo">{this.state.user.photo&&<img src={this.state.user.photo}/>}</div>
+					<div className="UserInfo__filledInfo">Filled profile: {calculateUserFilled(this.state.user)}%</div>
+				</div>
+				<div className="UserInfo__container">
+					<div className="UserInfo__requiredInfoContainer">
+						<div className="UserInfo__fullName">{this.state.user.name} {this.state.user.surname}</div>
+						<div className="UserInfo__genderBirthday">
+							({this.state.user.gender}, {convertDate(this.state.user.birthday)})
+						</div>
+					</div>
+					{this.state.user.job&&<div className="UserInfo__job">{this.state.user.job}</div>}
+					<div className="UserInfo__skillsContainer">
+						{skillList && <ul className="UserInfo__skillsList">
+							{this.state.user.skills.map((skill, index)=><li className="UserInfo__skill" key={index}>{skill} </li>)}
+						</ul>}
+					</div>
+					{this.state.user.info&&<div className="UserInfo__info">{this.state.user.info}</div>}
+					<div className="UserInfo__buttonContainer">
+						<Link to={"/edit/" + this.state.user.id}><Button className="UserInfo__editButton">Edit user</Button></Link>
+						<Link to="/"><Button className="UserInfo__deleteButton" onClick={this.deleteUser}>Delete user</Button></Link>
+					</div>
+					<Link to="/"><Button className="UserInfo__returnButton">return</Button></Link>
+				</div>
 			</div>
 		);
 	}

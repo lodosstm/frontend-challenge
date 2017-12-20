@@ -30,9 +30,11 @@ class User extends React.Component {
 					{this.props.user.photo&&<div><img className="User__photo" src={this.props.user.photo}/></div>}
 					<div className="User__fullName">{this.props.user.name} {this.props.user.surname}</div>
 					<div className="User__job">{this.props.user.job}</div>
-					{skillList && <div className="User__skills">{this.props.user.skills.map((skill, index)=>
-						<span className="User__skill" key={index}>{skill}</span>)}
-					</div>}
+
+
+					{skillList && <ul className="User__skills">{this.props.user.skills.map((skill, index)=>
+						<li className="User__skill" key={index}>{skill}</li>)}
+					</ul>}
 
 					<div className={"User__userFilled User__userFilled_" + userFilled}/>
 				</div>
