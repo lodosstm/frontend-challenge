@@ -1,11 +1,11 @@
 language: node_js # Для сборки нужен будет NodeJS
 node_js:
-  - stable # Выбираем последню стабильную версию NodeJS
+  stable # Выбираем последню стабильную версию NodeJS
 script:
-  - npm run testlint # Запускаем продакшен-сборку, скрипт из `package.json`
+  npm run testlint # Запускаем продакшен-сборку, скрипт из `package.json`
   before_install:
-  — export DISPLAY=:99.0
-  — sh -e /etc/init.d/xvfb start
+  export DISPLAY=:99.0
+  sh -e /etc/init.d/xvfb start
 deploy:
   provider: pages # Используем возможности GithubPages
   skip_cleanup: true # Не чистим рабочую директорию
