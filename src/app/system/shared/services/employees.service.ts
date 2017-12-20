@@ -14,7 +14,7 @@ export class EmployeesService extends BaseApi {
   public open = false;
   public employees: Employee;
   public flag = false;
-  public save =false;
+  public save = false;
 
   constructor (public http: Http) {
     super(http);
