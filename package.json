@@ -6,7 +6,7 @@
     "ng": "ng",
     "dev": "ng serve",
     "build": "ng build",
-    "test": "node_modules/karma/bin/karma start karma.conf.js --single-run",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "server": "json-server --watch db.json --port 3000",
