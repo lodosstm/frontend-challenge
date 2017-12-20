@@ -14,6 +14,7 @@ export class EmployeesService extends BaseApi {
   public open = false;
   public employees: Employee;
   public flag = false;
+  public save =false;
 
   constructor (public http: Http) {
     super(http);
@@ -38,6 +39,12 @@ export class EmployeesService extends BaseApi {
   public bringEmployee(item) {
     this.givenemployee = item;
     this.flag = true;
+  }
+
+  public HardDelete(id) {
+    this.deleteEmployee(id).subscribe(() => {
+      this.save = true;
+    });
   }
 
   public getEmployeeById(id: number): Observable<Employee> {

@@ -19,8 +19,6 @@ export class AddCardComponent implements OnInit, OnDestroy {
   form: FormGroup;
   selectable = true;
   removable = true;
-  save = false;
-  subscribe: Subscription;
 
   skills = [];
   idskills = [];
@@ -47,6 +45,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
               private router: Router) {}
 
   ngOnInit() {
+    this.employeeService.save = false;
     this.form = this.employeeService.InitEmployee();
     if (document.getElementById('sidebar') !== null) {
       document.getElementById('sidebar').classList.add('sidebar_opened');
@@ -55,7 +54,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
       document.getElementById('sidebar').style.display = 'none';
       this.employeeService.open = false;
     }
-    this.subscribe = this.employeeService.createNewEmployee(this.InitEmployee())
+    this.employeeService.createNewEmployee(this.InitEmployee())
       .subscribe((employ: Employee) => { this.id = employ.id; });
     this.skillsService.Skills();
     this.calculator();
@@ -78,17 +77,9 @@ export class AddCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscribe) {
-      this.subscribe.unsubscribe();
+    if (this.employeeService.save === false) {
+      this.employeeService.HardDelete(this.id);
     }
-    // if (this.save === false) {
-    //   this.employeeService.deleteEmployee(this.id).subscribe(() => {
-    //     this.employeeService.updateEmployees();
-    //   });
-    //   if (document.getElementById('sidebar') !== null) {
-    //     document.getElementById('sidebar').classList.remove('sidebar_opened');
-    //   }
-    // }
   }
 
   checkSkill(skill: string) {
@@ -165,7 +156,7 @@ export class AddCardComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.save = true;
+    this.employeeService.save = true;
     this.employeeService.updateNewEmployee(this.id, this.InitEmployee()).subscribe((data: Employee) => {
       if (data) {
         this.employeeService.updateEmployees();
