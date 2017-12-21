@@ -1,0 +1,91 @@
+{
+  "employee": [
+    {
+      "photo": "http://dummyimage.com/150",
+      "firstName": "Larisa",
+      "lastName": "Gorobets",
+      "Sex": "Female",
+      "birthDay": "17.2.1997",
+      "position": "Junior",
+      "idskill": [
+        4,
+        1,
+        5,
+        6
+      ],
+      "characteristic": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut beatae dolorem ducimus eveniet hic id impedit in ipsam molestiae nostrum nulla provident qui quis reprehenderit, sed sequi, temporibus voluptas!",
+      "progress": 85,
+      "id": 1
+    },
+    {
+      "photo": "http://dummyimage.com/150",
+      "firstName": "Ivanov",
+      "lastName": "Ivan",
+      "Sex": "Male",
+      "birthDay": "9.12.2017",
+      "position": "Front-end developer",
+      "idskill": [
+        6,
+        4,
+        5
+      ],
+      "characteristic": "Good employee!!!",
+      "progress": 80,
+      "id": 2
+    }
+  ],
+  "skills": [
+    {
+      "skillName": "Angular.js",
+      "id": 1
+    },
+    {
+      "skillName": "React.js",
+      "id": 2
+    },
+    {
+      "skillName": "Vue.js",
+      "id": 3
+    },
+    {
+      "skillName": "HTML",
+      "id": 4
+    },
+    {
+      "skillName": "CSS",
+      "id": 5
+    },
+    {
+      "skillName": "JavaScript",
+      "id": 6
+    },
+    {
+      "skillName": "Git",
+      "id": 7
+    },
+    {
+      "skillName": "PHP",
+      "id": 8
+    },
+    {
+      "skillName": "Laravel",
+      "id": 9
+    },
+    {
+      "skillName": "Yii",
+      "id": 10
+    },
+    {
+      "skillName": "hbrsg",
+      "id": 11
+    }
+  ],
+  "users": [
+    {
+      "username": "administrator",
+      "email": "mesek170297@gmail.com",
+      "password": "111111",
+      "id": 1
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+@height: calc(~"100vh - 83px");
+
+.content {
+  position: relative;
+  display: flex;
+}
+
+.header{
+  background: #f5f5f5 !important;
+  padding: 0 !important;
+  position: relative;
+  width: 100%;
+  height: 83px;
+  z-index: 20;
+  box-shadow: 0px 0px 20px #c8c8c8;
+}
+
+.sidebar{
+  width: 30%;
+  height: @height;
+  background: #f4f4f4;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 19;
+  padding-right: 10px;
+
+  &_opened{
+    background: #fafafa;
+  }
+
+  &__i {
+    background: #fafafa;
+    min-height: 100%;
+    box-shadow: 10px 0 12px -10px #c8c8c8;
+  }
+
+  @media only screen and (max-width: 992px) {
+    display: none;
+    position: absolute;
+    width: 230px;
+  }
+
+  &__add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    height: 75px;
+    border-bottom: 2px solid #e0d9dc;
+  }
+
+  &__icon{
+    font-size: 50px;
+    height: auto;
+    width: auto;
+  }
+
+  &__link{
+    color: #aa979e;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &-end {
+    height: 100%;
+    box-shadow: 7px 0 8px -4px #c8c8c8;
+  }
+}
+
+.employee{
+  width: 70%;
+  height: @height;
+  z-index: 2;
+  //height: 100%;
+
+  @media only screen and (max-width: 992px){
+    width: 100%;
+  }
+}

@@ -1,0 +1,72 @@
+<div class="employee__i" id="js-employee">
+  <div class="employee_cancel">
+    <a class="employee__link" (click)="deleteCard()">
+      <mat-icon class="large material-icons employee__cancel">&#xE888;</mat-icon>
+    </a>
+  </div>
+  <div class="employee__form">
+    <div class="employee__photo">
+      <img src="http://dummyimage.com/300" alt="" class="employee__img">
+      <p class="employee__percents">Filled profile: {{ percentsEmployee }}%</p>
+    </div>
+    <div class="employee__description">
+      <form class="employee__card" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="employee__name">
+          <mat-form-field>
+            <input matInput placeholder="First Name" formControlName="firstname" required (blur)="UpdateBase()">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastname" required (blur)="UpdateBase()">
+          </mat-form-field>
+        </div>
+        <mat-form-field class="employee__position">
+          <input matInput placeholder="Position" formControlName="position" required (blur)="UpdateBase()">
+        </mat-form-field>
+        <div class="employee__skills">
+          <mat-form-field [ngClass]="{'error': skills.length < 1 && form.get('skill').touched}">
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
+                        [removable]="removable" (remove)="remove(skill)">
+                {{ skill }}
+              </mat-chip>
+              <input
+                id="skill"
+                class="employee__input_skill"
+                formControlName="skill"
+                (ngModelChange)="search($event)"
+                matInput
+                (keyup)="keydown($event)"
+                (blur)="UpdateBase()"
+                placeholder="Your skills *"
+                [matChipInputFor]="chipList"
+                (matChipInputTokenEnd)="addEvent($event)">
+            </mat-chip-list>
+          </mat-form-field>
+          <div class="search">
+            <ul class="search__list" *ngIf="this.result.length > 0">
+              <li class="search__item" *ngFor="let item of result, let i=index" [ngClass]="{'active-item': index === i}">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="employee__sex-and-birthday">
+          <mat-form-field>
+            <mat-select class="employee__sex" (selectionChange)="UpdateBase()" required placeholder="Select Gender" formControlName="sex">
+              <mat-option value="Male" (click)="item1()">Male</mat-option>
+              <mat-option value="Female" (click)="item2()">Female</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="employee__birthday">
+            <input  matInput [matDatepicker]="picker" placeholder="Birth Day" required formControlName="birthday" (dateChange)="SelectionChange($event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="employee__character">
+          <textarea required  matInput formControlName="character" placeholder="Characteristic" class="employee__textarea" (blur)="UpdateBase()"></textarea>
+        </mat-form-field>
+        <button mat-button type="submit" class="employee__btn" *ngIf="!this.form.invalid">Save</button>
+        <button mat-button type="submit" class="employee__btn" disabled *ngIf="this.form.invalid">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

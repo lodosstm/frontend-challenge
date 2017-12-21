@@ -1,0 +1,106 @@
+.sidebar{
+  &-shadow {
+    width: 10px;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    height: 100%;
+    background: transparent;
+  }
+
+  &__card{
+    min-height: 160px;
+    border-bottom: 2px solid #e0d9dc;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    background: #fafafa;
+
+    @media only screen and (max-width: 1200px){
+      justify-content: center;
+    }
+
+    &_active{
+      background: #fafafa;
+    }
+  }
+
+  &__end{
+    height: 100%;
+  }
+
+  &__photo{
+    width: 92px;
+    margin-left: 13px;
+    border-radius: 50%;
+  }
+
+  &__description{
+    padding: 0 0 0 22px;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  &__skill{
+    background: #e7e7e7;
+    color: #00a59a;
+    border-radius: 6px;
+    width: 120px;
+    margin: 0 5px 5px 0;
+    font-size: 16px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__skills{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 13px;
+
+    @media only screen and (max-width: 992px){
+      display: none;
+    }
+  }
+
+  &__name {
+    text-align: left;
+    width: 100%;
+    margin: 11px 0 0;
+    font-size: 21px;
+    position: relative;
+    top: -2px;
+    color: #202020;
+  }
+
+  &__characteristic{
+    margin: 5px 0;
+    font-size: 18px;
+    color: #727272;
+  }
+}
+
+.progress{
+  background: linear-gradient(to top, rgba(176,236,94,1) 0%, rgba(66,151,47,1) 100%);
+
+  &_red {
+    background: linear-gradient(to top, rgba(250,210,101,1) 0%, rgba(247,129,48,1) 100%);
+  }
+
+  &-bar {
+    width: 6px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

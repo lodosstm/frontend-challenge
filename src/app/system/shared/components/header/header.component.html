@@ -1,0 +1,6 @@
+<nav class="header__nav">
+  <div class="nav-wrapper header__i">
+    <a routerLink="/system" class="brand-logo header__logo" *ngIf="widthOfDisplay > 992">List</a>
+    <mat-icon class="large sidebar__icon material-icons" *ngIf="widthOfDisplay <= 992" (click)="openMenu()">&#xE5D2;</mat-icon>
+  </div>
+</nav>
