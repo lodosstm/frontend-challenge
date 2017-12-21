@@ -32,24 +32,6 @@
       "characteristic": "Good employee!!!",
       "progress": 80,
       "id": 2
-    },
-    {
-      "photo": "http://dummyimage.com/150",
-      "firstName": "Sidorov",
-      "lastName": "Sergey",
-      "Sex": "Male",
-      "birthDay": "20.6.1991",
-      "position": "Back-end developer",
-      "idskill": [
-        6,
-        8,
-        9,
-        10,
-        7
-      ],
-      "characteristic": "Good middle back-end developer, but knows not enough for senior developer.",
-      "progress": 90,
-      "id": 3
     }
   ],
   "skills": [
@@ -92,6 +74,10 @@
     {
       "skillName": "Yii",
       "id": 10
+    },
+    {
+      "skillName": "hbrsg",
+      "id": 11
     }
   ],
   "users": [

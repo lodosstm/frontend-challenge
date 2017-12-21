@@ -32,7 +32,7 @@ export class WatchComponent implements OnInit {
       if (this.employee !== undefined) {
         this.searchSkill();
       }
-      if (this.employeeService.open && document) {
+      if (this.employeeService.open) {
         document.getElementById('sidebar').style.display = 'none';
         this.employeeService.open = false;
       }
@@ -69,9 +69,9 @@ export class WatchComponent implements OnInit {
       this.employeeService.flag = false;
     }
     this.employeeService.deleteEmployee(this.id).subscribe((data: Employee) => {
-      this.employeeService.updateEmployees();
       if (this.employeeService.getEmployeeById(this.id).isEmpty() && document.getElementById('sidebar') !== null) {
         document.getElementById('sidebar').classList.remove('sidebar_opened');
+        this.employeeService.updateEmployees();
         this.router.navigate(['/system']);
       }
     });

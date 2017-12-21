@@ -14,7 +14,6 @@ export class EmployeesService extends BaseApi {
   public open = false;
   public employees: Employee;
   public flag = false;
-  public save = false;
 
   constructor (public http: Http) {
     super(http);
@@ -41,12 +40,6 @@ export class EmployeesService extends BaseApi {
     this.flag = true;
   }
 
-  public HardDelete(id) {
-    this.deleteEmployee(id).subscribe(() => {
-      this.save = true;
-    });
-  }
-
   public getEmployeeById(id: number): Observable<Employee> {
     return this.get(`employee?id=${id}`)
       .map((employee: Employee[]) => employee[0] ? employee[0] : undefined);
@@ -69,8 +62,9 @@ export class EmployeesService extends BaseApi {
   }
 
   updateEmployees() {
-    this.getEmployees().subscribe((data: Employee) => {
-      this.employees = data;
-    });
+    this.employees = null;
+     this.getEmployees().subscribe((data: Employee) => {
+         this.employees = data;
+     });
   }
 }
