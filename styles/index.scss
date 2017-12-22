@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
 
-@import '~normalize.css';
-@import 'main';
-@import 'common/button';
+
+@import "main";
+@import "component/UserList";
+@import "component/User";
+@import "component/UserInfo";
+@import "component/CreateUser";
+@import "component/EditUser";

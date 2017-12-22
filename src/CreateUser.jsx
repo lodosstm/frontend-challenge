@@ -1,12 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import userService from './services/user.service';
+import userService from './servises/user.service';
 
 
 import { Form, FormGroup, Label, Input, FormFeedback, FormText,Button,
-	Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+	Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Container, Row, Col} from 'reactstrap';
 
-import Chips from 'react-chips';
+import Chips, {Chip} from 'react-chips';
+import theme, {chipTheme} from "./components/chip";
+
+import calculateUserFilled from "./components/calulateUserFilled";
+
+import validateDate from "./components/validateDate";
+import convertDate from "./components/convertDate";
+
+import FontAwesome from 'react-fontawesome';
 
 
 
@@ -30,6 +38,9 @@ class CreateUser extends React.Component {
 		this.confirmChangeDate = this.confirmChangeDate.bind(this);
 		this.editPhoto = this.editPhoto.bind(this);
 		this.editSkills = this.editSkills.bind(this);
+		this.test = {
+			backgroundColor: '#eee'
+		};
 	}
 
 	deleteNewUser() {
@@ -123,72 +134,105 @@ class CreateUser extends React.Component {
 
 		return(
 			<div className="CreateUser">
-				<div>Create User</div>
-				<Form onBlur={this.changeUserData}>
-					<div>
-						<div>Skills:</div>
-						<Chips
-							value={this.state.user.skills}
-							onChange={this.editSkills}
-							suggestions={["React", "Angular.js", "Node.js", "JQuery"]}
-						/>
-					</div>
+				<div className="CreateUser__photoContainer">
 					<div onClick={this.editPhoto}>
 						{this.state.user.photo&&<img src="http://dummyimage.com/130x130/00dd00/000000.png&text=Avatar!" />}
 						{!this.state.user.photo&&<img src="http://dummyimage.com/130x130/c0c0c0/ffffff.png&text=add+photo!" />}
 					</div>
-					<FormGroup>
-						<Label for="name">Name</Label>
-						<Input name="name" value={this.state.user.name}
-									 onChange={this.editingUser} valid={!!this.state.user.name.trim()}
-						/>
-						<FormFeedback>Name is required.</FormFeedback>
-					</FormGroup>
-					<FormGroup>
-						<Label for="surname">Surname</Label>
-						<Input name="surname" value={this.state.user.surname}
-									 onChange={this.editingUser} valid={!!this.state.user.surname.trim()}
-						/>
-						<FormFeedback>Surname is required.</FormFeedback>
-					</FormGroup>
-					<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-						<DropdownToggle caret>
-							{this.state.user.gender?this.state.user.gender:'Select gender'}
-						</DropdownToggle>
-						<DropdownMenu className={!this.state.user.gender?'form-control is-invalid':''}>
-							<DropdownItem header>Select gender</DropdownItem>
-							<DropdownItem name="gender" value="Male" onClick={this.editingGender}>Male</DropdownItem>
-							<DropdownItem name="gender" value="Female" onClick={this.editingGender}>Female</DropdownItem>
-						</DropdownMenu>
-						<div className="invalid-feedback">Gender is required.</div>
-					</Dropdown>
-					<FormGroup>
-						<Label for="job">Job</Label>
-						<Input name="job" value={this.state.user.job}
-									 onChange={this.editingUser}
-						/>
-					</FormGroup>
-					<FormGroup>
-						<Label for="info">Info</Label>
-						<Input type="textarea" name="info" value={this.state.user.info} onChange={this.editingUser}/>
-					</FormGroup>
-					<Dropdown isOpen={this.state.dropdownOpenDate} toggle={this.toggleDate}>
-						<DropdownToggle caret>
-							{this.state.user.birthday?this.state.user.birthday:'Input birthday'}
-						</DropdownToggle>
-						<DropdownMenu className={!this.state.user.birthday?'form-control is-invalid':''}>
-							<DropdownItem>
-								<Input type="date" name="birthday"  placeholder={this.state.user.birthday?this.state.user.birthday:"Birthday"}
-											 value={this.state.user.birthday} onChange={this.editingUser} valid={!!this.state.user.birthday.trim()}
-								/>
-							</DropdownItem>
-							<DropdownItem onClick={this.confirmChangeDate}>confirm</DropdownItem>
-						</DropdownMenu>
-						<div className="invalid-feedback">Birthday is required.</div>
-					</Dropdown>
-				</Form>
-				<Button onClick={this.saveNewUser}>save</Button>
-				<Link to={"/"}><Button>return</Button></Link>
+					<div className="CreateUser__filledInfo">Filled profile: {calculateUserFilled(this.state.user)}%</div>
+				</div>
+				<div className="CreateUser__container">
+					<Form onBlur={this.changeUserData}>
+						<Container>
+							<Row>
+								<Col>
+									<FormGroup className="CreateUser__nameContainer">
+										<Input name="name" value={this.state.user.name} placeholder="First name" className="CreateUser__name"
+													 onChange={this.editingUser} valid={!!this.state.user.name.trim()}
+										/>
+										<FormFeedback className="CreateUser__nameError">Name is required.</FormFeedback>
+									</FormGroup>
+								</Col>
+								<Col>
+									<FormGroup className="CreateUser__surnameContainer">
+										<Input name="surname" value={this.state.user.surname} placeholder="Last name" className="CreateUser__surname"
+													 onChange={this.editingUser} valid={!!this.state.user.surname.trim()}
+										/>
+										<FormFeedback className="CreateUser__surnameError">Surname is required.</FormFeedback>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row className="CreateUser__rowJob">
+								<Col>
+									<FormGroup>
+										<Input name="job" value={this.state.user.job} placeholder="some text" className="CreateUser__job"
+													 onChange={this.editingUser}
+										/>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row>
+								<Col>
+									<Chips
+										value={this.state.user.skills}
+										onChange={this.editSkills}
+										suggestions={["react", "angular.js", "node.js", "JQuery"]}
+										theme={theme}
+										renderChip={value => <Chip theme={chipTheme}>{value}</Chip>}
+									/>
+								</Col>
+							</Row>
+							<Row className="CreateUser__genderBirthdayContainer">
+								<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} className="CreateUser__dropdown">
+									<DropdownToggle caret className="CreateUser__dropdownToggle">
+										{this.state.user.gender?this.state.user.gender:'Select gender'}
+									</DropdownToggle>
+									<DropdownMenu className={!this.state.user.gender?'form-control is-invalid CreateUser__dropdownmenu':'CreateUser__dropdownmenu'}>
+										<DropdownItem name="gender" value="Male" onClick={this.editingGender} className="CreateUser__dropdownitem">
+											Male
+										</DropdownItem>
+										<DropdownItem name="gender" value="Female" onClick={this.editingGender} className="CreateUser__dropdownitem">
+											Female
+										</DropdownItem>
+									</DropdownMenu>
+									<div className="invalid-feedback CreateUser__dropdownError">Gender is required.</div>
+								</Dropdown>
+
+
+
+								<Dropdown isOpen={this.state.dropdownOpenDate} toggle={this.toggleDate} className="CreateUser__dropdown CreateUser__dropdown_birthday">
+									<DropdownToggle caret caret className="CreateUser__dropdownToggle">
+										{this.state.user.birthday?convertDate(this.state.user.birthday):'Input birthday'}
+									</DropdownToggle>
+									<DropdownMenu className={!this.state.user.birthday?'form-control is-invalid CreateUser__dropdownmenu':'CreateUser__dropdownmenu'}>
+										<DropdownItem className="CreateUser__dropdownitem">
+											<Input type="date" name="birthday"  placeholder={this.state.user.birthday?this.state.user.birthday:"Birthday"}
+														 value={this.state.user.birthday} onChange={this.editingUser} valid={validateDate(this.state.user.birthday)}
+											/>
+										</DropdownItem>
+										<DropdownItem onClick={this.confirmChangeDate} className="CreateUser__dropdownitem">Confirm</DropdownItem>
+									</DropdownMenu>
+									<div className="invalid-feedback CreateUser__dropdownError">Birthday is required.</div>
+								</Dropdown>
+							</Row>
+							<Row className="CreateUser__infoContainer">
+								<Col>
+									<FormGroup>
+										<Input type="textarea" name="info" value={this.state.user.info} onChange={this.editingUser} className="CreateUser__info"/>
+									</FormGroup>
+								</Col>
+							</Row>
+
+						</Container>
+
+					</Form>
+
+
+
+
+					<Button onClick={this.saveNewUser} className="CreateUser__saveButton">save</Button>
+					<Link to={"/"}><Button className="CreateUser__returnButton"><FontAwesome  name='times' size="lg" /></Button></Link>
+				</div>
 			</div>
 		);
 	}

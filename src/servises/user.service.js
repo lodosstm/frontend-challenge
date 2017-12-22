@@ -6,16 +6,21 @@ class userService{
 
 	fetchUsersList(){
 		return fetch('http://localhost:3000/users/?completed=1')
-			.then(response => response.json());
+			.then(response => response.json())
+			.catch(function(err) {
+				console.log('cant get users, Fetch Error :-S', err);
+			});
 	}
 
 	fetchUserDetail(id) {
 		return fetch('http://localhost:3000/users/' + id)
-			.then(response => response.json());
+			.then(response => response.json())
+			.catch(function(err) {
+				console.log('cant get user id:' + id + ', Fetch Error :-S', err);
+			});
 	}
 
 	createEmptyUser() {
-
 		return fetch('http://localhost:3000/users/', {
 			method: 'POST',
 			headers: {
@@ -34,7 +39,10 @@ class userService{
 				birthday: ''
 			}),
 		})
-			.then(response => response.json());
+			.then(response => response.json())
+			.catch(function(err) {
+				console.log('cant create new user, Fetch Error :-S', err);
+			});
 	}
 
 	deleteUser(id) {
@@ -42,7 +50,10 @@ class userService{
 		return fetch('http://localhost:3000/users/' + id, {
 			method: 'delete'
 		})
-			.then(response => response.json());
+			.then(response => response.json())
+			.catch(function(err) {
+				console.log('cant delete user id:' + id + ', Fetch Error :-S', err);
+			});
 
 
 	}
@@ -68,7 +79,10 @@ class userService{
 				birthday: birthday
 			}),
 		})
-			.then(response => response.json());
+			.then(response => response.json())
+			.catch(function(err) {
+				console.log('cant save user id:' + id + 'Fetch Error :-S', err);
+			});
 
 	}
 

@@ -1,0 +1,154 @@
+.EditUser {
+  width: calc(100% - 450px);
+  background: #FAFAFA;
+  padding: calc(3.5%) 0 0 calc(2.1%);
+  position: relative;
+  min-width: 600px;
+  display: flex;
+}
+
+
+.EditUser__photoContainer {
+  border: 1px solid grey;
+  width: 132px;
+  height: 132px;
+}
+.EditUser__filledInfo {
+  font-size: 0.8em;
+  padding-top: 15px;
+  color: #6D4552;
+}
+
+.EditUser__container {
+  padding-left: 19px;
+  width: 80%;
+  padding-top: 3px;
+}
+
+.EditUser__nameContainer {
+  position: relative;
+}
+
+.EditUser__name{
+  width: 104%;
+  height: 45px;
+}
+
+.EditUser__nameError {
+  margin-top: -3px;
+  margin-left: 10px;
+  position: absolute;
+}
+
+
+.EditUser__surnameContainer {
+  position: relative;
+}
+.EditUser__surname {
+  height: 45px;
+}
+.EditUser__surnameError {
+  margin-top: -3px;
+  margin-left: 10px;
+  position: absolute;
+}
+
+.EditUser__rowJob {
+  padding-top: 1px;
+
+}
+
+.EditUser__job {
+  height: 45px;
+}
+
+
+.EditUser__genderBirthdayContainer {
+  padding-top: 18px;
+  padding-left: 20px;
+}
+
+.EditUser__dropdown {
+  width: 26%;
+  position:relative;
+  min-width: 163px;
+}
+
+.EditUser__dropdown_birthday {
+  min-width: 218px;
+}
+
+
+.EditUser__dropdownToggle {
+  width: 98%;
+  padding: 20px 0;
+  background: #F4AD49;
+  color: white;
+}
+//.CreateUser__dropdownToggle:hover, .CreateUser__dropdownToggle:active{
+//  background-color: black !important;
+//}
+
+.EditUser__dropdown.dropdown.show .EditUser__dropdownToggle,.EditUser__dropdownToggle:active{
+  background-color: black;
+}
+
+
+.EditUser__dropdownmenu {
+  width: 98%;
+  background: black;
+  margin-top: -2px;
+
+}
+.EditUser__dropdownitem {
+  color: white;
+}
+.EditUser__dropdownitem:hover {
+  background: #4a4a4a;
+  color: white;
+}
+
+.EditUser__dropdownError {
+  position: absolute;
+  margin-top: -3px;
+  margin-left: 10px;
+}
+
+.EditUser__infoContainer {
+  padding-top: 15px;
+}
+
+.EditUser__info{
+  height: 165px;
+  color: #6D4552;
+}
+
+
+.EditUser__returnButton {
+  position: absolute;
+  top: 14px;
+  right: 13px;
+  border: 3px solid #A9979E;
+  background: transparent;
+  color: #A9979E;
+  border-radius: 61px;
+  padding: 1px 4.65px;
+
+}
+.EditUser__buttonContainer {
+  position: absolute;
+  bottom: calc(7%);
+  right: calc(5%);
+}
+
+.EditUser__saveButton {
+  width: 200px;
+  height: 60px;
+  margin-right: 30px;
+  background-color: #51BF87;
+}
+.EditUser__deleteButton{
+  width: 200px;
+  height: 60px;
+  background-color: #DB5565;
+}

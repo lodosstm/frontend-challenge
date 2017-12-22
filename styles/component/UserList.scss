@@ -1,0 +1,47 @@
+.UserList {
+  height: calc(100vh - 70px);
+  width:400px;
+  min-width:400px;
+  overflow-y: auto;
+  //overflow-x: hidden;
+  box-shadow: 1px 0px 20px 0 grey;
+  background: #FAFAFA;
+}
+
+.UserList__addNewUserButtonContainer{
+  width:100%;
+  border-right: 2px solid #D9D2D5;
+  padding: 10px 0 5px 0;
+}
+
+.UserList__addNewUserButton {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #A9979E;
+  background: transparent;
+  border: 3px solid #A9979E;
+  border-radius: 300px;
+  padding: 2.2px 5.6px 2px 5.6px;
+}
+
+
+
+
+.UserList__items {
+  border-right: 2px solid #D9D2D5;
+  height:calc(100% - 49.2px);
+  list-style-type: none;
+  margin:0;
+  padding: 0;
+}
+
+
+#scroll{
+  direction:rtl;
+}
+
+#scroll>div {
+  direction:ltr;
+  height:100%;
+}

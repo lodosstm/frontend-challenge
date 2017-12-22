@@ -27,6 +27,7 @@
     "react": "^16.2.0",
     "react-chips": "^0.6.4",
     "react-dom": "^16.2.0",
+    "react-fontawesome": "^1.6.1",
     "react-router": "^4.2.0",
     "reactstrap": "^5.0.0-alpha.4",
     "sass-loader": "^6.0.6"

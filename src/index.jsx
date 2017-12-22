@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
-import 'bootstrap/dist/css/bootstrap.css';
-
 import App from './app';
 
 ReactDOM.render(
@@ -13,3 +11,15 @@ ReactDOM.render(
 );
 
 
+
+if (module.hot) {
+	module.hot.accept('./app', () => {
+		const NextApp = require('./app').default;
+		ReactDOM.render(
+			<AppContainer>
+				<NextApp/>
+			</AppContainer>,
+			document.getElementById('app')
+		);
+	});
+}

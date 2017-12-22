@@ -32,6 +32,7 @@ class User extends React.Component {
 					<div className="User__job">{this.props.user.job}</div>
 
 
+
 					{skillList && <ul className="User__skills">{this.props.user.skills.map((skill, index)=>
 						<li className="User__skill" key={index}>{skill}</li>)}
 					</ul>}

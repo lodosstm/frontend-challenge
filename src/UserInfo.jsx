@@ -1,22 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import userService from './services/user.service';
+import userService from './servises/user.service';
 import calculateUserFilled from "./components/calulateUserFilled";
 
 import {Button} from 'reactstrap';
 
 
-function convertDate(str) {
-	let date = new Date (str);
 
-	const opt = {
-		year: 'numeric',
-		month: '2-digit',
-		day: 'numeric'
-	};
 
-	return date.toLocaleString("ru", opt);
-}
+import convertDate from "./components/convertDate";
+
+import FontAwesome from 'react-fontawesome';
 
 
 
@@ -86,7 +80,9 @@ class UserInfo extends React.Component {
 						<Link to={"/edit/" + this.state.user.id}><Button className="UserInfo__editButton">Edit user</Button></Link>
 						<Link to="/"><Button className="UserInfo__deleteButton" onClick={this.deleteUser}>Delete user</Button></Link>
 					</div>
-					<Link to="/"><Button className="UserInfo__returnButton">return</Button></Link>
+					<Link to="/"><Button className="UserInfo__returnButton"><FontAwesome  name='times' size="lg" /></Button></Link>
+
+
 				</div>
 			</div>
 		);
