@@ -1,119 +1,50 @@
-[![CircleCI](https://circleci.com/gh/alicoding/react-webpack-babel/tree/master.svg?style=svg)](https://circleci.com/gh/alicoding/react-webpack-babel/tree/master)
+# Тестовое задание
+## Описание задачи
+Было решено вести учет сотрудников компании. Каждый имеет фотографию, имя, фамилию, пол, дату рождения, должность, навыки, краткую характеристику. При добавлении сотрудника, просмотре его профиля подробно или в списке сотрудников, руководитель должен видеть насколько заполнен профиль в процентах. Удалить сотрудника, перейти к редактированию профиля можно как из списка, так и в профиле пользователя. Также необходимо реализовать поиск и фильтрацию сотрудников в списке.
 
-<p align="center">
-    <h3 align="center">Simple React Webpack Babel Starter Kit<br></h3>
-</p>
+## Описание данных
+**Сотрудник**
 
-Tired of complicated starters with 200MB of dependencies which are hard to understand and modify?
+Может иметь несколько навыков, но не более пяти.
 
-### What were using
+Состояние | Обязательно к заполнению | Заполняет профиль на, %
+----------|--------------------------|------------------------
+Фотография | Нет | 20
+Имя | Да | 5
+Фамилия | Да | 5
+Пол | Да | 5
+Дата рождения | Да | 5
+Должность | Нет | 10
+Навык | Нет | 5 (каждый)
+Характеристика | Нет | 10
 
-* React 16
-* Webpack 3
-* React Router 4
-* SASS
-* Babel Cli
-* Hot Module Reloading
-* Jest 21
-* Enzyme 3 for testing
+## Этапы разработки
+### Базовая реализация
+*Время выполнения 8 часов*
 
-### Features
+1. Форкнуть проект на в свой гитхаб
 
-* Simple src/index.jsx and src/index.css (local module css).
-* Webpack configuration for development (with hot reloading) and production (with minification).
-* CSS module loading, so you can include your css by ```import styles from './path/to.css';```.
-* Both js(x) and css hot loaded during development.
-* [Webpack Dashboard Plugin](https://github.com/FormidableLabs/webpack-dashboard) on dev server.
+2. Подготавливает минимальный набор тестов (frontend: protractor, karma, jasmine, etc)
 
-### To run
+3. Подготавливает заглушку для API, с помощью которого можно получить список всех пользователей, добавить нового, удалить сотрудника и обновить данные сотрудника, используя популярный мок сервер (добавлена ссылка на один из ресурсов, json-server)
 
-* You'll need to have [git](https://git-scm.com/) and [node](https://nodejs.org/en/) installed in your system.
-* Fork and clone the project:
+4. Реализует интерфейс со списком сотрудников, возможностью добавления, удаления и просмотра
 
-```
-git clone https://github.com/alicoding/react-webpack-babel.git
-```
+5. Добавляет валидацию формы, динамически изменяет уровень заполнения профиля, реализует *autocomplete* для навыков
 
-* Then install the dependencies:
+6. Отправить пул реквест в основной репозиторий
 
-```
-npm install
-```
+## Технические требования
+### Базовая реализация
+* комитить процесс разработки не реже одного раза в течение получаса
+* в праве использовать любой шаблон, библиотеку или решение
+* использовать сервис для заглушек фотографий, при создании нового пользователя аватар использует заглушку, реализовывать загрузку картинок не нужно
+* тесты на выбор: несколько юнит тестов или/и пара e2e тестов
+* сотрудник на стороне сервера появляется сразу после перехода к его созданию, но не появляется в списке до тех пор, пока не будет сохранен. В процессе заполнения формы данные обновляются в базе, если была выбрана отмена создания, сотрудник удаляется на сервере
+* в процессе ввода навыков появляется подсказки, которыми можно воспользоваться
+* приложение может быть собрано (возможность создания production версии с минификацией и т.п.), плюсом будет размещение production версии на heroku, firebase или github-pages
+* мокапы расположены в pdf файле, pixel perfect и mobile first не требуется, плюсом будет использование google material design правил
 
-* Run development server:
+## Ссылки
+[JSON Server](https://github.com/typicode/json-server)
 
-```
-npm start
-```
-
-* Or you can run development server with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard):
-
-```
-npm run dev
-```
-
-Open the web browser to `http://localhost:8888/`
-
-### To test
-To run unit tests:
-
-```
-npm test
-```
-
-Tests come bundled with:
-
-* Jest
-* Enzyme
-* React Test Utils
-* React Test Renderer
-
-### To build the production package
-
-```
-npm run build
-```
-
-### Nginx Config
-
-Here is an example Nginx config:
-
-```
-server {
-	# ... root and other options
-
-	gzip on;
-	gzip_http_version 1.1;
-	gzip_types text/plain text/css text/xml application/javascript image/svg+xml;
-
-	location / {
-		try_files $uri $uri/ /index.html;
-	}
-
-	location ~ \.html?$ {
-		expires 1d;
-	}
-
-	location ~ \.(svg|ttf|js|css|svgz|eot|otf|woff|jpg|jpeg|gif|png|ico)$ {
-		access_log off;
-		log_not_found off;
-		expires max;
-	}
-}
-```
-
-### Eslint
-There is a `.eslint.yaml` config for eslint ready with React plugin.
-
-To run linting, run:
-
-```
-npm run lint
-```
-
-### Notes on importing css styles
-* styles having /src/ in their absolute path considered part of the application and exported as local css modules.
-* other styles considered global styles used by components and included in the css bundle directly.
-
-### Contribute
-Please contribute to the project if you know how to make it better, including this README :)
