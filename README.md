@@ -14,7 +14,7 @@ Tired of complicated starters with 200MB of dependencies which are hard to under
 * SASS
 * Babel Cli
 * Hot Module Reloading
-* Jest 21 
+* Jest 21
 * Enzyme 3 for testing
 
 ### Features
