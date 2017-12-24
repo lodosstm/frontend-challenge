@@ -1,5 +1,5 @@
 function convertDate(str) {
-	let date = new Date (str);
+	let date = new Date(str);
 
 	const opt = {
 		year: 'numeric',

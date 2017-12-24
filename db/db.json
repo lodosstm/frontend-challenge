@@ -37,6 +37,18 @@
       "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porttitor nisi vitae est elementum, id ultrices diam fringilla. Curabitur sapien mauris, semper sed dapibus id, pellentesque at dui. Duis iaculis orci diam, sit amet mollis libero vestibulum pellentesque. In molestie bibendum neque ultricies iaculis.",
       "birthday": "1334-12-12",
       "id": 2
+    },
+    {
+      "name": "asd",
+      "surname": "asd",
+      "gender": "Female",
+      "completed": 1,
+      "job": "",
+      "photo": "",
+      "skills": [],
+      "info": "",
+      "birthday": "0123-12-12",
+      "id": 3
     }
   ]
 }

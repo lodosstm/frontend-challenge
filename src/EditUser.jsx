@@ -1,29 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import userService from './servises/user.service';
-
-
-
-
-import { Form, FormGroup, Input, FormFeedback, Button,
-	Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Container, Row, Col} from 'reactstrap';
-
-
-
-import calculateUserFilled from "./components/calulateUserFilled";
-
-
+import FontAwesome from 'react-fontawesome';
+import { Form, FormGroup, Input, FormFeedback, Button,	Dropdown,
+	DropdownToggle, DropdownMenu, DropdownItem, Container, Row, Col} from 'reactstrap';
 import Chips, {Chip} from 'react-chips';
 import theme, {chipTheme} from "./components/chip";
-
-
-
+import userService from './servises/user.service';
+import calculateUserFilled from "./components/calulateUserFilled";
 import validateDate from "./components/validateDate";
 import convertDate from "./components/convertDate";
-
-import FontAwesome from 'react-fontawesome';
-
-
 
 
 
@@ -50,7 +35,6 @@ class EditUser extends React.Component {
 			this.props.refreshList();
 		});
 	}
-
 
 	editingUser(event) {
 		this.setState({user: Object.assign({}, this.state.user, {[event.target.name] : event.target.value})});
@@ -84,7 +68,6 @@ class EditUser extends React.Component {
 		this.setState({user: Object.assign({}, this.state.user, { skills })});
 	}
 
-
 	toggleDate() {
 		if (this.state.dropdownOpenDate === true) return;
 		this.setState({
@@ -92,21 +75,11 @@ class EditUser extends React.Component {
 		});
 	}
 
-
-
 	confirmChangeDate() {
 		this.setState({
 			dropdownOpenDate: !this.state.dropdownOpenDate
 		});
 	}
-
-
-
-
-
-
-
-
 
 
 	componentDidMount() {
@@ -119,13 +92,7 @@ class EditUser extends React.Component {
 			.then(data => this.setState({user: data}));
 	}
 
-
-
-
-
 	render() {
-
-
 		return(
 			<div className="EditUser">
 					<div className="EditUser__photoContainer">
@@ -181,7 +148,8 @@ class EditUser extends React.Component {
 										<DropdownToggle caret className="EditUser__dropdownToggle">
 											{this.state.user.gender?this.state.user.gender:'Select gender'}
 										</DropdownToggle>
-										<DropdownMenu className={!this.state.user.gender?'form-control is-invalid EditUser__dropdownmenu':'EditUser__dropdownmenu'}>
+										<DropdownMenu className={!this.state.user.gender?'form-control is-invalid EditUser__dropdownmenu'
+											:'EditUser__dropdownmenu'}>
 											<DropdownItem name="gender" value="Male" onClick={this.editingUser} className="EditUser__dropdownitem">
 												Male
 											</DropdownItem>
@@ -191,11 +159,13 @@ class EditUser extends React.Component {
 										</DropdownMenu>
 										<div className="invalid-feedback EditUser__dropdownError">Gender is required.</div>
 									</Dropdown>
-									<Dropdown isOpen={this.state.dropdownOpenDate} toggle={this.toggleDate} className="EditUser__dropdown EditUser__dropdown_birthday">
+									<Dropdown isOpen={this.state.dropdownOpenDate} toggle={this.toggleDate}
+														className="EditUser__dropdown EditUser__dropdown_birthday">
 										<DropdownToggle caret caret className="EditUser__dropdownToggle">
 											{this.state.user.birthday?convertDate(this.state.user.birthday):'Input birthday'}
 										</DropdownToggle>
-										<DropdownMenu className={!this.state.user.birthday?'form-control is-invalid EditUser__dropdownmenu':'EditUser__dropdownmenu'}>
+										<DropdownMenu className={!this.state.user.birthday?'form-control is-invalid EditUser__dropdownmenu'
+											:'EditUser__dropdownmenu'}>
 											<DropdownItem className="EditUser__dropdownitem">
 												<Input type="date" name="birthday"  placeholder={this.state.user.birthday?this.state.user.birthday:"Birthday"}
 															 value={this.state.user.birthday} onChange={this.editingUser} valid={validateDate(this.state.user.birthday)}
@@ -213,29 +183,18 @@ class EditUser extends React.Component {
 										</FormGroup>
 									</Col>
 								</Row>
-
 							</Container>
-
 						</Form>
-
-
-
 						<Link to={"/"}><Button className="EditUser__returnButton"><FontAwesome  name='times' size="lg" /></Button></Link>
 						<div className="EditUser__buttonContainer">
 							<Button onClick={this.saveChange} className="EditUser__saveButton">save</Button>
 							<Link to={"/"}><Button onClick={this.deleteUser} className="EditUser__deleteButton">Delete</Button></Link>
 						</div>
-
 					</div>
-
-
-
 			</div>
 		);
 	}
 }
-
-
 
 
 

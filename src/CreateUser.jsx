@@ -1,22 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import userService from './servises/user.service';
-
-
-import { Form, FormGroup, Label, Input, FormFeedback, FormText,Button,
-	Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Container, Row, Col} from 'reactstrap';
-
+import FontAwesome from 'react-fontawesome';
+import { Form, FormGroup, Input, FormFeedback, Button,	Dropdown, DropdownToggle,
+	DropdownMenu, DropdownItem, Container, Row, Col} from 'reactstrap';
 import Chips, {Chip} from 'react-chips';
 import theme, {chipTheme} from "./components/chip";
-
+import userService from './servises/user.service';
 import calculateUserFilled from "./components/calulateUserFilled";
-
 import validateDate from "./components/validateDate";
 import convertDate from "./components/convertDate";
-
-import FontAwesome from 'react-fontawesome';
-
-
 
 
 
@@ -38,9 +30,6 @@ class CreateUser extends React.Component {
 		this.confirmChangeDate = this.confirmChangeDate.bind(this);
 		this.editPhoto = this.editPhoto.bind(this);
 		this.editSkills = this.editSkills.bind(this);
-		this.test = {
-			backgroundColor: '#eee'
-		};
 	}
 
 	deleteNewUser() {
@@ -57,12 +46,9 @@ class CreateUser extends React.Component {
 		});
 	}
 
-
-
 	changeUserData() {
 		userService.saveUser(this.state.user);
 	}
-
 
 	saveNewUser() {
 		if (!this.state.user.name) return;
@@ -89,15 +75,12 @@ class CreateUser extends React.Component {
 		});
 	}
 
-
-
 	confirmChangeDate() {
 		this.setState({
 			dropdownOpenDate: !this.state.dropdownOpenDate
 		});
 		userService.saveUser(this.state.user);
 	}
-
 
 	editPhoto() {
 		if (!this.state.user.photo) {
@@ -117,8 +100,6 @@ class CreateUser extends React.Component {
 
 
 
-
-
 	componentDidMount() {
 		userService.createEmptyUser()
 			.then(data => this.setState({user: data}));
@@ -129,9 +110,7 @@ class CreateUser extends React.Component {
 	}
 
 
-
 	render() {
-
 		return(
 			<div className="CreateUser">
 				<div className="CreateUser__photoContainer">
@@ -187,7 +166,8 @@ class CreateUser extends React.Component {
 									<DropdownToggle caret className="CreateUser__dropdownToggle">
 										{this.state.user.gender?this.state.user.gender:'Select gender'}
 									</DropdownToggle>
-									<DropdownMenu className={!this.state.user.gender?'form-control is-invalid CreateUser__dropdownmenu':'CreateUser__dropdownmenu'}>
+									<DropdownMenu className={!this.state.user.gender?'form-control is-invalid CreateUser__dropdownmenu'
+										:'CreateUser__dropdownmenu'}>
 										<DropdownItem name="gender" value="Male" onClick={this.editingGender} className="CreateUser__dropdownitem">
 											Male
 										</DropdownItem>
@@ -200,11 +180,13 @@ class CreateUser extends React.Component {
 
 
 
-								<Dropdown isOpen={this.state.dropdownOpenDate} toggle={this.toggleDate} className="CreateUser__dropdown CreateUser__dropdown_birthday">
+								<Dropdown isOpen={this.state.dropdownOpenDate} toggle={this.toggleDate}
+													className="CreateUser__dropdown CreateUser__dropdown_birthday">
 									<DropdownToggle caret caret className="CreateUser__dropdownToggle">
 										{this.state.user.birthday?convertDate(this.state.user.birthday):'Input birthday'}
 									</DropdownToggle>
-									<DropdownMenu className={!this.state.user.birthday?'form-control is-invalid CreateUser__dropdownmenu':'CreateUser__dropdownmenu'}>
+									<DropdownMenu className={!this.state.user.birthday?'form-control is-invalid CreateUser__dropdownmenu'
+										:'CreateUser__dropdownmenu'}>
 										<DropdownItem className="CreateUser__dropdownitem">
 											<Input type="date" name="birthday"  placeholder={this.state.user.birthday?this.state.user.birthday:"Birthday"}
 														 value={this.state.user.birthday} onChange={this.editingUser} valid={validateDate(this.state.user.birthday)}
@@ -222,14 +204,8 @@ class CreateUser extends React.Component {
 									</FormGroup>
 								</Col>
 							</Row>
-
 						</Container>
-
 					</Form>
-
-
-
-
 					<Button onClick={this.saveNewUser} className="CreateUser__saveButton">save</Button>
 					<Link to={"/"}><Button className="CreateUser__returnButton"><FontAwesome  name='times' size="lg" /></Button></Link>
 				</div>
@@ -237,8 +213,6 @@ class CreateUser extends React.Component {
 		);
 	}
 }
-
-
 
 
 export default CreateUser;

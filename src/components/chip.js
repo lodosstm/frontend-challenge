@@ -14,7 +14,7 @@ const theme = {
 			border: "1px solid #aaa",
 		}
 	},
-	container:{
+	container: {
 		flex: 1,
 	},
 	containerOpen: {
@@ -56,7 +56,7 @@ const theme = {
 
 	},
 
-}
+};
 
 export default theme;
 
@@ -81,4 +81,4 @@ export const chipTheme = {
 			color: 'black',
 		}
 	}
-}
+};

@@ -1,5 +1,3 @@
-
-
 function calculateUserFilled({name, surname, gender, birthday, info, skills, job, photo}) {
 	let userFilled = 0;
 	if (name) userFilled += 5;
@@ -15,8 +13,6 @@ function calculateUserFilled({name, surname, gender, birthday, info, skills, job
 	}
 	if (job) userFilled += 10;
 	if (photo) userFilled += 20;
-
-
 
 	return userFilled;
 }

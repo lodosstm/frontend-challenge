@@ -1,18 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Button} from 'reactstrap';
+import FontAwesome from 'react-fontawesome';
 import userService from './servises/user.service';
 import calculateUserFilled from "./components/calulateUserFilled";
-
-import {Button} from 'reactstrap';
-
-
-
-
 import convertDate from "./components/convertDate";
-
-import FontAwesome from 'react-fontawesome';
-
-
 
 
 class UserInfo extends React.Component {
@@ -41,20 +33,13 @@ class UserInfo extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		userService.fetchUserDetail(nextProps.userId)
 			.then(data => this.setState({user: data}));
-
 	}
 
-
-
 	render() {
-
 		let skillList = false;
 		if (this.state.user.id) {
 			skillList = this.state.user.skills.length?true:false;
 		}
-
-
-
 
 		return(
 			<div className="UserInfo">
@@ -81,15 +66,11 @@ class UserInfo extends React.Component {
 						<Link to="/"><Button className="UserInfo__deleteButton" onClick={this.deleteUser}>Delete user</Button></Link>
 					</div>
 					<Link to="/"><Button className="UserInfo__returnButton"><FontAwesome  name='times' size="lg" /></Button></Link>
-
-
 				</div>
 			</div>
 		);
 	}
 }
-
-
 
 
 

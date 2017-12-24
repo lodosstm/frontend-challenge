@@ -1,10 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-
 import calculateUserFilled from './components/calulateUserFilled';
-
-
-
 
 
 class User extends React.Component {
@@ -12,8 +8,6 @@ class User extends React.Component {
 		super(props);
 		this.state = {};
 	}
-
-
 
 
 	render() {
@@ -29,10 +23,7 @@ class User extends React.Component {
 				<div className="User">
 					{this.props.user.photo&&<div><img className="User__photo" src={this.props.user.photo}/></div>}
 					<div className="User__fullName">{this.props.user.name} {this.props.user.surname}</div>
-					<div className="User__job">{this.props.user.job}</div>
-
-
-
+					{this.props.user.job&&<div className="User__job">{this.props.user.job}</div>}
 					{skillList && <ul className="User__skills">{this.props.user.skills.map((skill, index)=>
 						<li className="User__skill" key={index}>{skill}</li>)}
 					</ul>}
@@ -43,8 +34,6 @@ class User extends React.Component {
 		);
 	}
 }
-
-
 
 
 export default User;
