@@ -5,6 +5,7 @@
 
 запуск:
 
+  json-server ./db/db.json
   npm run
   
   открывается по адресу  http://localhost:8888/  
