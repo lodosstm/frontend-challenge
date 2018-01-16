@@ -1,0 +1,29 @@
+body {
+  background: url(../src/img/background.png) repeat;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.topElement {
+  background-color: #F5F5F5;
+  height: 70px;
+  font-size: 1.2em;
+  padding-top: 0.8%;
+  padding-left: 1.5%;
+  box-shadow: 0 1px 20px 0 grey;
+  position: relative;
+  z-index: 2;
+}
+
+.containerForUserListAndInfo {
+  display:flex;
+}
+
+
+
+

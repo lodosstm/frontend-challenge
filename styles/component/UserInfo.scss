@@ -1,0 +1,113 @@
+.UserInfo {
+  width: calc(100% - 450px);
+  background: #FAFAFA;
+  padding: calc(3.5%) 0 0 calc(2.1%);
+  position: relative;
+  min-width: 600px;
+  display: flex;
+}
+
+.UserInfo__photoContainer {
+  border: 1px solid grey;
+  width: 132px;
+  height: 132px;
+}
+.UserInfo__photo {
+
+}
+.UserInfo__filledInfo {
+  font-size: 0.8em;
+  color:#6D4552;
+  text-align: center;
+  padding-top: 15px;
+}
+
+
+.UserInfo__container {
+  padding-left: 34px;
+  width: 80%;
+  padding-top: 3px;
+  min-width: 400px;
+}
+.UserInfo__requiredInfoContainer{
+  margin-top: -3px;
+  display: inline-flex;
+}
+
+.UserInfo__fullName {
+  color:#6D4552;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.UserInfo__genderBirthday {
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 9px;
+  font-size: 0.8em;
+  color: #957982;
+
+}
+
+.UserInfo__job{
+  font-size: 0.8em;
+  margin-top: 11px;
+  font-weight: bold;
+  color: #6D4552 ;
+}
+
+.UserInfo__skillsContainer {
+  margin-top: 28px;
+}
+
+.UserInfo__skillsList{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 0.6em;
+}
+.UserInfo__skill {
+  display: inline-block;
+  background:  #E6E6E6;
+  min-width: 90px;
+  border-radius: 3px;
+  text-align: center;
+  padding: 6px 0 6px 0;
+  margin-right: 7px;
+  color: lightseagreen;
+}
+
+.UserInfo__info {
+  margin-top: 32px;
+  width: 90%;
+  line-height: 30px;
+  color: #6D4552 ;
+}
+
+
+.UserInfo__returnButton {
+  position: absolute;
+  top: 14px;
+  right: 13px;
+  border: 3px solid #A9979E;
+  background: transparent;
+  color: #A9979E;
+  border-radius: 61px;
+  padding: 1px 4.65px;
+}
+.UserInfo__buttonContainer {
+  position: absolute;
+  bottom: calc(7%);
+  right: calc(5%);
+}
+
+.UserInfo__editButton {
+  width: 200px;
+  height: 60px;
+  margin-right: 30px;
+  background-color: #51BF87;
+}
+.UserInfo__deleteButton{
+  width: 200px;
+  height: 60px;
+  background-color: #DB5565;
+}

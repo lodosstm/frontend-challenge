@@ -1,0 +1,145 @@
+.CreateUser {
+  width: calc(100% - 450px);
+  background: #FAFAFA;
+  padding: calc(3.5%) 0 0 calc(2.1%);
+  position: relative;
+  min-width: 600px;
+  display: flex;
+
+}
+
+.CreateUser__photoContainer {
+  border: 1px solid grey;
+  width: 132px;
+  height: 132px;
+}
+.CreateUser__filledInfo {
+  font-size: 0.8em;
+  padding-top: 15px;
+  color: #6D4552;
+}
+
+.CreateUser__container {
+  padding-left: 19px;
+  width: 80%;
+  padding-top: 3px;
+}
+
+.CreateUser__nameContainer {
+  position: relative;
+}
+
+.CreateUser__name{
+  width: 104%;
+  height: 45px;
+}
+
+.CreateUser__nameError {
+  margin-top: -3px;
+  margin-left: 10px;
+  position: absolute;
+}
+
+
+.CreateUser__surnameContainer {
+  position: relative;
+}
+.CreateUser__surname {
+  height: 45px;
+}
+.CreateUser__surnameError {
+  margin-top: -3px;
+  margin-left: 10px;
+  position: absolute;
+}
+
+.CreateUser__rowJob {
+  padding-top: 1px;
+
+}
+
+.CreateUser__job {
+  height: 45px;
+}
+
+
+.CreateUser__genderBirthdayContainer {
+  padding-top: 18px;
+  padding-left: 20px;
+}
+
+.CreateUser__dropdown {
+  width: 26%;
+  position:relative;
+  min-width: 163px;
+}
+
+.CreateUser__dropdown_birthday {
+  min-width: 218px;
+}
+
+
+
+
+.CreateUser__dropdownToggle {
+  width: 98%;
+  padding: 20px 0;
+  background: #F4AD49;
+  color: white;
+}
+
+
+.CreateUser__dropdown.dropdown.show .CreateUser__dropdownToggle,.CreateUser__dropdownToggle:active{
+  background-color: black;
+}
+
+
+.CreateUser__dropdownmenu {
+  width: 98%;
+  background: black;
+  margin-top: -2px;
+
+}
+.CreateUser__dropdownitem {
+  color: white;
+}
+.CreateUser__dropdownitem:hover {
+  background: #4a4a4a;
+  color: white;
+}
+
+.CreateUser__dropdownError {
+  position: absolute;
+  margin-top: -3px;
+  margin-left: 10px;
+}
+
+.CreateUser__infoContainer {
+  padding-top: 15px;
+}
+
+.CreateUser__info{
+  height: 165px;
+  color: #6D4552;
+}
+
+
+.CreateUser__returnButton {
+  position: absolute;
+  top: 14px;
+  right: 13px;
+  border: 3px solid #A9979E;
+  background: transparent;
+  color: #A9979E;
+  border-radius: 61px;
+  padding: 1px 4.65px;
+
+}
+.CreateUser__saveButton {
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  background-color: #51BF87;
+  bottom: 7%;
+  right: 5%;
+}
