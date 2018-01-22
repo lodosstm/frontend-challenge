@@ -1,0 +1,310 @@
+@import "Colors.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+*{
+  
+  box-sizing: border-box;
+}
+a:link {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(../img/background.png);
+}
+#content {
+  width: 100%;
+}
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  
+
+}
+
+.header {
+  opacity: 0.8;
+  font-weight: bold;
+  height: 58px;
+  width: 100%;
+  background-color: $main_color;
+  z-index: 2;
+  min-width: 1300px;
+  &_title {
+      padding-left: 26px;
+      padding-top: 10px;
+      font-size: 30px;
+    }
+  }
+
+.container {
+  z-index: 0;
+  opacity: 0.8;
+  width: 100%;
+
+ }
+ 
+
+ 
+.form {
+  width: 70%;
+  margin-left: 1px; 
+  background-color: $main_color;
+  padding-left: 50px;
+  padding-top: 10px;
+  min-width: 800px;
+
+  
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;                          
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+
+}
+.close {
+  margin-right: 15px !important;
+  align-self: flex-end;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.photo {
+  width: 120px;
+  height: 120px;
+  border: 1px inset  $border_photo;
+}
+
+.filled-info {
+  color: $filled-info;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 25px;
+  font-family: Roboto;
+  font-weight: 500;
+  margin-top: 15px;
+
+}
+.block {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start;
+  width: 100%;
+  &_name {
+    display: flex;
+    flex-direction: row; 
+    
+
+  }
+}
+.data {
+  margin-top: 21px;
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start;
+  margin-left: 155px;
+}
+.select {
+  background-color: orange !important;
+  align-text: center !important;
+  border-radius: 6px;
+  -webkit-box-shadow: -1px 3px 0px 0px rgba(186, 156, 0, 1);
+  -moz-box-shadow:    -1px 3px 0px 0px rgba(186, 156, 0, 1);
+  box-shadow:         -1px 3px 0px 0px rgba(186, 156, 0, 1);
+  cursor: pointer;
+  color: white !important;
+  font-size: 16px !important;
+  margin-right: 30px !important;
+  height: 50px !important;
+  width: 180px;
+  text-decoration: none;
+  border-bottom: none;
+  font-weight: bold;
+  &_gender {
+
+      text-color: white !important;
+      text-indent: 15px !important;
+      }
+  &_date {
+      padding-left: 15px;
+      color: white !important;
+  }
+}
+.input {
+  background-color: #ffffff;
+  border: 1px solid $input;
+  font-size: 14px;
+  border-radius: 5px;
+  color: #6d4755;
+  margin-left: 30px;
+  box-shadow: inset 0 1px 2px 1px lighten(#d2c9cc, 10%);
+  &_name {
+    padding: 1em;
+    width: 285px;
+  }
+  &_position {
+    margin-top: 21px;
+    width: 600px;
+    padding: 1em;
+  }
+  &_skills {
+    padding: 0px;
+    display: flex;
+    margin-top: 21px;
+    width: 600px;
+    flex-direction: row;                          
+    align-items: center;
+    flex-wrap: wrap;
+    height: 55px;
+  }
+  &_chip {
+    background-color: orange;
+    padding: 5px;
+    margin-top: 3px;
+    margin-left: 5px;
+    border-radius: 3px;
+    font-size: 23px;
+    }
+}
+.text-field {
+  background-color: #ffffff;
+  font-family: Roboto;
+  border: 1px solid $input;
+  font-size: 14px;
+  border-radius: 5px;
+  color: #6d4755;
+  box-shadow: inset 0 1px 2px 1px lighten(#d2c9cc, 10%);
+  margin-top: 21px;
+  margin-left: 153px;
+  width: 600px;
+  padding-bottom: 3em;
+}
+
+.save {  
+  background-color: $main_color;
+  font-size: 18px;
+  margin-top: 21px;
+  margin-left: 573px;
+  height: 50px !important;
+  border: none;
+  border-radius: 5px;
+  background-color: $save_button;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  width: 180px;
+  font-weight: bold;
+  color: $main_color; 
+}
+  .save:before { 
+  content:attr(dataTitle); 
+  display:none; 
+  }
+  .save:hover::before { 
+  width:200px; 
+  display: block; 
+  background: $main_color; 
+  border:1px solid $save_button; 
+  padding:8px; 
+  margin: 0 0 100px 0px; 
+  color: $save_button;
+  opacity: 0.5;
+  }
+ .list{
+   background-color: $main_color;
+   width: 488px;
+   z-index: 0;
+   overflow: visible;
+ }
+
+ .add {
+  background-color: $main_color;
+  text-align: center;
+  width: 488px;
+  opacity: 1;
+  height: 55px;
+  z-index: 1;
+  &_icon {
+      padding-left: 0px;
+      padding-top: 0px;
+      color: #90727c;
+    }
+  }
+ .element {
+  height: 150px;
+  background-color: $main_color; 
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom: 3px solid $border_bottom;
+  &_indecator {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    &_line {
+      bottom: 0;
+      left: 0;
+      align-self: flex-end;
+      width: 5px;
+  }
+  }
+  &_avatar {
+      padding-left: 12px;
+      padding-top: 21px;
+    }
+  &_data {
+    padding-left: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 21px;
+
+    
+  }
+ }
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #212121;
+  &_firstName {
+    padding-right: 10px;
+  }
+}
+.position {
+  padding-top: 5px;
+  font-size: 16px;
+  color: #757575;
+}
+.skills { 
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 21px;
+}
+.skill {
+  margin: 5px 5px 0 0;
+  text-align: center;
+  background-color: $skill;
+  font-size: 14px;
+  min-width: 113px;
+  border-radius: 3px;
+  color: #37b4ab;
+  font-weight: bold;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.button {
+  padding-left: 90%;
+
+}
