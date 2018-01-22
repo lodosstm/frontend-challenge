@@ -3,15 +3,13 @@
     {
       "id": 0,
       "photo": "http://statici.behindthevoiceactors.com/behindthevoiceactors/_img/chars/ada-wong-resident-evil-damnation-36.3.jpg",
-      "firstName": "Ada",
+      "firstName": "Adaa",
       "lastName": "Wong",
-      "position": "front-end developer",
       "skills": [
         "react",
         "javascript",
         "sass",
-        "html",
-        "css"
+        "html"
       ],
       "gender": "Female",
       "dateOfBirthday": "23.01.1974",
