@@ -41,22 +41,14 @@ export default class Form extends React.Component {
                 
 	
 changeFirstName(event) {
-    const employee = new Employee(this.state.id, this.state.photo, this.state.firstName, this.state.lastName, this.state.position, this.state.skills, this.state.gender, this.state.dateOfBirthday, this.state.qualification);
     this.setState({firstName: event.target.value});
-    employee.setFirstName(this.state.firstName)
-    updateEmployee(employee);
   }
   changeLastName(event) {
-    const employee = new Employee(this.state.id, this.state.photo, this.state.firstName, this.state.lastName, this.state.position, this.state.skills, this.state.gender, this.state.dateOfBirthday, this.state.qualification);
     this.setState({lastName: event.target.value});
-    employee.setLastName(this.state.lastName)
-    updateEmployee(employee);
   }
   changePosition(event) {
-    const employee = new Employee(this.state.id, this.state.photo, this.state.firstName, this.state.lastName, this.state.position, this.state.skills, this.state.gender, this.state.dateOfBirthday, this.state.qualification);
     this.setState({position: event.target.value});
-    employee.setPosition(this.state.position);
-    updateEmployee(employee);
+ 
   }
   addSkill(searchText) {
     const employee = new Employee(this.state.id, this.state.photo, this.state.firstName, this.state.lastName, this.state.position, this.state.skills, this.state.gender, this.state.dateOfBirthday, this.state.qualification);
@@ -68,7 +60,6 @@ changeFirstName(event) {
         employee.addSkill(searchText);
     	this.setState({skills: employee.getSkills()});
     	this.setState({searchText: ''});
-    	updateEmployee(employee);
     	}
     }
   updateInput(searchText) {
@@ -89,20 +80,17 @@ handleChangeDate = (event, date) => {
   const employee = new Employee(this.state.id, this.state.photo, this.state.firstName, this.state.lastName, this.state.position, this.state.skills, this.state.gender, this.state.dateOfBirthday, this.state.qualification);
   this.setState({dateOfBirthday: date.toLocaleDateString()});
   employee.setDateOfBirthday(this.state.dateOfBirthday);
-  updateEmployee(employee);
   }
 setGender = (event, index, value) => {
   const employee = new Employee(this.state.id, this.state.photo, this.state.firstName, this.state.lastName, this.state.position, this.state.skills, this.state.gender, this.state.dateOfBirthday, this.state.qualification);
   this.setState({gender: value});
   employee.setGender(this.state.gender);
-  updateEmployee(employee);
 
 }
 changeQualification(event) {
     const employee = new Employee(this.state.id, this.state.photo, this.state.firstName, this.state.lastName, this.state.position, this.state.skills, this.state.gender, this.state.dateOfBirthday, this.state.qualification);
     this.setState({qualification: event.target.value});
     employee.setQualification(this.state.qualification)
-    updateEmployee(employee);
   }
   formatDate = (date) => {
        return date.getDate()+ "." + (date.getMonth() + 1) + "." + date.getFullYear();
