@@ -1,0 +1,155 @@
+{
+  "employees": [
+    {
+      "id": 0,
+      "photo": "http://statici.behindthevoiceactors.com/behindthevoiceactors/_img/chars/ada-wong-resident-evil-damnation-36.3.jpg",
+      "firstName": "Ada",
+      "lastName": "Wong",
+      "skills": [
+        "react",
+        "javascript",
+        "sass"
+      ],
+      "gender": "Female",
+      "dateOfBirthday": "24.01.1924",
+      "qualification": "\"Maybe you forgot, Wesker, I don't always play by your rules. \"\n"
+    },
+    {
+      "id": 1,
+      "photo": "https://pbs.twimg.com/profile_images/2198679888/Leon_Dark_Contemplation_by_waitingforatrain.jpg",
+      "firstName": "Leon",
+      "lastName": "Kennedy",
+      "position": "back-end developer",
+      "skills": [
+        "javaScript",
+        "node.js"
+      ],
+      "gender": "Male",
+      "dateOfBirthday": "10.03.1977",
+      "qualification": "\"Hey! It's up to us to take out Umbrella!\""
+    },
+    {
+      "id": 2,
+      "photo": "https://static.comicvine.com/uploads/original/2/26147/4177360-lonely_claire_2_by_3smjill-d7vwhk3-1679988059.png",
+      "firstName": "Claire",
+      "lastName": "Redfield",
+      "position": "front-end developer",
+      "skills": [
+        "react",
+        "css",
+        "html"
+      ],
+      "gender": "Female",
+      "dateOfBirthday": "28.04.1979",
+      "qualification": ""
+    },
+    {
+      "id": 3,
+      "photo": "http://images6.fanpop.com/image/photos/40200000/Chris-Redfield-video-games-40268061-500-415.jpg",
+      "firstName": "Chris",
+      "lastName": "Redfield",
+      "skills": [
+        "angular.js",
+        "javascript",
+        "react"
+      ],
+      "gender": "Male",
+      "dateOfBirthday": "28.01.1973",
+      "qualification": null
+    },
+    {
+      "id": 4,
+      "photo": "https://www.residentevil.net/share/chro/image/dictionary/luis.jpg",
+      "firstName": "Luis",
+      "lastName": "Sera",
+      "skills": [],
+      "gender": "Male",
+      "dateOfBirthday": "22.09.1976",
+      "qualification": null
+    },
+    {
+      "id": 5,
+      "photo": "http://www.reforever.ru/res/chrono/krauser.jpg",
+      "firstName": "Jack",
+      "lastName": "Krauser",
+      "skills": [
+        "javaScript",
+        "angular.js",
+        "node.js",
+        "css"
+      ],
+      "gender": "Male",
+      "dateOfBirthday": "31.01.1969",
+      "qualification": ""
+    },
+    {
+      "id": 6,
+      "photo": "https://orig00.deviantart.net/dd01/f/2016/325/4/1/jill_valentine___hd_remaster_by_franalcantara-dap6083.png",
+      "firstName": "Jill",
+      "lastName": "Valentine",
+      "position": "back-end developer",
+      "skills": [
+        "node.js",
+        "javascript"
+      ],
+      "gender": "Female",
+      "dateOfBirthday": "18.05.1974",
+      "qualification": "\"It was Raccoon City's last chance... And my last chance... My last escape... \""
+    },
+    {
+      "id": 7,
+      "photo": "http://statici.behindthevoiceactors.com/behindthevoiceactors/_img/chars/ingrid-hunnigan-resident-evil-damnation-3.72.jpg",
+      "firstName": "Ingrid",
+      "lastName": "Hannigan",
+      "position": "hr",
+      "skills": [
+        "angular.js",
+        "javascript",
+        "react"
+      ],
+      "gender": "Female",
+      "dateOfBirthday": "13.01.1969",
+      "qualification": null
+    },
+    {
+      "id": 8,
+      "photo": "http://projectumbrella.net/files/imagecache/preview/images/UC_Wesker3.jpg",
+      "firstName": "Albert",
+      "lastName": "Wesker",
+      "position": "CIO",
+      "skills": [
+        "javaScript",
+        "angular.js",
+        "node.js",
+        "react",
+        "html"
+      ],
+      "gender": "Male",
+      "dateOfBirthday": "28.08.1960",
+      "qualification": "\"I'm not destroying the world, I'm saving it!\""
+    },
+    {
+      "id": 9,
+      "photo": "https://vignette.wikia.nocookie.net/residentevil/images/b/b3/Salazar.jpg/revision/latest?cb=20141016203035",
+      "firstName": "Ramon",
+      "lastName": "Salazar",
+      "skills": [],
+      "gender": "Male",
+      "dateOfBirthday": "28.01.1984",
+      "qualification": ""
+    },
+    {
+      "id": 10,
+      "photo": "https://www.residentevillive.ru/games/re4/pictures/osmund.jpg",
+      "firstName": "Osmund",
+      "lastName": "Saddler",
+      "position": " Head of Los Iluminados",
+      "skills": [
+        "node.js"
+      ],
+      "gender": "Male",
+      "dateOfBirthday": "31.05.1935",
+      "qualification": null
+    }
+  ]
+}
